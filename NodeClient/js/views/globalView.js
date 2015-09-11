@@ -44,17 +44,6 @@ app.views.GlobalView = (function(){
 
 	GlobalView.prototype.update = function(event){
 		console.log('global : event received : ' + event.cmd);
-
-		if (event.cmd === 'home'){
-			$.mobile.changePage('#page0');
-			this.removeElem('contactList','li');
-			$.each(event.val, function(key,val){
-				if(typeof event.val[key] === 'object'){
-					if(document.getElementById('contact.' + event.val[key].id) === null){
-						this.createContactSummary(event.val[key]);
-					}
-				}
-			}.bind(this));
 		}
 		if (event.cmd === 'eventName'){
 			// DO SOMETHING...
