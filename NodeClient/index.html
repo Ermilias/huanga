@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+</head>
+<body id="body">
+	<h1>OUR GAME'S NAME</h1>
+	<button id="play" class="global">Play</button>
+	<button id="score" class="global">Score</button>
+	<div id='scoreBoard' class="global"></div>
+	<ul id='stats'>
+	</ul>
+	<div id='tanks'></div>
+	<div id='shop' class="global"></div>
+
+	<script src="js/app.js"></script>
+	<script src="js/libs/observable.js"></script>
+	<script src="js/controllers/globalController.js"></script>
+	<script src="js/views/globalView.js"></script>
+	<script src="js/models/globalModel.js"></script>
+	<script type="text/javascript">
+		var mod = app.startGlobal();
+	</script>
+</body>
+</html>
