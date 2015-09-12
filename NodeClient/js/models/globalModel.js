@@ -2,10 +2,50 @@ app.models.GlobalModel = (function(){
 	var Observable = app.libs.Observable;
 	function GlobalModel(){
 		Observable.call(this);
+		this.playerId = '';
+		this.players = {};
 
 	}
 	GlobalModel.prototype = Object.create(Observable.prototype);
 	GlobalModel.prototype.constructor = GlobalModel;
+
+	GlobalModel.prototype.eat = function(){
+		this.notify({cmd:''});
+	}
+
+	GlobalModel.prototype.isEaten = function(){
+		this.notify({cmd:''});
+	}
+
+	GlobalModel.prototype.isMoving = function(direction){
+		this.notify({cmd:'isMoving', val: {direction: direction}});
+		this.player.direction = direction;
+	}
+
+	GlobalModel.prototype.updateAllPos = function(newPos){
+		/*
+		* newPos will be an object :
+		*	newPos = { player.id :  {pos: player.pos, direction: player.direction}, ... }
+		*
+		*	previousPos = { this.players.id :  {prevPos: player.pos, prevDirection: player.direction}, ... }
+		*/
+		this.notify({cmd:'updatePos', val: {pos: {old: previousPos, current: newPos}}});
+		for (key in newPos){
+			if (typeof newPos[key] === 'object'){
+				this.players[key].direction = newPos[key].direction;
+				this.players[key].pos = newPos[key].pos;
+			}
+		}
+	}
+
+	GlobalModel.prototype.setPlayer = function(playerId){
+		this.playerId = playerId;
+	}
+	GlobalModel.prototype.setAllPlayer = function(playersTb){
+		for (var i = otherTb.length - 1; i >= 0; i--) {
+			this.players[playersTb[i].id] = playersTb[i];
+		};
+	}
 
 	GlobalModel.prototype.checkKey = function(key){
 		if (localStorage[key] === undefined){
