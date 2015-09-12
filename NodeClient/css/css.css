@@ -21,7 +21,7 @@ canvas{
 {
 	position			:	fixed;
 	bottom				:	1%;
-	left				:	1%;
+	right				:	1%;
 	width				:	20%;
 	height				:	40%;
 	background-color	:	red;
