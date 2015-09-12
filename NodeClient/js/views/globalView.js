@@ -44,7 +44,6 @@ app.views.GlobalView = (function(){
 
 	GlobalView.prototype.update = function(event){
 		console.log('global : event received : ' + event.cmd);
-		}
 		if (event.cmd === 'eventName'){
 			// DO SOMETHING...
 		}
