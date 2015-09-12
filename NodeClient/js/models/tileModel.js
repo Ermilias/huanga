@@ -15,19 +15,25 @@ app.models.TileModel = (function(){
 
 	TileModel.prototype.setImage = function(image){
 		this.image = image;
+		return this;
 	}
 	TileModel.prototype.getImage = function(){
 		return this.image;
 	}
+	TileModel.prototype.getImageSrc = function(){
+		return this.imageSrc;
+	}
 	TileModel.prototype.setSize = function(size){
 		this.size.width = size.width || this.size.width;
 		this.size.height = size.height || this.size.height;
+		return this;
 	}
 	TileModel.prototype.getSize = function(){
 		return this.size;
 	}
 	TileModel.prototype.setIsBlock = function(bool){
 		this.isBlock = bool || false;
+		return this;
 	}
 	TileModel.prototype.getIsBlock = function(){
 		return this.isBlock;

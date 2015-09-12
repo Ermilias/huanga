@@ -3,6 +3,9 @@ app.views.GlobalView = (function(){
 	function GlobalView(model){
 		Observable.call(this);
 		this.model = model;
+		this.activeMap = [];
+		this.canvas = document.getElementById('gameMap');
+		this.ctx = this.canvas.getContext('2d');
 		this.init();
 	}
 
@@ -19,6 +22,23 @@ app.views.GlobalView = (function(){
 			if (document.getElementById(key)){
 				var elem = document.getElementById(key)
 				elem.innerHTML = this.model[key].toString() + keys[key].symb.toString();
+			}
+		}
+	}
+
+	GlobalView.prototype.drawCanvas = function(map){
+		for (row in map) {
+			if (typeof map[row] === 'object'){
+				for (column in map[row]) {
+					if (typeof map[row][column] === 'object'){
+						//console.log(map[row][column].getImage())
+						var image = map[row][column];
+						var tile = new Image();
+						tile.src = image.getImageSrc() + image.getImage();
+						console.log(tile);
+						this.ctx.drawImage(tile,image.pos.x,image.pos.y,image.size.width,image.size.height);
+					}
+				}
 			}
 		}
 	}
@@ -44,8 +64,9 @@ app.views.GlobalView = (function(){
 
 	GlobalView.prototype.update = function(event){
 		console.log('global : event received : ' + event.cmd);
-		if (event.cmd === 'eventName'){
+		if (event.cmd === 'loaded'){
 			// DO SOMETHING...
+			this.drawCanvas(this.activeMap);
 		}
 
 	};

@@ -19,9 +19,11 @@ app.controllers.GlobalController = (function(){
 	}
 	GlobalController.prototype.documentDOMContentLoadedAction = function(){
 		//DO SOMETHING...
+		this.model.loaded();
 	}
-	GlobalController.prototype.eventNameClickAction = function(){
+	GlobalController.prototype.gameMapClickAction = function(){
 		//DO SOMETHING...
+		this.model.loaded();
 	}
 
 	return GlobalController;

@@ -40,12 +40,19 @@ app.models.GlobalModel = (function(){
 
 	GlobalModel.prototype.setPlayer = function(playerId){
 		this.playerId = playerId;
+		return this;
 	}
 	GlobalModel.prototype.setAllPlayer = function(playersTb){
 		for (var i = otherTb.length - 1; i >= 0; i--) {
 			this.players[playersTb[i].id] = playersTb[i];
 		};
+		return this;
 	}
+	GlobalModel.prototype.loaded = function(){
+		this.notify({cmd: 'loaded'});
+	}
+
+
 
 	GlobalModel.prototype.checkKey = function(key){
 		if (localStorage[key] === undefined){

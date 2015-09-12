@@ -1,0 +1,19 @@
+body{
+	height: 2000px;
+	margin: 0;
+	padding: 0;
+}
+
+#zip{
+	position: absolute;
+}
+#mapContainer{
+	margin-top: 100px;
+	margin-left:auto;
+	margin-right:auto;
+
+
+}
+canvas{
+	background-color: black;
+}
