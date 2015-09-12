@@ -27,20 +27,37 @@ app.views.GlobalView = (function(){
 	}
 
 	GlobalView.prototype.drawCanvas = function(map){
-		for (row in map) {
-			if (typeof map[row] === 'object'){
-				for (column in map[row]) {
-					if (typeof map[row][column] === 'object'){
-						//console.log(map[row][column].getImage())
-						var image = map[row][column];
+		for (column in map) {
+			if (typeof map[column] === 'object'){
+				for (row in map[column]) {
+					if (typeof map[column][row] === 'object'){
+						var image = map[column][row];
 						var tile = new Image();
 						tile.src = image.getImageSrc() + image.getImage();
-						console.log(tile);
 						this.ctx.drawImage(tile,image.pos.x,image.pos.y,image.size.width,image.size.height);
 					}
 				}
 			}
 		}
+	}
+	GlobalView.prototype.randPos = function(map){
+		console.log(map);
+		var pos = {
+			x: Math.floor(Math.random() * this.map.mapCol / 32),
+			y: Math.floor(Math.random() * this.map.mapRow)
+		}
+
+		console.log(pos);
+			if (map[pos.x][pos.y].isBlock){
+				return this.randPos(map);
+			}else{
+				return pos;
+			}
+	}
+
+	GlobalView.prototype.drawPlayers = function(map){
+		var pos = this.randPos(map);
+		this.ctx.drawImage(this.player.image,(pos.x * 32),(pos.y * 32));
 	}
 
 	GlobalView.prototype.addListeners = function(elem,onEvent){
@@ -67,6 +84,7 @@ app.views.GlobalView = (function(){
 		if (event.cmd === 'loaded'){
 			// DO SOMETHING...
 			this.drawCanvas(this.activeMap);
+			this.drawPlayers(this.activeMap);
 		}
 
 	};

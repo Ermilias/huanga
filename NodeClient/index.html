@@ -66,14 +66,21 @@
 		]
 
 		var tiles = [
-			{name: 'tileWall.png',size:{width: 32, height: 32},isBlock: true},
-			{name: 'tilePath.png',size:{width: 32, height: 32},isBlock: false},
+			{
+				0:{name: 'tileStone32x.png',size:{width: 32, height: 32},isBlock: true},
+			 	1:{name: 'tileStoneB32x.png',size:{width: 32, height: 32},isBlock: true},
+			},
+			{0:{name: 'tileSand32x.png',size:{width: 32, height: 32},isBlock: false}},
 		];
 		var map = mod[1];//new app.models.MapModel();
 		map.setMapTilesList(tiles)
 		map.setMap(mapPatern)
 		map.generateMap();
 		map.updateViewMap(mod[2]);
+		var player = new app.models.PlayerModel();
+		player.image = new Image();
+		player.image.src = './image/sol.png';
+		player.updateViewMap(mod[2]);
 	</script>
 </body>
 </html>
