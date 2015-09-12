@@ -17,3 +17,44 @@ body{
 canvas{
 	background-color: black;
 }
+
+.dPad
+{
+	position			:	fixed;
+	bottom				:	1%;
+	left				:	1%;
+	width				:	20%;
+	height				:	40%;
+	background-color	:	red;
+}
+
+.arrowImage
+{
+	width				:	34%;
+	height				:	34%;
+	position			: 	absolute;
+}
+
+.dPad #upButton
+{
+	top					: 	1%;
+	right				:	33%;
+}
+
+.dPad #downButton
+{
+	bottom				: 	1%;
+	right				:	33%;
+}
+
+.dPad #leftButton
+{
+	left				: 	1%;
+	top					:	33%;
+}
+
+.dPad #rightButton
+{
+	right				: 	1%;
+	top					:	33%;
+}

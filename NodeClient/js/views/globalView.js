@@ -13,6 +13,13 @@ app.views.GlobalView = (function(){
 	GlobalView.prototype.constructor = GlobalView;
 	GlobalView.prototype.init = function(){
 		var elem = document;
+		var buttons = document.getElementsByClassName('arrowImage');
+
+		for (var i = 0; i < buttons.length; ++i)
+		{
+			this.addListeners(buttons[i], 'touchstart');
+			this.addListeners(buttons[i], 'touchend');
+		}
 		this.addListeners(elem,'click');
 		this.addListeners(document, 'DOMContentLoaded');
 	};
@@ -61,6 +68,18 @@ app.views.GlobalView = (function(){
 			}
 		}.bind(this))
 	}
+	
+	GlobalView.prototype.change = function(val)
+	{
+		var button = document.getElementById(val.buttonId);
+		var path = '';
+		
+		if (val.state === 'released')
+			path = "./image/" + val.buttonId + ".png";
+		else
+			path = "./image/" + val.buttonId + "Pressed.png";
+		button.src = path;
+	}
 
 	GlobalView.prototype.update = function(event){
 		console.log('global : event received : ' + event.cmd);
@@ -69,6 +88,9 @@ app.views.GlobalView = (function(){
 			this.drawCanvas(this.activeMap);
 		}
 
+		if (event.cmd === 'changeState'){
+			this.change(event.val);
+		}
 	};
 	return GlobalView;
 }).call(this);
