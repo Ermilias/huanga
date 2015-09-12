@@ -26,6 +26,12 @@ app.models.TileModel = (function(){
 	TileModel.prototype.getSize = function(){
 		return this.size;
 	}
+	TileModel.prototype.setIsBlock = function(bool){
+		this.isBlock = bool || false;
+	}
+	TileModel.prototype.getIsBlock = function(){
+		return this.isBlock;
+	}
 
 
 

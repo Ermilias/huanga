@@ -25,6 +25,13 @@
 	<script src="js/models/globalModel.js"></script>
 	<script type="text/javascript">
 		var mod = app.startGlobal();
+		var tiles = [
+			{name: 'mur.png',size:{width: 32, height: 32},isBlock: true},
+			{name: 'sol.png',size:{width: 32, height: 32},isBlock: false},
+		];
+		var map = new app.models.MapModel();
+		map.setMapTiles(tiles);
+		map.generateMap();
 	</script>
 </body>
 </html>
