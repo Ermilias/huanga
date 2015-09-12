@@ -12,6 +12,10 @@ app.models.GlobalModel = (function(){
 	GlobalModel.prototype.eat = function(){
 		this.notify({cmd:''});
 	}
+	
+	GlobalModel.prototype.changeImage = function(buttonId, state){
+		this.notify({cmd:'changeState', val:{buttonId:buttonId, state:state}});
+	}
 
 	GlobalModel.prototype.isEaten = function(){
 		this.notify({cmd:''});
