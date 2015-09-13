@@ -28,10 +28,10 @@ Players will be assigned randomly to a team at the begining of the game(for the 
 Objectif:
 
 Each team represent an element (water, fire and wood) each of them can only eat one kind of opponent:
-( '>' means 'can eat')
-water > fire
-fire > wood
-wood > water
+( '>' means 'can eat'):
+- water > fire
+- fire > wood
+- wood > water
 
 Standard Game (infinite):
 - when a player is eaten it turn into the team that eat him/her.
