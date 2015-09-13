@@ -1,41 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="css/css.css">
-</head>
-<body id="body">
-	<div>
-		<h1>Huanga</h1>
-		<button id="play" class="global">Play</button>
-		<button id="score" class="global">Score</button>
-		<div id='scoreBoard' class="global"></div>
-	</div>
-
-	<div id="mapContainer">
-		<canvas id='gameMap' width='1024' height='1024'></canvas>
-	</div>
-
-	<div class="dPad" oncontextmenu="return false;">
-		<img id="upButton" class="arrowImage" src="./image/upButton.png">
-		<img id="downButton" class="arrowImage" src="./image/downButton.png">
-		<img id="leftButton" class="arrowImage" src="./image/leftButton.png">
-		<img id="rightButton" class="arrowImage" src="./image/rightButton.png">
-	</div>
-	
-	<script src="js/app.js"></script>
-	<script src="js/libs/observable.js"></script>
-	<script src="js/models/playerModel.js"></script>
-	<script src="js/models/tileModel.js"></script>
-	<script src="js/models/mapModel.js"></script>
-	<script src="js/controllers/globalController.js"></script>
-	<script src="js/views/globalView.js"></script>
-	<script src="js/models/globalModel.js"></script>
-	<script type="text/javascript">
-		var mod = app.startGlobal();
-
-		var mapLarge1 = [
+Map = module.exports = {
+	large: [
+		[
 			[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 			[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 			[0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0],
@@ -68,8 +33,7 @@
 			[0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0],
 			[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 			[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-		]
-		var mapLarge2 =
+		],
 		[  //a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p 	     q,r,s,t,u,v,w,x,y,z,1,2,3,4,5,6
 			[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,/* 1 */ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
  			[0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,/* 2 */ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
@@ -104,9 +68,11 @@
 			[0,1,0,0,0,1,0,1,1,0,1,0,0,0,1,0,/* 30*/ 0,1,0,0,0,1,0,1,1,0,1,0,0,0,1,0],
 			[0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,/* 31*/ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
 			[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,/* 32*/ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-		]
+		],
+	],
 
-		var mapMini1 = [
+	mini: [
+		[
 			[0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0],
 			[0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
 			[0,1,0,0,0,1,0,1,1,0,1,0,0,0,1,0],
@@ -123,9 +89,8 @@
 			[0,1,0,0,0,1,0,1,1,0,1,0,0,0,1,0],
 			[0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
 			[0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0],
-		]
-
-		var mapMini2 = [
+		],
+		[
 			[0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0],
 			[0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
 			[0,1,0,0,0,1,0,0,0,0,1,0,0,0,1,0],
@@ -142,9 +107,8 @@
 			[0,1,0,0,0,1,0,0,0,0,1,0,0,0,1,0],
 			[0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
 			[0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0],
-		]
-
-		var mapMini3 = [
+		],
+		[
 			[0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0],
 			[0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0],
 			[0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
@@ -161,9 +125,8 @@
 			[0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
 			[0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0],
 			[0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0],
-		]
-
-		var mapMini4 = [
+		],
+		[
 			[0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0],
 			[0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0],
 			[0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
@@ -181,33 +144,5 @@
 			[0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0],
 			[0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0],
 		]
-		var mapList = [
-			mapMini1,
-			mapMini2,
-			mapMini3,
-			mapMini4,
-		]
-		var mapList2 = [
-			mapLarge1,
-			mapLarge2,
-		]
-
-		var tiles = [
-			{
-				0:{name: 'tileStone32x.png',size:{width: 32, height: 32},isBlock: true},
-			 	1:{name: 'tileStoneB32x.png',size:{width: 32, height: 32},isBlock: true},
-			},
-			{0:{name: 'tileSand32x.png',size:{width: 32, height: 32},isBlock: false}},
-		];
-		var map = mod[1];//new app.models.MapModel();
-		map.setMapTilesList(tiles)
-		//map.setMap(mapPatern)
-		map.setMap(mapList2);
-		map.generateMap();
-		map.updateViewMap(mod[2]);
-		var player = new app.models.PlayerModel();
-		player.setView(mod[2]);
-		//player.updateViewMap();
-	</script>
-</body>
-</html>
+	],
+}
