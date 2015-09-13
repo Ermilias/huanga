@@ -35,7 +35,7 @@ MapModel.prototype.getMapTiles = function(){
 		return this.mapTiles;
 }
 MapModel.prototype.setMap = function(map){
-	this.map = map;
+	this.map = this.createMap(map);
 	return this;
 }
 MapModel.prototype.getMap = function(){
@@ -56,7 +56,6 @@ MapModel.prototype.generateMap = function(){
 			tile.setImage(mapTile.getImage());
 			tile.setSize(mapTile.getSize());
 			tile.setIsBlock(mapTile.getIsBlock());
-			
 			tile.setPosition({x: (row * tile.size.width), y: (key * tile.size.height)});
 			this.mapTiles[row][key] = tile;
 			this.mapCol++;
@@ -69,17 +68,22 @@ MapModel.prototype.createMap = function(array, mapSize){
 	var mapArray = [];
 	var finalMap = [];
 	for  (var i = 0; i < mapSize; i++){
+		console.log(i);
 		mapArray[i] = array[Math.floor(Math.random() * array.length)];
 	}
-	for (var i = 0; i < mapArray.length; i+=2) {
-		for(var j = 0; j < mapArray[i].length; j++){
-			if (mapArray[i+1] !== undefined){
-				var fusion = (mapArray[i][j].join() + ',' + mapArray[i+1][j].join()).split(',');
-				finalMap.push(fusion);
+	if (mapSize > 1){
+		console.log('bug');
+		for (var i = 0; i < mapArray.length; i+=2) {
+			for(var j = 0; j < mapArray[i].length; j++){
+				if (mapArray[i+1] !== undefined){
+					var fusion = (mapArray[i][j].join() + ',' + mapArray[i+1][j].join()).split(',');
+					finalMap.push(fusion);
+				}
 			}
 		}
+		return finalMap;
 	}
-	return finalMap;
+	return mapArray[0];
 }
 
 

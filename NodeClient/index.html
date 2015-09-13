@@ -35,7 +35,7 @@
 	<script type="text/javascript">
 		var mod = app.startGlobal();
 
-		var mapPatern = [
+		var mapLarge1 = [
 			[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 			[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 			[0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0],
@@ -69,7 +69,7 @@
 			[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 			[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		]
-		var mappi =
+		var mapLarge2 =
 		[  //a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p 	     q,r,s,t,u,v,w,x,y,z,1,2,3,4,5,6
 			[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,/* 1 */ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
  			[0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,/* 2 */ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
@@ -187,6 +187,10 @@
 			mapMini3,
 			mapMini4,
 		]
+		var mapList2 = [
+			mapLarge1,
+			mapLarge2,
+		]
 
 		var tiles = [
 			{
@@ -197,8 +201,8 @@
 		];
 		var map = mod[1];//new app.models.MapModel();
 		map.setMapTilesList(tiles)
-		map.setMap(mapPatern)
-		//map.setMap(mapList);
+		//map.setMap(mapPatern)
+		map.setMap(mapList2);
 		map.generateMap();
 		map.updateViewMap(mod[2]);
 		var player = new app.models.PlayerModel();
