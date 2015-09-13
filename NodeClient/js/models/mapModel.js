@@ -64,6 +64,23 @@ MapModel.prototype.generateMap = function(){
 		this.mapRow++;
 	}
 }
+MapModel.prototype.createMap = function(array, mapSize){
+	var mapSize = mapSize || 1;
+	var mapArray = [];
+	var finalMap = [];
+	for  (var i = 0; i < mapSize; i++){
+		mapArray[i] = array[Math.floor(Math.random() * array.length)];
+	}
+	for (var i = 0; i < mapArray.length; i+=2) {
+		for(var j = 0; j < mapArray[i].length; j++){
+			if (mapArray[i+1] !== undefined){
+				var fusion = (mapArray[i][j].join() + ',' + mapArray[i+1][j].join()).split(',');
+				finalMap.push(fusion);
+			}
+		}
+	}
+	return finalMap;
+}
 
 
 
