@@ -18,7 +18,8 @@ Devs:
 
 Game's rules:
 
-Participate
+Participate:
+
 In order to play, players need connect to the game through this link: (url not yet available) 
 and play on the internet browser of their choice (no download required, but game need javascript enabled in order to load properly).
 
