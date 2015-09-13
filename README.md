@@ -12,8 +12,8 @@ Devs:
 - Eric Leguen
 - Jordan Chazottes
 - Martin Porres
-- Mathieu Bourmau
-- Sébastien Cash-Delanos
+- Mathieu Bourmaud
+- Sébastien Cache-Delanos
 
 
 Game's rules:
@@ -27,14 +27,14 @@ Players will be assigned randomly to a team at the begining of the game(for the 
 
 Objectif:
 
-Each team represent an element (water, fire and wood) each of them can only eat one kind of opponent:
+Each team represents an element (water, fire and wood) each of them can only eat one kind of opponent:
 ( '>' means 'can eat'):
 - water > fire
 - fire > wood
 - wood > water
 
 Standard Game (infinite):
-- when a player is eaten it turn into the team that eat him/her.
+- when a player is eaten it turns into the team that ate him/her.
 
 One Down (not yet implemented):
 - when a player is eaten he/she can no longer play, winner is the first team to eat a full team.
