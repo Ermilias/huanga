@@ -42,6 +42,10 @@ app.models.GlobalModel = (function(){
 		}
 	}
 
+	GlobalModel.prototype.direction = function(dir){
+		this.notify({cmd: 'dir', val: dir});
+	}
+
 	GlobalModel.prototype.setPlayer = function(playerId){
 		this.playerId = playerId;
 		return this;

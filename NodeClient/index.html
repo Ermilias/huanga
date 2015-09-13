@@ -85,9 +85,8 @@
 		map.generateMap();
 		map.updateViewMap(mod[2]);
 		var player = new app.models.PlayerModel();
-		player.image = new Image();
-		player.image.src = './image/sol.png';
-		player.updateViewMap(mod[2]);
+		player.setView(mod[2]);
+		//player.updateViewMap();
 	</script>
 </body>
 </html>

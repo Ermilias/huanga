@@ -20,6 +20,7 @@ app.views.GlobalView = (function(){
 			this.addListeners(buttons[i], 'touchstart');
 			this.addListeners(buttons[i], 'touchend');
 		}
+		this.addListeners(window,'keydown');
 		this.addListeners(elem,'click');
 		this.addListeners(document, 'DOMContentLoaded');
 	};
@@ -32,6 +33,8 @@ app.views.GlobalView = (function(){
 			}
 		}
 	}
+
+
 
 	GlobalView.prototype.drawCanvas = function(map){
 		for (column in map) {
@@ -64,7 +67,51 @@ app.views.GlobalView = (function(){
 
 	GlobalView.prototype.drawPlayers = function(map){
 		var pos = this.randPos(map);
-		this.ctx.drawImage(this.player.image,(pos.x * 32),(pos.y * 32));
+		var image = new Image()
+		image.src = this.player.team.image;
+		this.ctx.drawImage(image, 0, 0, 32, 32, (pos.x * 32),(pos.y * 32), 32, 32);
+	}
+
+	GlobalView.prototype.drawChar= function(){
+		var frame = 0;
+		var moveX = 0;
+		var	moveY = 0;
+
+		if(this.estateAnimation >= DEPLACEMENT_DURATION) {
+			this.estateAnimation = -1;
+		} else if(this.estateAnimation >= 0) {
+			frame = Math.floor(this.estateAnimation / ANIMATION_DURATION);
+			if(frame > 3) {
+				frame %= 6;
+			}
+			
+			var pixelsToGo = 32 - (32 * (this.estateAnimation / DEPLACEMENT_DURATION));
+			
+			if(this.direction.top) {
+				this.player.look = 0;
+				moveY = pixelsToGo;
+			} else if(this.direction.left) {
+				this.player.look = 1;
+				moveY = -pixelsToGo;
+			} else if(this.direction.bottom) {
+				this.player.look = 2;
+				moveX = pixelsToGo;
+			} else if(this.direction.right) {
+				this.player.look = 3;
+				moveX = -pixelsToGo;
+			}
+			this.estateAnimation++;
+		}
+		
+		var image = new Image();
+		image.src = this.player.team.image;
+		this.ctx.drawImage(
+			image,
+			32 * frame, this.player.look * 32,
+			32, 32,
+			(this.player.pos.x * 32) - (32 / 2) + 16 + moveX, (this.player.pos.y * 32) - 32 + 24 + moveY,
+			32, 32
+		);
 	}
 
 	GlobalView.prototype.addListeners = function(elem,onEvent){
@@ -82,6 +129,8 @@ app.views.GlobalView = (function(){
 				this.notify({cmd: event.target.id, on: onEvent, val: value});
 			}else if(onEvent === 'DOMContentLoaded'){
 				this.notify({cmd: 'document', on: onEvent, val: value});
+			}else if(onEvent === 'keydown'){
+				this.notify({cmd: 'window', on: onEvent, val: event.keyCode});
 			}
 		}.bind(this))
 	}
@@ -104,10 +153,17 @@ app.views.GlobalView = (function(){
 			// DO SOMETHING...
 			this.drawCanvas(this.activeMap);
 			this.drawPlayers(this.activeMap);
+			this.drawChar();
 		}
 
 		if (event.cmd === 'changeState'){
 			this.change(event.val);
+		}
+		if (event.cmd === 'draw'){
+			this.drawChar();
+		}
+		if (event.cmd === 'dir'){
+			this.player.deplacer(this.player.look);
 		}
 	};
 	return GlobalView;
