@@ -33,7 +33,7 @@ water > fire
 fire > wood
 wood > water
 
-Standard Game (infinite)
-when a player is eaten it turn into the team that eat him/her;
-One Down (not yet implemented)
-when a player is eaten he/she can no longer play, winner is the first team to eat a full team;
+Standard Game (infinite):
+- when a player is eaten it turn into the team that eat him/her;
+One Down (not yet implemented):
+- when a player is eaten he/she can no longer play, winner is the first team to eat a full team;
