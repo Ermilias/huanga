@@ -1,13 +1,14 @@
-var ANIMATION_DURATION = 1;
-var DEPLACEMENT_DURATION = 6;
 
 app.models.PlayerModel = (function(){
 	function PlayerModel(){
 		this.id = '';
 		this.team = {image : "./image/earth.png"};
 		this.pos = {x: 0,y: 0};
-		this.direction = {top: false, bottom: true, left: false, right: false};
+		this.prevPos = {x: 0,y: 0};
+		this.direction = {top: 0,  left: 1, bottom: 2, right: 3};
 		this.look = 2;
+		this.ref = {height: 0, width: 0};
+		this.estateAnimation = -1;
 	}
 
 	PlayerModel.prototype.setTeam = function(team){
@@ -20,10 +21,7 @@ app.models.PlayerModel = (function(){
 		return this;
 	}
 	PlayerModel.prototype.setDirection = function(direction){ // {top:true}
-		this.direction.top = direction.top || false;
-		this.direction.bottom = direction.bottom || false;
-		this.direction.left = direction.left || false;
-		this.direction.right = direction.right || false;
+		this.look = direction;
 	}
 	PlayerModel.prototype.setView = function(view){
 		this.view = view;
@@ -33,23 +31,16 @@ app.models.PlayerModel = (function(){
 		view.player = this;
 	}
 	
-	PlayerModel.prototype.deplacer = function(direction, map) {
+	PlayerModel.prototype.deplacer = function(direction) {
 		// On ne peut pas se déplacer si un mouvement est déjà en cours !
-		console.log(deplacer)
-		if(this.estateAnimation >= 0) {
+		if(this.estateAnimation !== -1) {
 			return false;
 		}
 
 		// On change la direction du personnage
 		this.look = direction;
 			
-		// On vérifie que la case demandée est bien située dans la carte
-		var prochaineCase = this.getCoordonneesAdjacentes(direction);
-		//if(prochaineCase.x < 0 || prochaineCase.y < 0 || prochaineCase.x >= map.getLargeur() || prochaineCase.y >= map.getHauteur()) {
-			// On retourne un booléen indiquant que le déplacement ne s'est pas fait, 
-			// Ça ne coute pas cher et ca peut toujours servir
-		// 	return false;
-		// }
+		var prochaineCase = this.getCoordonneesAdjacentes(this.look);
 		
 		// On commence l'animation
 		this.estateAnimation = 1;
@@ -57,27 +48,32 @@ app.models.PlayerModel = (function(){
 		// On effectue le déplacement
 		this.pos.x = prochaineCase.x;
 		this.pos.y = prochaineCase.y;
-			this.view.drawChar();
 		return true;
 	}
 
 	PlayerModel.prototype.getCoordonneesAdjacentes = function(direction) {
-	var coord = {'x' : this.pos.x, 'y' : this.pos.y};
+	//var coord = {'x' : this.pos.x, 'y' : this.pos.y};
 	switch(direction) {
-		case direction.bottom : 
-			coord.y++;
+		case this.direction.bottom : 
+		console.log('nop');
+			this.prevPos.y = this.pos.y;
+			this.pos.y++;
 			break;
-		case direction.left : 
-			coord.x--;
+		case this.direction.left : 
+			this.prevPos.x = this.pos.x;
+			this.pos.x--;
 			break;
-		case direction.right: 
-			coord.x++;
+		case this.direction.right: 
+			this.prevPos.x = this.pos.x;
+			this.pos.x++;
 			break;
-		case direction.top : 
-			coord.y--;
+		case this.direction.top : 
+			this.prevPos.y = this.pos.y;
+			this.pos.y--;
 			break;
 	}
-	return coord;
+	return this.pos;
+	console.log(this.pos)
 }
 
 

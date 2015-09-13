@@ -10,7 +10,7 @@ app.controllers.GlobalController = (function(){
 		var on = event.on ? event.on.charAt(0).toUpperCase() + event.on.substring(1) : "";
 		var cmd = event.cmd ? event.cmd.split('.')[0] : "";
 		var val = event.val ? event.val : {};
-		val.id = event.cmd ? event.cmd.split('.')[1] : "";
+		//val.id = event.cmd ? event.cmd.split('.')[1] : "";
 		var fn = (cmd + on + 'Action');
 		console.log(fn);
 		if (typeof this[fn] === 'function'){
@@ -57,23 +57,20 @@ app.controllers.GlobalController = (function(){
 	GlobalController.prototype.rightButtonTouchendAction = function(){
 		this.model.changeImage('rightButton', 'released');
 	}
-	GlobalController.prototype.bodyKeydownAction = function(event) {
+	GlobalController.prototype.windowKeydownAction = function(key) {
 		// On récupère le code de la touche
-		var e = event || window.event;
-		var key = e.which || e.keyCode;
-		
 		switch(key) {
 			case 38 : case 122 : case 119 : case 90 : case 87 : // Flèche haut, z, w, Z, W
-				this.model.deplacer('up');
+				this.model.deplacer('top');
 				break;
 			case 40 : case 115 : case 83 : // Flèche bas, s, S
-				this.player.deplacer('down');
+				this.model.deplacer('bottom');
 				break;
 			case 37 : case 113 : case 97 : case 81 : case 65 : // Flèche gauche, q, a, Q, A
-				this.player.deplacer('left');
+				this.model.deplacer('left');
 				break;
 			case 39 : case 100 : case 68 : // Flèche droite, d, D
-				this.player.deplacer('right');
+				this.model.deplacer('right');
 				//this.player.deplacer(this.player.look, map);
 				break;
 			default : 

@@ -42,7 +42,7 @@ app.models.GlobalModel = (function(){
 		}
 	}
 
-	GlobalModel.prototype.direction = function(dir){
+	GlobalModel.prototype.deplacer = function(dir){
 		this.notify({cmd: 'dir', val: dir});
 	}
 
