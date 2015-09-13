@@ -28,6 +28,7 @@ app.controllers.GlobalController = (function(){
 	
 	GlobalController.prototype.upButtonTouchstartAction = function(){
 		this.model.changeImage('upButton', 'pressed');
+		this.windowKeydownAction(38);
 	}
 	
 	GlobalController.prototype.upButtonTouchendAction = function(){
@@ -36,14 +37,19 @@ app.controllers.GlobalController = (function(){
 	
 	GlobalController.prototype.downButtonTouchstartAction = function(){
 		this.model.changeImage('downButton', 'pressed');
+		this.windowKeydownAction(40);
+
 	}
 	
 	GlobalController.prototype.downButtonTouchendAction = function(){
 		this.model.changeImage('downButton', 'released');
+
 	}
 	
 	GlobalController.prototype.leftButtonTouchstartAction = function(){
 		this.model.changeImage('leftButton', 'pressed');
+		this.windowKeydownAction(37);
+
 	}
 	
 	GlobalController.prototype.leftButtonTouchendAction = function(){
@@ -52,6 +58,8 @@ app.controllers.GlobalController = (function(){
 	
 	GlobalController.prototype.rightButtonTouchstartAction = function(){
 		this.model.changeImage('rightButton', 'pressed');
+		this.windowKeydownAction(39);
+
 	}
 	
 	GlobalController.prototype.rightButtonTouchendAction = function(){

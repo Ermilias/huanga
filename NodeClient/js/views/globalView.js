@@ -55,18 +55,15 @@ app.views.GlobalView = (function(){
 		}
 	}
 	GlobalView.prototype.randPos = function(map){
-		console.log(map);
 		var pos = {
 			x: Math.floor(Math.random() * this.map.mapCol / 32),
 			y: Math.floor(Math.random() * this.map.mapRow)
 		}
-
-		console.log(pos);
-			if (map[pos.x][pos.y].isBlock){
-				return this.randPos(map);
-			}else{
-				return pos;
-			}
+		if (map[pos.x][pos.y].isBlock){
+			return this.randPos(map);
+		}else{
+			return pos;
+		}
 	}
 
 	GlobalView.prototype.drawPlayers = function(pos){
@@ -77,7 +74,6 @@ app.views.GlobalView = (function(){
 	}
 
 	GlobalView.prototype.drawChar= function(map){
-		console.log('yep');
 		var frame = 0;
 		var moveX = 0;
 		var	moveY = 0;
@@ -93,7 +89,6 @@ app.views.GlobalView = (function(){
 			var pixelsToGo = 32 - (32 * (this.player.estateAnimation / DEPLACEMENT_DURATION));
 
 			if(this.player.look === this.player.direction.top) {
-				console.log('true')
 				moveY = pixelsToGo;
 			} else if(this.player.look === this.player.direction.bottom) {
 				moveY = -pixelsToGo;
@@ -104,8 +99,8 @@ app.views.GlobalView = (function(){
 			}
 			this.player.estateAnimation++;
 		}
-				this.ctx.clearRect((this.player.prevPos.x * 32) ,(this.player.pos.y * 32), 32,32);
-				this.ctx.clearRect((this.player.pos.x * 32) ,(this.player.prevPos.y * 32), 32,32);
+				this.ctx.clearRect((this.player.prevPos.x * 32) ,(this.player.prevPos.y * 32), 32,32);
+				//this.ctx.clearRect((this.player.pos.x * 32) ,(this.player.prevPos.y * 32), 32,32);
 
 		var image = new Image();
 		image.src = this.player.team.image;
@@ -114,7 +109,7 @@ app.views.GlobalView = (function(){
 		var image2 = map[this.player.pos.x][this.player.pos.y];
 		var image3 = map[this.player.prevPos.x][this.player.prevPos.y];
 		var image4 = map[this.player.pos.x][this.player.prevPos.y];
-		var image5 = map[this.player.prevPos.x][this.player.prevPos.y];
+		var image5 = map[this.player.prevPos.x][this.player.pos.y];
 		var tile = new Image();
 		tile.src = image2.getImageSrc() + image2.getImage();
 		this.ctx.drawImage(tile,this.player.pos.x * 32,this.player.pos.y * 32,image2.size.width,image2.size.height);
@@ -128,7 +123,7 @@ app.views.GlobalView = (function(){
 			image,
 			this.player.ref.width * frame, this.player.look * this.player.ref.height,
 			this.player.ref.width, this.player.ref.height,
-			(this.player.pos.x * 32) - (this.player.ref.width / 2) + 16 + moveX, (this.player.pos.y * 32) - this.player.ref.height + 24 + moveY,
+			(this.player.pos.x * 32) - (this.player.ref.width / 2) + 16 + moveX, (this.player.pos.y * 32) - this.player.ref.height + 32 + moveY,
 			this.player.ref.width, this.player.ref.height
 		);
 	}

@@ -83,7 +83,6 @@ app.models.GlobalModel = (function(){
 		var alpha = '';
 		if (array !== ''){
 			for (var i = 0; i < array.length; i++){
-				console.log(baseKey[array[i]]);
 				alpha += baseKey[array[i]];
 			}
 		}else{

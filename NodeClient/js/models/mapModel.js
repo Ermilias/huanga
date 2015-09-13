@@ -68,11 +68,9 @@ MapModel.prototype.createMap = function(array, mapSize){
 	var mapArray = [];
 	var finalMap = [];
 	for  (var i = 0; i < mapSize; i++){
-		console.log(i);
 		mapArray[i] = array[Math.floor(Math.random() * array.length)];
 	}
 	if (mapSize > 1){
-		console.log('bug');
 		for (var i = 0; i < mapArray.length; i+=2) {
 			for(var j = 0; j < mapArray[i].length; j++){
 				if (mapArray[i+1] !== undefined){

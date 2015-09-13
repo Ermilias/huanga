@@ -55,7 +55,6 @@ app.models.PlayerModel = (function(){
 	//var coord = {'x' : this.pos.x, 'y' : this.pos.y};
 	switch(direction) {
 		case this.direction.bottom : 
-		console.log('nop');
 			this.prevPos.y = this.pos.y;
 			this.pos.y++;
 			break;
@@ -73,7 +72,6 @@ app.models.PlayerModel = (function(){
 			break;
 	}
 	return this.pos;
-	console.log(this.pos)
 }
 
 
