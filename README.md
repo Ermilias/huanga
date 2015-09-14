@@ -5,7 +5,7 @@ Members:
 
 Graphists:
 - Erwin Eninger
-- Théo 
+- Théo  Jacquemin
 
 Devs:
 - Delphine Poupon
