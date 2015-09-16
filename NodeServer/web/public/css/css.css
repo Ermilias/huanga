@@ -1,0 +1,58 @@
+body{
+	margin: 0;
+	padding: 0;
+}
+
+#zip{
+	position: absolute;
+}
+#mapContainer{
+	margin-top: 100px;
+	margin-left:auto;
+	margin-right:auto;
+
+}
+canvas{
+	background-color: black;
+}
+
+.dPad
+{
+	position			:	fixed;
+	bottom				:	1%;
+	right				:	1%;
+	width				:	20%;
+	height				:	40%;
+	background-color	:	red;
+}
+
+.arrowImage
+{
+	width				:	34%;
+	height				:	34%;
+	position			: 	absolute;
+}
+
+.dPad #upButton
+{
+	top					: 	1%;
+	right				:	33%;
+}
+
+.dPad #downButton
+{
+	bottom				: 	1%;
+	right				:	33%;
+}
+
+.dPad #leftButton
+{
+	left				: 	1%;
+	top					:	33%;
+}
+
+.dPad #rightButton
+{
+	right				: 	1%;
+	top					:	33%;
+}

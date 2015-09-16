@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/public/css/css.css">
+</head>
+<body id="body">
+	<div>
+		<h1>Huanga</h1>
+		<button id="play" class="global">Play</button>
+		<button id="score" class="global">Score</button>
+		<div id='scoreBoard' class="global"></div>
+	</div>
+
+	<div id="mapContainer">
+		<canvas id="gameMap" width="1024" height="1024"></canvas>
+	</div>
+
+	<div class="dPad">
+		<img id="upButton" class="arrowImage" src="/public/image/upButton.png">
+		<img id="downButton" class="arrowImage" src="/public/image/downButton.png">
+		<img id="leftButton" class="arrowImage" src="/public/image/leftButton.png">
+		<img id="rightButton" class="arrowImage" src="/public/image/rightButton.png">
+	</div>
+	
+	<script src="/public/js/app.js"></script>
+	<script src="/public/js/libs/observable.js"></script>
+	<script src="/public/js/models/playerModel.js"></script>
+	<script src="/public/js/models/tileModel.js"></script>
+	<script src="/public/js/models/mapModel.js"></script>
+	<script src="/public/js/controllers/globalController.js"></script>
+	<script src="/public/js/views/globalView.js"></script>
+	<script src="/public/js/models/globalModel.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script type="text/javascript">
+        var socket = io.connect();
+        var myx = 0;
+        var myy = 0;
+        var mapPatern = new Array([]);
+
+        socket.on('x', function (x) {
+            myx = x;
+
+        })
+
+        socket.on('y', function (y) {
+            myy = y;
+        })
+
+        socket.on('map', function (map) {
+            mapPatern = map;
+        })
+
+
+		var mod = app.startGlobal();
+
+		var tiles = [
+			{
+				0:{name: 'tileStone32x.png',size:{width: 32, height: 32},isBlock: true},
+			 	1:{name: 'tileStoneB32x.png',size:{width: 32, height: 32},isBlock: true},
+			},
+			{0:{name: 'tileSand32x.png',size:{width: 32, height: 32},isBlock: false}},
+		];
+		var map = mod[1];
+		map.setMapTilesList(tiles)
+		map.setMap(mapPatern)
+		map.generateMap();
+		map.updateViewMap(mod[2]);
+		var player = new app.models.PlayerModel();
+		player.image = new Image();
+		player.image.src = '/public/image/sol.png';
+		player.updateViewMap(mod[2]);
+	</script>
+</body>
+</html>
