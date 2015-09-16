@@ -6,15 +6,10 @@
 	<link rel="stylesheet" type="text/css" href="css/css.css">
 </head>
 <body id="body">
-	<div>
-		<h1>Huanga</h1>
-		<button id="play" class="global">Play</button>
-		<button id="score" class="global">Score</button>
-		<div id='scoreBoard' class="global"></div>
-	</div>
 
 	<div id="mapContainer">
-		<canvas id='gameMap' width='1024' height='1024'></canvas>
+		<canvas id='gameMap' width='512' height='512'></canvas>
+		<img id='canvasBg'>
 	</div>
 
 	<div class="dPad" oncontextmenu="return false;">
@@ -202,12 +197,11 @@
 		var map = mod[1];//new app.models.MapModel();
 		map.setMapTilesList(tiles)
 		//map.setMap(mapPatern)
-		map.setMap(mapList2);
+		map.setMap(mapList,3);
 		map.generateMap();
 		map.updateViewMap(mod[2]);
 		var player = new app.models.PlayerModel();
 		player.setView(mod[2]);
-		//player.updateViewMap();
 	</script>
 </body>
 </html>

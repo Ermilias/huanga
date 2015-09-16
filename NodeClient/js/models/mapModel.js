@@ -34,8 +34,8 @@ MapModel.prototype.getMapTilesList = function(){
 MapModel.prototype.getMapTiles = function(){
 		return this.mapTiles;
 }
-MapModel.prototype.setMap = function(map){
-	this.map = this.createMap(map);
+MapModel.prototype.setMap = function(map,size){
+	this.map = this.createMap(map,size);
 	return this;
 }
 MapModel.prototype.getMap = function(){
@@ -47,9 +47,9 @@ MapModel.prototype.updateViewMap = function(view){
 }
 
 MapModel.prototype.generateMap = function(){
-	for (row in this.map){
+	for (var row = 0; row < this.map.length; row++){
 		this.mapTiles[row] = {};
-		for (key in this.map[row]){
+		for (var key = 0; key < this.map[row].length; key++){
 			var tileList = this.mapTilesList[this.map[row][key]];
 			var mapTile = this.getRandTile(tileList);
 			var tile = new app.models.TileModel();
@@ -58,32 +58,46 @@ MapModel.prototype.generateMap = function(){
 			tile.setIsBlock(mapTile.getIsBlock());
 			tile.setPosition({x: (row * tile.size.width), y: (key * tile.size.height)});
 			this.mapTiles[row][key] = tile;
-			this.mapCol++;
 		}
-		this.mapRow++;
 	}
 }
 MapModel.prototype.createMap = function(array, mapSize){
 	var mapSize = mapSize || 1;
+	var	mapPatern = mapSize * mapSize;
 	var mapArray = [];
 	var finalMap = [];
-	for  (var i = 0; i < mapSize; i++){
+	for  (var i = 0; i < mapPatern; i++){
 		mapArray[i] = array[Math.floor(Math.random() * array.length)];
 	}
+
 	if (mapSize > 1){
-		for (var i = 0; i < mapArray.length; i+=2) {
+		for (var i = 0; i < mapArray.length; i+=mapSize) {
 			for(var j = 0; j < mapArray[i].length; j++){
-				if (mapArray[i+1] !== undefined){
-					var fusion = (mapArray[i][j].join() + ',' + mapArray[i+1][j].join()).split(',');
+				if (mapArray[i + mapSize - 1] !== undefined){
+					var fusion = this.joinMap(mapArray,i,j,mapSize);
 					finalMap.push(fusion);
 				}
 			}
 		}
+		this.mapCol = finalMap.length;
+		this.mapRow = finalMap.length;
 		return finalMap;
 	}
+	this.mapCol = mapArray[0].length;
+	this.mapRow = mapArray[0].length;
 	return mapArray[0];
 }
-
+MapModel.prototype.joinMap = function(array,column, row, mapSize){
+	var fusion = '';
+	for (var x = 0; x < mapSize; x++){
+		if (x === mapSize - 1){
+			fusion += array[column + x][row].join();
+		}else{
+			fusion += array[column + x][row].join() + ',';
+		}
+	}
+	return fusion.split(',');
+}
 
 
 	return MapModel;

@@ -8,6 +8,9 @@ app.views.GlobalView = (function(){
 		this.model = model;
 		this.activeMap = [];
 		this.canvas = document.getElementById('gameMap');
+		this.canvasBg = document.getElementById('canvasBg');
+		this.canvasBgArray;
+		this.background;
 		this.ctx = this.canvas.getContext('2d');
 		this.init();
 	}
@@ -38,94 +41,67 @@ app.views.GlobalView = (function(){
 		}
 	}
 
-
+//1 2
+//4 5
+//8 9
 
 	GlobalView.prototype.drawCanvas = function(map){
-		for (column in map) {
-			if (typeof map[column] === 'object'){
-				for (row in map[column]) {
-					if (typeof map[column][row] === 'object'){
-						var image = map[column][row];
-						var tile = new Image();
-						tile.src = image.getImageSrc() + image.getImage();
-						this.ctx.drawImage(tile,image.pos.x,image.pos.y,image.size.width,image.size.height);
+		var x = 0;
+		var y = 0;
+		var arenaSize = 16;
+		var paint = 0;
+		var next = false;
+		var background = [];
+		var done = false;
+
+		for (var n = 0; n < this.map.mapCol/arenaSize; n++){
+			var niSize = (n * arenaSize);
+			background[n] = [];
+			for (var m = 0; m < this.map.mapCol/arenaSize; m++){
+				var mjSize = (m * arenaSize);
+				for (c = niSize; c < (niSize + arenaSize); c++ ){
+					if (typeof map[c] === 'object'){
+						for (r = mjSize; r < (mjSize + arenaSize); r++){
+							if (typeof map[c][r] === 'object'){
+								var image = map[c][r];
+								var tile = new Image();
+								tile.src = image.getImageSrc() + image.getImage();
+								this.ctx.drawImage(tile,(c%arenaSize * image.size.width),(r%arenaSize * image.size.height),image.size.width,image.size.height);
+								if (c%arenaSize === 15 && r%arenaSize === 15){
+									background[n][m] = (this.canvas.toDataURL("./image/background" + paint + ".png"));
+									paint++;
+									this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
+								}
+							}
+						}
 					}
 				}
 			}
 		}
+		return background;
 	}
-	GlobalView.prototype.randPos = function(map){
+
+	GlobalView.prototype.randPos = function(){
+
 		var pos = {
-			x: Math.floor(Math.random() * this.map.mapCol / 32),
-			y: Math.floor(Math.random() * this.map.mapRow)
+			x: Math.floor(Math.random() * (this.map.mapCol - 1)),
+			y: Math.floor(Math.random() * (this.map.mapRow - 1))
 		}
-		if (map[pos.x][pos.y].isBlock){
+		if (this.activeMap[pos.x][pos.y].isBlock){
 			return this.randPos(map);
 		}else{
 			return pos;
 		}
 	}
 
-	GlobalView.prototype.drawPlayers = function(pos){
-		var pos = pos || this.randPos();
+	GlobalView.prototype.drawPlayers = function(map){
+		var pos = pos || this.randPos(map);
 		var image = new Image()
-		image.src = this.player.team.image;
+		var teamPic = ['./image/fire.png','./image/water.png','./image/earth.png'];
+		var rand = Math.floor(Math.random() * teamPic.length);
+		image.src = teamPic[rand];
+		pos = pos.x === 0 && pos.y === 0 ? this.randPos() : pos;
 		this.ctx.drawImage(image, 0, 0, 32, 32, (pos.x * 32),(pos.y * 32), 32, 32);
-	}
-
-	GlobalView.prototype.drawChar= function(map){
-		var frame = 0;
-		var moveX = 0;
-		var	moveY = 0;
-
-		if(this.player.estateAnimation >= DEPLACEMENT_DURATION) {
-			this.player.estateAnimation = -1;
-		} else if(this.player.estateAnimation >= 0) {
-			frame = Math.floor(this.player.estateAnimation / ANIMATION_DURATION);
-			if(frame > 3) {
-				frame %= 6;
-			}
-
-			var pixelsToGo = 32 - (32 * (this.player.estateAnimation / DEPLACEMENT_DURATION));
-
-			if(this.player.look === this.player.direction.top) {
-				moveY = pixelsToGo;
-			} else if(this.player.look === this.player.direction.bottom) {
-				moveY = -pixelsToGo;
-			} else if(this.player.look === this.player.direction.left) {
-				moveX = pixelsToGo;
-			} else if(this.player.look === this.player.direction.right) {
-				moveX = -pixelsToGo;
-			}
-			this.player.estateAnimation++;
-		}
-				this.ctx.clearRect((this.player.prevPos.x * 32) ,(this.player.prevPos.y * 32), 32,32);
-				//this.ctx.clearRect((this.player.pos.x * 32) ,(this.player.prevPos.y * 32), 32,32);
-
-		var image = new Image();
-		image.src = this.player.team.image;
-		this.player.ref.height = image.height / 4;
-		this.player.ref.width = image.width / 6;
-		var image2 = map[this.player.pos.x][this.player.pos.y];
-		var image3 = map[this.player.prevPos.x][this.player.prevPos.y];
-		var image4 = map[this.player.pos.x][this.player.prevPos.y];
-		var image5 = map[this.player.prevPos.x][this.player.pos.y];
-		var tile = new Image();
-		tile.src = image2.getImageSrc() + image2.getImage();
-		this.ctx.drawImage(tile,this.player.pos.x * 32,this.player.pos.y * 32,image2.size.width,image2.size.height);
-		tile.src = image3.getImageSrc() + image3.getImage();
-		this.ctx.drawImage(tile,this.player.prevPos.x * 32,this.player.prevPos.y * 32,image3.size.width,image3.size.height);
-		tile.src = image4.getImageSrc() + image4.getImage();
-		this.ctx.drawImage(tile,this.player.pos.x * 32,this.player.prevPos.y * 32,image4.size.width,image4.size.height);
-		tile.src = image5.getImageSrc() + image5.getImage();
-		this.ctx.drawImage(tile,this.player.prevPos.x * 32,this.player.pos.y * 32,image5.size.width,image5.size.height);
-		this.ctx.drawImage(
-			image,
-			this.player.ref.width * frame, this.player.look * this.player.ref.height,
-			this.player.ref.width, this.player.ref.height,
-			(this.player.pos.x * 32) - (this.player.ref.width / 2) + 16 + moveX, (this.player.pos.y * 32) - this.player.ref.height + 32 + moveY,
-			this.player.ref.width, this.player.ref.height
-		);
 	}
 
 	GlobalView.prototype.addListeners = function(elem,onEvent){
@@ -134,7 +110,7 @@ app.views.GlobalView = (function(){
 			if (event.target.id){
 				var value = {};
 				if(onEvent === 'keydown'){
-					this.notify({cmd: 'window', on: onEvent, val: event.keyCode});
+					this.notify({cmd: event.target.id, on: onEvent, val: event.keyCode});
 				}else if (event.target.parentNode.getElementsByTagName('input')){
 					values = event.target.parentNode.getElementsByTagName('input');
 					var length = values.length;
@@ -161,16 +137,23 @@ app.views.GlobalView = (function(){
 		button.src = path;
 	}
 
+	GlobalView.prototype.start =  function(){
+		//this.canvas.setAttribute('style', 'background-image:url(' + bg + ');background-size: cover;');
+		var setIV = setInterval(function(){
+		this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
+		this.player.drawChar(this.activeMap);
+		}.bind(this), 50);
+	}
+
 	GlobalView.prototype.update = function(event){
 		console.log('global : event received : ' + event.cmd);
 		if (event.cmd === 'loaded'){
 			// DO SOMETHING...
-			this.drawCanvas(this.activeMap);
-			var setIV = setInterval(function(){
-			//this.drawCanvas(this.activeMap);
-			//this.drawPlayers(this.activeMap);
-			this.drawChar(this.activeMap);
-		}.bind(this), 50);
+			this.canvasBgArray = this.drawCanvas(this.activeMap);
+			this.start();
+			for (var i = 0; i <= 10; i++){
+				this.drawPlayers(this.activeMap);
+			}
 		}
 
 		if (event.cmd === 'changeState'){
@@ -192,7 +175,6 @@ app.views.GlobalView = (function(){
 				break;
 			}
 			this.player.deplacer(this.player.look);
-			//this.drawChar();
 		}
 	};
 	return GlobalView;
