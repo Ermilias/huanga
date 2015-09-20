@@ -7,12 +7,12 @@ app.models.PlayerModel = (function(){
 		Observable.call(this);
 		this.id = '';
 		this.socket;
-		this.teamPic = ['./image/fire.png','./image/water.png','./image/earth.png'];
+		this.teamPic = ['./image/fire_32.png','./image/water_32.png','./image/earth_32.png'];
 		this.rand = Math.floor(Math.random() * this.teamPic.length);
 		this.team = {};// {image : this.teamPic[this.rand]};
 		this.pos = {x: 0,y: 0};
 		this.prevPos = {x: 0,y: 0};
-		this.direction = {top: 0,  left: 1, bottom: 2, right: 3};
+		this.direction = {bottom: 0, top: 1 , left: 2, right: 3};
 		this.look =  Math.floor(Math.random() * 4);
 		this.ref = {height: 0, width: 0};
 		this.estateAnimation = -1;

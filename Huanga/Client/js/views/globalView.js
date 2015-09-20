@@ -146,13 +146,13 @@ app.views.GlobalView = (function(){
 		}
 		if (event.cmd === 'dir'){
 			switch (event.val){
-				case 'top':
+				case 'bottom':
 					this.player.setDirection(0);
 				break;
-				case 'left':
+				case 'top':
 					this.player.setDirection(1);
 				break;
-				case 'bottom':
+				case 'left':
 					this.player.setDirection(2);
 				break;
 				case 'right':
