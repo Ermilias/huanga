@@ -69,7 +69,6 @@ app.models.PlayerModel = (function(){
 		// On effectue le déplacement
 		this.pos.x = prochaineCase.x;
 		this.pos.y = prochaineCase.y;
-		console.log('deplacer return true');
 		return true;
 	}
 
@@ -81,7 +80,6 @@ app.models.PlayerModel = (function(){
 		if(this.estateAnimation >= DEPLACEMENT_DURATION) {
 			this.estateAnimation = -1;
 		} else if(this.estateAnimation >= 0) {
-		console.log('draw char anime');
 			frame = Math.floor(this.estateAnimation / ANIMATION_DURATION);
 			if(frame > 3) {
 				frame %= 6;
@@ -99,7 +97,6 @@ app.models.PlayerModel = (function(){
 				moveX = -pixelsToGo;
 			}
 			this.estateAnimation++;
-		console.log('draw char fini l\'anime');
 		}
 
 		var image = new Image();
@@ -117,7 +114,6 @@ app.models.PlayerModel = (function(){
 		var img = {x: (Math.floor(this.pos.y / 16)),
 				   y: (Math.floor(this.pos.x / 16))};
 		this.model.canvasBg.src = this.model.canvasBgArray[img.x][img.y];
-		console.log('draw char va jusqua bout');
 	}
 
 	PlayerModel.prototype.getCoordonneesAdjacentes = function(direction) {

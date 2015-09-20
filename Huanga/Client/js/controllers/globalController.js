@@ -66,7 +66,6 @@ app.controllers.GlobalController = (function(){
 		this.model.changeImage('rightButton', 'released');
 	}
 	GlobalController.prototype.bodyKeyupAction = function(val) {
-		console.log(val.key);
 		// On récupère le code de la touche
 		switch(val.key) {
 			case 38 : case 122 : case 119 : case 90 : case 87 : // Flèche haut, z, w, Z, W
