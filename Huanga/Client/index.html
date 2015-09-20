@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+</head>
+<body id="body">
+
+	<div id="mapContainer">
+		<canvas id='gameMap' width='512' height='512'></canvas>
+		<img id='canvasBg'>
+	</div>
+
+	<div class="dPad" oncontextmenu="return false;">
+		<img id="upButton" class="arrowImage" src="./image/upButton.png">
+		<img id="downButton" class="arrowImage" src="./image/downButton.png">
+		<img id="leftButton" class="arrowImage" src="./image/leftButton.png">
+		<img id="rightButton" class="arrowImage" src="./image/rightButton.png">
+	</div>
+	<script src="js/app.js"></script>
+	<script src="http://127.0.0.1/projects/GameJam/GameJam092015-Huanga/node_modules/socket.io/node_modules/socket.io-client/socket.io.js"></script>
+	<script src="js/libs/observable.js"></script>
+	<script src="js/models/playerModel.js"></script>
+	<script src="js/models/tileModel.js"></script>
+	<script src="js/models/mapModel.js"></script>
+	<script src="js/controllers/globalController.js"></script>
+	<script src="js/views/globalView.js"></script>
+	<script src="js/models/globalModel.js"></script>
+	<script>
+
+	var mod = app.startGlobal();
+
+
+	var tiles = [
+		{
+			0:{name: 'tileStone32x.png',size:{width: 32, height: 32},isBlock: true},
+		 	1:{name: 'tileStoneB32x.png',size:{width: 32, height: 32},isBlock: true},
+		},
+		{0:{name: 'tileSand32x.png',size:{width: 32, height: 32},isBlock: false}},
+	];
+
+	var map;
+	var others = [];
+
+	var map = mod[1];
+	map.setMapTilesList(tiles)
+
+
+
+	  var socket = io('localhost:8080');
+	  socket.on('connect', function () {
+	    socket.send('connection');
+
+	    socket.on('mapIs', function (data){
+	    	console.log('updateMap');
+	    	mapData = data;
+			map.setMap(mapData).generateMap().updateViewMap(mod[2]);
+			mod[2].canvasBgArray = mod[2].drawCanvas(mod[2].activeMap);
+	    })
+
+	    socket.on('posIs', function (data){
+			console.log('updateMap');
+			map.setMap(data.map).generateMap().updateViewMap(mod[2]);
+			mod[0].setSocket(socket).setId(data.player.id).setTeam(data.player.teamId).setView(mod[2]).setPos(data.player.pos);
+			mod[2].canvasBgArray = mod[2].drawCanvas(mod[2].activeMap);
+			for (playerId in data.playersList){
+					mod[2].players[playerId] = new app.models.PlayerModel();
+				mod[2].players[playerId].setId(playerId).setTeam(data.playersList[playerId].teamId).setView(mod[2]).setPos(data.playersList[playerId].pos);
+			}
+	    })
+
+	    socket.on('newPlayer', function (player){
+				mod[2].players[player.id] = new app.models.PlayerModel();
+				mod[2].players[player.id].setId(player.id).setTeam(player.teamId).setView(mod[2]).setPos(player.pos);
+	    })
+
+	    socket.on('moved', function (data){
+	    	console.log(data.player.id ,mod[2].players[data.player.id])
+	    	mod[2].players[data.player.id].deplacer(data.dir);
+	    })
+
+	    socket.on('message', function (msg) {
+	      // my msg
+	      console.log(msg);
+	    });
+	  });
+
+
+		
+	</script>
+</body>
+</html>
