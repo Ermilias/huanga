@@ -6,15 +6,6 @@ app.views.GlobalView = (function(){
 	function GlobalView(model){
 		Observable.call(this);
 		this.model = model;
-		this.map = {};
-		this.player = {};
-		this.players = {};
-		this.activeMap = [];
-		this.canvas = document.getElementById('gameMap');
-		this.canvasBg = document.getElementById('canvasBg');
-		this.canvasBgArray;
-		this.background;
-		this.ctx = this.canvas.getContext('2d');
 		this.init();
 	}
 
@@ -30,15 +21,10 @@ app.views.GlobalView = (function(){
 			this.addListeners(buttons[i], 'touchstart');
 			this.addListeners(buttons[i], 'touchend');
 		}
-		this.addListeners(body,'keyup');
-		this.addListeners(elem,'click');
+		this.addListeners(elem,'keyup');
+		//this.addListeners(elem,'click');
 		this.addListeners(document, 'DOMContentLoaded');
 	};
-
-	GlobalView.prototype.setMap = function(map){
-		this.map = map;
-		return this;
-	}
 
 
 	GlobalView.prototype.updateGlobalInfo = function(keys){
@@ -59,10 +45,10 @@ app.views.GlobalView = (function(){
 		var background = [];
 		var done = false;
 
-		for (var n = 0; n < this.map.mapCol/arenaSize; n++){
+		for (var n = 0; n < this.model.map.mapCol/arenaSize; n++){
 			var niSize = (n * arenaSize);
 			background[n] = [];
-			for (var m = 0; m < this.map.mapCol/arenaSize; m++){
+			for (var m = 0; m < this.model.map.mapCol/arenaSize; m++){
 				var mjSize = (m * arenaSize);
 				for (c = mjSize; c < (mjSize + arenaSize); c++ ){
 					if (typeof map[c] === 'object'){
@@ -71,11 +57,11 @@ app.views.GlobalView = (function(){
 								var image = map[c][r];
 								var tile = new Image();
 								tile.src = image.getImageSrc() + image.getImage();
-								this.ctx.drawImage(tile,(c%arenaSize * image.size.width),(r%arenaSize * image.size.height),image.size.width,image.size.height);
+								this.model.ctx.drawImage(tile,(c%arenaSize * image.size.width),(r%arenaSize * image.size.height),image.size.width,image.size.height);
 								if (c%arenaSize === 15 && r%arenaSize === 15){
-									background[n][m] = (this.canvas.toDataURL("./image/background" + paint + ".png"));
+									background[n][m] = (this.model.canvas.toDataURL("./image/background" + paint + ".png"));
 									paint++;
-									this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
+									this.model.ctx.clearRect(0,0,this.model.canvas.width,this.model.canvas.height);
 								}
 							}
 						}
@@ -92,7 +78,7 @@ app.views.GlobalView = (function(){
 			if (event.target.id){
 				var value = {};
 				if(onEvent === 'keyup'){
-					this.notify({cmd: event.target.id, on: onEvent, val: event.keyCode});
+					value =  {key: event.keyCode};
 				}else if (event.target.parentNode.getElementsByTagName('input')){
 					values = event.target.parentNode.getElementsByTagName('input');
 					var length = values.length;
@@ -121,24 +107,24 @@ app.views.GlobalView = (function(){
 
 	GlobalView.prototype.start =  function(){
 		var setIV = setInterval(function(){
-		this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
-		var mapPos = {x: (Math.floor(this.player.pos.y / 16)),
-				   y: (Math.floor(this.player.pos.x / 16))};
-		for (id in this.players){
-			var otherMapPos = {x: (Math.floor(this.players[id].pos.y / 16)),
-				   y: (Math.floor(this.players[id].pos.x / 16))};
+		this.model.ctx.clearRect(0,0,this.model.canvas.width,this.model.canvas.height);
+		var mapPos = {x: (Math.floor(this.model.player.pos.y / 16)),
+				   y: (Math.floor(this.model.player.pos.x / 16))};
+		for (id in this.model.players){
+			var otherMapPos = {x: (Math.floor(this.model.players[id].pos.y / 16)),
+				   y: (Math.floor(this.model.players[id].pos.x / 16))};
 			if (mapPos.x === otherMapPos.x && mapPos.y === otherMapPos.y){
-				this.players[id].drawChar(this.activeMap);
+				this.model.players[id].drawChar(this.model.activeMap);
 			}
 		}
-		}.bind(this), 200);
+		}.bind(this),50);
 	}
 
 	GlobalView.prototype.update = function(event){
 		console.log('global : event received : ' + event.cmd);
 		if (event.cmd === 'loaded'){
 			
-			this.start();
+			//this.start();
 		}
 
 		if (event.cmd === 'changeState'){
@@ -147,19 +133,19 @@ app.views.GlobalView = (function(){
 		if (event.cmd === 'dir'){
 			switch (event.val){
 				case 'bottom':
-					this.player.setDirection(0);
+					this.model.player.setDirection(0);
 				break;
 				case 'top':
-					this.player.setDirection(1);
+					this.model.player.setDirection(1);
 				break;
 				case 'left':
-					this.player.setDirection(2);
+					this.model.player.setDirection(2);
 				break;
 				case 'right':
-					this.player.setDirection(3);
+					this.model.player.setDirection(3);
 				break;
 			}
-			this.player.deplacer(this.player.look);
+			this.model.player.deplacer(this.model.player.look);
 		}
 	};
 	return GlobalView;

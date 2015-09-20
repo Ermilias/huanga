@@ -9,7 +9,8 @@ app.models.PlayerModel = (function(){
 		this.socket;
 		this.teamPic = ['./image/fire_32.png','./image/water_32.png','./image/earth_32.png'];
 		this.rand = Math.floor(Math.random() * this.teamPic.length);
-		this.team = {};// {image : this.teamPic[this.rand]};
+		this.team = {};
+		this.model = {};
 		this.pos = {x: 0,y: 0};
 		this.prevPos = {x: 0,y: 0};
 		this.direction = {bottom: 0, top: 1 , left: 2, right: 3};
@@ -42,9 +43,8 @@ app.models.PlayerModel = (function(){
 	PlayerModel.prototype.setDirection = function(direction){ // {top:true}
 		this.look = direction;
 	}
-	PlayerModel.prototype.setView = function(view){
-		this.view = view;
-		this.view.player = this;
+	PlayerModel.prototype.setModel = function(model){
+		this.model = model;	
 		return this;
 	}
 	
@@ -69,6 +69,7 @@ app.models.PlayerModel = (function(){
 		// On effectue le déplacement
 		this.pos.x = prochaineCase.x;
 		this.pos.y = prochaineCase.y;
+		console.log('deplacer return true');
 		return true;
 	}
 
@@ -80,6 +81,7 @@ app.models.PlayerModel = (function(){
 		if(this.estateAnimation >= DEPLACEMENT_DURATION) {
 			this.estateAnimation = -1;
 		} else if(this.estateAnimation >= 0) {
+		console.log('draw char anime');
 			frame = Math.floor(this.estateAnimation / ANIMATION_DURATION);
 			if(frame > 3) {
 				frame %= 6;
@@ -97,6 +99,7 @@ app.models.PlayerModel = (function(){
 				moveX = -pixelsToGo;
 			}
 			this.estateAnimation++;
+		console.log('draw char fini l\'anime');
 		}
 
 		var image = new Image();
@@ -104,7 +107,7 @@ app.models.PlayerModel = (function(){
 		this.ref.height = image.height / 4;
 		this.ref.width = image.width / 6;
 		var tile = new Image();
-		this.view.ctx.drawImage(
+		this.model.ctx.drawImage(
 			image,
 			this.ref.width * frame, this.look * this.ref.height,
 			this.ref.width, this.ref.height,
@@ -113,34 +116,35 @@ app.models.PlayerModel = (function(){
 		);
 		var img = {x: (Math.floor(this.pos.y / 16)),
 				   y: (Math.floor(this.pos.x / 16))};
-		this.view.canvasBg.src = this.view.canvasBgArray[img.x][img.y];
+		this.model.canvasBg.src = this.model.canvasBgArray[img.x][img.y];
+		console.log('draw char va jusqua bout');
 	}
 
 	PlayerModel.prototype.getCoordonneesAdjacentes = function(direction) {
 	switch(direction) {
 		case this.direction.bottom : 
-			if (this.view.map.checkCol({x: this.pos.x, y: (this.pos.y + 1)})){
+			if (this.model.map.checkCol({x: this.pos.x, y: (this.pos.y + 1)})){
 				this.pos.y++;
 			}else{
 				return false;
 			}
 			break;
 		case this.direction.left : 
-			if (this.view.map.checkCol({x: (this.pos.x - 1), y: this.pos.y})){
+			if (this.model.map.checkCol({x: (this.pos.x - 1), y: this.pos.y})){
 				this.pos.x--;
 			}else{
 				return false;
 			}
 			break;
 		case this.direction.right: 
-			if (this.view.map.checkCol({x: (this.pos.x + 1), y: this.pos.y})){
+			if (this.model.map.checkCol({x: (this.pos.x + 1), y: this.pos.y})){
 				this.pos.x++;
 			}else{
 				return false;
 			}
 			break;
 		case this.direction.top : 
-			if (this.view.map.checkCol({x: this.pos.x, y: (this.pos.y - 1)})){
+			if (this.model.map.checkCol({x: this.pos.x, y: (this.pos.y - 1)})){
 				this.pos.y--;
 			}else{
 				return false;

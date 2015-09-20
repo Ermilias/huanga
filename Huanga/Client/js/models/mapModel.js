@@ -35,15 +35,15 @@ MapModel.prototype.getMapTiles = function(){
 		return this.mapTiles;
 }
 MapModel.prototype.setMap = function(map){
-	this.map = map;//this.createMap(map,size);
+	this.map = map;
 	return this;
 }
 MapModel.prototype.getMap = function(){
 	return this.map;
 }
-MapModel.prototype.updateViewMap = function(view){
-	view.activeMap = this.getMapTiles();
-	view.setMap(this);
+MapModel.prototype.updateModelMap = function(model){
+	model.activeMap = this.getMapTiles();
+	model.setMap(this);
 	return this;
 }
 

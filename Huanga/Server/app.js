@@ -32,6 +32,10 @@ io.on('connection', function (socket) {
 	socket.broadcast.emit('newPlayer', socket.player);
 	id++;
 
+	socket.on('ready', function(){
+		socket.emit('start');
+	});
+
 	socket.on('updatePos', function (data){
 		socket.player.pos = data.newPos;
 		socket.broadcast.emit('moved', {player: socket.player, dir: data.dir});
