@@ -123,8 +123,7 @@ app.views.GlobalView = (function(){
 	GlobalView.prototype.update = function(event){
 		console.log('global : event received : ' + event.cmd);
 		if (event.cmd === 'loaded'){
-			
-			//this.start();
+			socket.emit('ready');
 		}
 
 		if (event.cmd === 'changeState'){
@@ -145,6 +144,7 @@ app.views.GlobalView = (function(){
 					this.model.player.setDirection(3);
 				break;
 			}
+			console.log(this.model.player.id);
 			this.model.player.deplacer(this.model.player.look);
 		}
 	};

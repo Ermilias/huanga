@@ -5,7 +5,7 @@ app.models.PlayerModel = (function(){
 	var Observable = app.libs.Observable;
 	function PlayerModel(){
 		Observable.call(this);
-		this.id = '';
+		this.id;
 		this.socket;
 		this.teamPic = ['./image/fire_32.png','./image/water_32.png','./image/earth_32.png'];
 		this.rand = Math.floor(Math.random() * this.teamPic.length);

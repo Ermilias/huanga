@@ -20,19 +20,18 @@ Map.setActiveMap(Map.createMap(2));
 
 io.on('connection', function (socket) {
 
-	socket.player = new Player();
-	socket.player.setId(id + idGen.keyGenerator());
-	socket.player.setTeam(teams);
-	socket.player.pos = socket.player.randPos(Map);
-
-	console.log('new socket: ', socket.id,'new player: ',socket.player);
-
-	players[socket.player.id] = socket.player;
-	socket.emit('posIs', {playersList: players, player: socket.player, map: Map.activeMap});
-	socket.broadcast.emit('newPlayer', socket.player);
-	id++;
-
 	socket.on('ready', function(){
+		socket.player = new Player();
+		socket.player.setId(socket.id);
+		socket.player.setTeam(teams);
+		socket.player.pos = socket.player.randPos(Map);
+
+		console.log('new socket: ', socket.id,'new player: ',socket.player);
+
+		players[socket.player.id] = socket.player;
+		socket.emit('posIs', {playersList: players, player: socket.player, map: Map.activeMap});
+		socket.broadcast.emit('newPlayer', socket.player);
+		id++;
 		socket.emit('start');
 	});
 

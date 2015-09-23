@@ -52,16 +52,16 @@
 			
 			main.map.setMap(data.map).generateMap().updateModelMap(main.model);
 			main.model.canvasBgArray = main.view.drawCanvas(main.model.activeMap);
-
+			var i = 0;
 			for (playerId in data.playersList){
 				main.model.players[playerId] = new app.models.PlayerModel();
 				main.model.players[playerId].setId(playerId).setTeam(data.playersList[playerId].teamId).setModel(main.model).setPos(data.playersList[playerId].pos);
 				if (playerId === data.player.id){
 					main.model.setPlayer(main.model.players[playerId]);
+					console.log(i + ' : main player is : ' + playerId);
+					i++;
 				}
 			}
-
-			socket.emit('ready');
 	    });
 
 	    socket.on('start', function(){
@@ -75,7 +75,8 @@
 	    });
 
 	    socket.on('moved', function (data){
-	    	main.model.players[data.player.id].deplacer(data.dir);
+//console.log(data.player.id + ' moved to ', data.player.pos);
+	    	main.model.players[data.player.id].setPos(data.player.pos).deplacer(data.dir);
 	    });
 	  });
 
