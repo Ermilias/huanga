@@ -62,13 +62,13 @@ app.models.PlayerModel = (function(){
 		if (prochaineCase === false){
 			return false;
 		}
-		socket.emit('updatePos', {newPos: prochaineCase, dir: direction});
 		// On commence l'animation
 		this.estateAnimation = 1;
 			
 		// On effectue le déplacement
 		this.pos.x = prochaineCase.x;
 		this.pos.y = prochaineCase.y;
+		socket.emit('updatePos', {newPos: prochaineCase, dir: direction});
 		return true;
 	}
 
@@ -111,44 +111,73 @@ app.models.PlayerModel = (function(){
 			(this.pos.x % 16 * 32) - (this.ref.width / 2) + 16 + moveX, (this.pos.y % 16 * 32) - this.ref.height + 32 + moveY,
 			this.ref.width, this.ref.height
 		);
-		var img = {x: (Math.floor(this.pos.y / 16)),
+	}
+
+
+
+	PlayerModel.prototype.drawCurrentArena = function(player){
+		var img = {x: (Math.floor(player.pos.y / 16)),
+				   y: (Math.floor(player.pos.x / 16))};
+		player.model.canvasBg.src = player.model.canvasBgArray[img.x][img.y];
+	}
+	
+	PlayerModel.prototype.isOnCurrentArena = function(pos){
+		var mapPos = {x: (Math.floor(this.pos.y / 16)),
 				   y: (Math.floor(this.pos.x / 16))};
-		this.model.canvasBg.src = this.model.canvasBgArray[img.x][img.y];
+		var otherMapPos = {x: (Math.floor(pos.y / 16)),
+				   y: (Math.floor(pos.x / 16))};
+			if (mapPos.x === otherMapPos.x && mapPos.y === otherMapPos.y){
+				return true;
+			}else{
+				return false;
+			}
 	}
 
 	PlayerModel.prototype.getCoordonneesAdjacentes = function(direction) {
-	switch(direction) {
-		case this.direction.bottom : 
-			if (this.model.map.checkCol({x: this.pos.x, y: (this.pos.y + 1)})){
-				this.pos.y++;
-			}else{
-				return false;
-			}
-			break;
-		case this.direction.left : 
-			if (this.model.map.checkCol({x: (this.pos.x - 1), y: this.pos.y})){
-				this.pos.x--;
-			}else{
-				return false;
-			}
-			break;
-		case this.direction.right: 
-			if (this.model.map.checkCol({x: (this.pos.x + 1), y: this.pos.y})){
-				this.pos.x++;
-			}else{
-				return false;
-			}
-			break;
-		case this.direction.top : 
-			if (this.model.map.checkCol({x: this.pos.x, y: (this.pos.y - 1)})){
-				this.pos.y--;
-			}else{
-				return false;
-			}
-			break;
+		switch(direction) {
+			case this.direction.bottom : 
+				if (this.model.map.checkCol({x: this.pos.x, y: (this.pos.y + 1)})){
+					this.prevPos.y = this.pos.y;
+					this.pos.y++;
+				}else{
+					return false;
+				}
+				break;
+			case this.direction.left : 
+				if (this.model.map.checkCol({x: (this.pos.x - 1), y: this.pos.y})){
+					this.prevPos.x = this.pos.x;
+					this.pos.x--;
+				}else{
+					return false;
+				}
+				break;
+			case this.direction.right: 
+				if (this.model.map.checkCol({x: (this.pos.x + 1), y: this.pos.y})){
+					this.prevPos.x = this.pos.x;
+					this.pos.x++;
+				}else{
+					return false;
+				}
+				break;
+			case this.direction.top : 
+				if (this.model.map.checkCol({x: this.pos.x, y: (this.pos.y - 1)})){
+					this.prevPos.y = this.pos.y;
+					this.pos.y--;
+				}else{
+					return false;
+				}
+				break;
+		}
+		this.stillOnArena();
+		return this.pos;
 	}
-	return this.pos;
-}
+
+	PlayerModel.prototype.stillOnArena = function(){
+		if (this.isOnCurrentArena(this.prevPos) === false){
+			this.drawCurrentArena(this);
+		}
+	}
+
 
 
 	return PlayerModel;

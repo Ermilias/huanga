@@ -111,9 +111,7 @@ app.views.GlobalView = (function(){
 		var mapPos = {x: (Math.floor(this.model.player.pos.y / 16)),
 				   y: (Math.floor(this.model.player.pos.x / 16))};
 		for (id in this.model.players){
-			var otherMapPos = {x: (Math.floor(this.model.players[id].pos.y / 16)),
-				   y: (Math.floor(this.model.players[id].pos.x / 16))};
-			if (mapPos.x === otherMapPos.x && mapPos.y === otherMapPos.y){
+			if (this.model.player.isOnCurrentArena(this.model.players[id].pos)){
 				this.model.players[id].drawChar(this.model.activeMap);
 			}
 		}
