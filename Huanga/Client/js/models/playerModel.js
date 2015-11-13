@@ -7,8 +7,8 @@ app.models.PlayerModel = (function(){
 		Observable.call(this);
 		this.id;
 		this.socket;
-		this.teamPic = ['./image/fire_32.png','./image/water_32.png','./image/earth_32.png'];
-		this.rand = Math.floor(Math.random() * this.teamPic.length);
+		//this.teamPic = Pics.teamsPics,//['./image/fire_32.png','./image/water_32.png','./image/earth_32.png'];
+		//this.rand = Math.floor(Math.random() * Pics.teamsPics.length);
 		this.team = {};
 		this.model = {};
 		this.pos = {x: 0,y: 0};
@@ -22,7 +22,7 @@ app.models.PlayerModel = (function(){
 	PlayerModel.prototype.constructor = PlayerModel;
 
 	PlayerModel.prototype.setTeam = function(teamId){
-		this.team = {image : this.teamPic[teamId]};;
+		this.team = {image : Pics.teamsPics[teamId]};;
 		return this;
 	}
 

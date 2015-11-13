@@ -14,8 +14,8 @@ var teams = {
 	earth: new Team(2),
 };
 io.set('origins','*:8080');
-Map.setMaps(maps.miniMaps);
-Map.setActiveMap(Map.createMap(2));
+Map.setMaps(maps.smallMaps);
+Map.setActiveMap(Map.createMap(1));
 
 
 io.on('connection', function (socket) {
@@ -39,6 +39,9 @@ io.on('connection', function (socket) {
 		socket.player.pos = data.newPos;
 		socket.broadcast.emit('moved', {player: socket.player, dir: data.dir});
 	});
-	socket.on('disconnect', function (socket) {
+	socket.on('disconnect', function () {
+		delete players[socket.id];
+		nb_player--;
+		io.emit('disconnected', {id: socket.id});
   	});
 });

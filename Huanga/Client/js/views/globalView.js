@@ -142,7 +142,7 @@ app.views.GlobalView = (function(){
 					this.model.player.setDirection(3);
 				break;
 			}
-			console.log(this.model.player.id);
+			console.log('it move: ',this.model.player);
 			this.model.player.deplacer(this.model.player.look);
 		}
 	};

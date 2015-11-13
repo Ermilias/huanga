@@ -40,8 +40,8 @@ Player.prototype.randPos = function(map){
 		x: Math.floor(Math.random() * (map.mapCol - 1)),
 		y: Math.floor(Math.random() * (map.mapRow - 1))
 	}
-	console.log(map.activeMap[pos.x][pos.y]);
-	if (map.activeMap[pos.x][pos.y] === '0'){
+	console.log('is Block : ' + (map.activeMap[pos.x][pos.y] === 0 ? true : false));
+	if (map.activeMap[pos.x][pos.y] === 0){
 		return this.randPos(map);
 	}else{
 		return pos;
