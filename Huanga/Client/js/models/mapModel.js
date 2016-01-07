@@ -1,5 +1,9 @@
 app.models.MapModel = (function(){
-	function MapModel(){
+    var Observable = app.libs.Observable;
+    
+	function MapModel(name){
+        Observable.call(this);
+        this.name = name;
 		this.id = '';
 		this.mapList = {};
 		this.mapTiles = {};
@@ -8,12 +12,15 @@ app.models.MapModel = (function(){
 		this.mapCol = 0;
 		this.mapRow = 0;
 	}
+MapModel.prototype = Object.create(Observable.prototype);
+MapModel.prototype.constructor = MapModel;
 
 MapModel.prototype.setMapTilesList = function(array){
 	for (var i = array.length - 1; i >= 0; i--) {
 		this.mapTilesList[i] = [];
 		for (key in array[i]){
 			var tile = new app.models.TileModel();
+			tile.setImageSrc(array[i][key].path);
 			tile.setImage(array[i][key].name);
 			tile.setSize(array[i][key].size);
 			tile.setIsBlock(array[i][key].isBlock);

@@ -7,15 +7,22 @@ var Team = require('./js/teamManager.js');
 var players = {};
 var id = 0;
 var nb_player = 0;
-var teams = {
-	numberOfTeams: 3,
-	fire: new Team(0),
-	water: new Team(1),
-	earth: new Team(2),
+var teamsNames = ['fire','water','earth'];
+var teams = GenerateTeams(teamsNames,3);
+
+function GenerateTeams(arrayOfTeamsNames,numberOfTeams){
+	var teams = {};
+	for (var i = 0; i < numberOfTeams; i++) {
+		teams[arrayOfTeamsNames[i]] = new Team(i);
+	};
+	teams.numberOfTeams = numberOfTeams;
+	return teams;
 };
+
 io.set('origins','*:8080');
 Map.setMaps(maps.smallMaps);
-Map.setActiveMap(Map.createMap(1));
+Map.generateMap(1);
+//Map.setActiveMap(Map.createMap(2));
 
 
 io.on('connection', function (socket) {
@@ -23,7 +30,7 @@ io.on('connection', function (socket) {
 	socket.on('ready', function(){
 		socket.player = new Player();
 		socket.player.setId(socket.id);
-		socket.player.setTeam(teams);
+		socket.player.setRandTeam(teams);
 		socket.player.pos = socket.player.randPos(Map);
 
 		console.log('new socket: ', socket.id,'new player: ',socket.player);
@@ -36,10 +43,25 @@ io.on('connection', function (socket) {
 	});
 
 	socket.on('updatePos', function (data){
-		socket.player.pos = data.newPos;
-		socket.broadcast.emit('moved', {player: socket.player, dir: data.dir});
+		if (socket.id === data.id){
+			socket.player.pos = data.newPos;
+			console.log(socket.player.pos);
+			var contact = socket.player.checkContact(players)
+			if(contact){
+				io.emit('contact',{contact: contact});
+			}
+			socket.broadcast.emit('moved', {player: socket.player, dir: data.dir});
+		}
+	});
+
+	socket.on('updateTeam', function (data){
+		console.log(data);
+		teams[data.remove].remove();
+		teams[data.add].add();
+		players[data.player].setTeam(teams[data.add].id);
 	});
 	socket.on('disconnect', function () {
+
 		delete players[socket.id];
 		nb_player--;
 		io.emit('disconnected', {id: socket.id});

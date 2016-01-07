@@ -1,0 +1,21 @@
+2016-01-07 23:22:22
+
+- Now player can eat/be eaten by other players according to teams.
+- While being eaten, player will disapear in a smoke screen and reappear as a member of the eater's team.
+- game is now playable online (closed beta as for now will set up open beta server later).
+- 3 levels of quality setting are now available (default is medium).
+- Cleaned code.
+
+Fixes:
+- position calculation is now correct, despite the fact you can see a 'teleportation'
+from other player they still go at the same speed.
+- Fixed some laggy methods.
+
+Knows issues:
+- If two players are on the same map screen and one of them is to pass to another one,
+the second one will have his/her map background changed as well while still being on the
+current map.
+- If a player try to change direction before the end of the movement animation, he/she will
+have a small freeze of about 0.1 second or less before starting moving again, this is because the
+animation must finish before allowing player to move again.
+

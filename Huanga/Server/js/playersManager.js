@@ -12,7 +12,12 @@ Player.prototype.constructor = Player;
 Player.prototype.setId =  function(id){
 		this.id = id;
 	}
-Player.prototype.setTeam = function(teamData){
+Player.prototype.setTeam = function(teamId){
+
+	this.teamId = teamId;
+
+}
+Player.prototype.setRandTeam = function(teamData){
 
 	if (teamData.fire.count < teamData.water.count && teamData.water.count <= teamData.earth.count){
 		this.teamId = teamData.fire.id;
@@ -51,6 +56,20 @@ Player.prototype.randPos = function(map){
 Player.prototype.updatePos = function(pos){
 	this.pos.x = pos.x || this.pos.x;
 	this.pos.y = pos.y || this.pos.y;
+}
+
+Player.prototype.checkContact = function(players){
+	for (id in players){
+		if (players[id].id !== this.id){
+			console.log('pos p1: ',players[id].pos);
+			console.log('pos p2: ',this.pos);
+			console.log(players[id].pos.x === this.pos.x && players[id].pos.y === this.pos.y);
+			if (players[id].pos.x === this.pos.x && players[id].pos.y === this.pos.y){
+				return ({player1: this, player2: players[id]});
+			}
+		}
+	}
+	return false;
 }
 
 Player.prototype.checkCol = function(map, pos){

@@ -6,9 +6,8 @@ app.models.PlayerModel = (function(){
 	function PlayerModel(){
 		Observable.call(this);
 		this.id;
-		this.socket;
-		//this.teamPic = Pics.teamsPics,//['./image/fire_32.png','./image/water_32.png','./image/earth_32.png'];
-		//this.rand = Math.floor(Math.random() * Pics.teamsPics.length);
+        this.name = name;
+		//this.socket;
 		this.team = {};
 		this.model = {};
 		this.pos = {x: 0,y: 0};
@@ -16,13 +15,15 @@ app.models.PlayerModel = (function(){
 		this.direction = {bottom: 0, top: 1 , left: 2, right: 3};
 		this.look =  Math.floor(Math.random() * 4);
 		this.ref = {height: 0, width: 0};
+		this.smokeRef = {height: 0, width: 0};
 		this.estateAnimation = -1;
+		this.smokeEstateAnimation = -1;
 	}
 	PlayerModel.prototype = Object.create(Observable.prototype);
 	PlayerModel.prototype.constructor = PlayerModel;
 
 	PlayerModel.prototype.setTeam = function(teamId){
-		this.team = {image : Pics.teamsPics[teamId]};;
+		teams[teamId].addMember(this);
 		return this;
 	}
 
@@ -47,6 +48,14 @@ app.models.PlayerModel = (function(){
 		this.model = model;	
 		return this;
 	}
+
+	PlayerModel.prototype.isMoveCompleted = function(finalPos,dir){
+		
+		this.deplacer(dir);
+		if (finalPos !== this.pos){ // in case off lag so pos is always accurate
+			this.setPos(finalPos);
+		}
+	}
 	
 	PlayerModel.prototype.deplacer = function(direction) {
 		// On ne peut pas se déplacer si un mouvement est déjà en cours !
@@ -68,7 +77,8 @@ app.models.PlayerModel = (function(){
 		// On effectue le déplacement
 		this.pos.x = prochaineCase.x;
 		this.pos.y = prochaineCase.y;
-		socket.emit('updatePos', {newPos: prochaineCase, dir: direction});
+		//console.log(socket);
+		socket.emit('updatePos', {id: this.id ,newPos: prochaineCase, dir: direction});
 		return true;
 	}
 
@@ -85,7 +95,7 @@ app.models.PlayerModel = (function(){
 				frame %= 6;
 			}
 
-			var pixelsToGo = 32 - (32 * (this.estateAnimation / DEPLACEMENT_DURATION));
+			var pixelsToGo = this.model.resolution - (this.model.resolution * (this.estateAnimation / DEPLACEMENT_DURATION));
 
 			if(this.look === this.direction.top) {
 				moveY = pixelsToGo;
@@ -103,15 +113,48 @@ app.models.PlayerModel = (function(){
 		image.src = this.team.image;
 		this.ref.height = image.height / 4;
 		this.ref.width = image.width / 6;
-		var tile = new Image();
 		this.model.ctx.drawImage(
 			image,
 			this.ref.width * frame, this.look * this.ref.height,
 			this.ref.width, this.ref.height,
-			(this.pos.x % 16 * 32) - (this.ref.width / 2) + 16 + moveX, (this.pos.y % 16 * 32) - this.ref.height + 32 + moveY,
+			(this.pos.x % 16 * this.ref.width) + moveX, 
+			(this.pos.y % 16 * this.ref.height) + moveY,
 			this.ref.width, this.ref.height
 		);
 	}
+
+	PlayerModel.prototype.smokeScreen = function(){
+	var frame = 0;
+	var smokeImage = new Image();
+		smokeImage.src = Pics.paths.effects + Pics.effects.smoke + this.model.resolution + '.png';
+		console.log(smokeImage.src);
+		console.log(smokeImage.height,smokeImage.width/12);
+		this.smokeRef.height = smokeImage.height;
+		this.smokeRef.width = smokeImage.width / 12;
+		if(this.smokeEstateAnimation >= 12) {
+			this.smokeEstateAnimation = -1;
+			this.isEaten = false;
+			return;
+		}
+		if (this.smokeEstateAnimation === -1) {
+			this.smokeEstateAnimation = 0;
+		};
+		if(this.smokeEstateAnimation >= 0) {
+			frame = Math.floor(this.smokeEstateAnimation / 1);
+			if(frame > 6) {
+				frame %= 12;
+			}
+			this.smokeEstateAnimation++;
+			console.log(this.smokeEstateAnimation);
+		}
+		this.model.ctx.drawImage(
+		smokeImage,
+		this.smokeRef.width * frame, 0,
+		this.smokeRef.width, this.smokeRef.height,
+		this.pos.x % 16 * this.smokeRef.width,
+		this.pos.y % 16 * this.smokeRef.height,
+		this.smokeRef.width, this.smokeRef.height);
+}
 
 
 
@@ -121,17 +164,6 @@ app.models.PlayerModel = (function(){
 		player.model.canvasBg.src = player.model.canvasBgArray[img.x][img.y];
 	}
 	
-	PlayerModel.prototype.isOnCurrentArena = function(pos){
-		var mapPos = {x: (Math.floor(this.pos.y / 16)),
-				   y: (Math.floor(this.pos.x / 16))};
-		var otherMapPos = {x: (Math.floor(pos.y / 16)),
-				   y: (Math.floor(pos.x / 16))};
-			if (mapPos.x === otherMapPos.x && mapPos.y === otherMapPos.y){
-				return true;
-			}else{
-				return false;
-			}
-	}
 
 	PlayerModel.prototype.getCoordonneesAdjacentes = function(direction) {
 		switch(direction) {
@@ -170,6 +202,18 @@ app.models.PlayerModel = (function(){
 		}
 		this.stillOnArena();
 		return this.pos;
+	}
+	
+	PlayerModel.prototype.isOnCurrentArena = function(pos){
+		var mapPos = {x: (Math.floor(this.pos.y / 16)),
+				   y: (Math.floor(this.pos.x / 16))};
+		var otherMapPos = {x: (Math.floor(pos.y / 16)),
+				   y: (Math.floor(pos.x / 16))};
+			if (mapPos.x === otherMapPos.x && mapPos.y === otherMapPos.y){
+				return true;
+			}else{
+				return false;
+			}
 	}
 
 	PlayerModel.prototype.stillOnArena = function(){

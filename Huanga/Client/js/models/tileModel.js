@@ -1,6 +1,6 @@
 app.models.TileModel = (function(){
 	function TileModel(){
-		this.imageSrc = './image/';
+		this.imageSrc = '';
 		this.image = 'imageName.png';
 		this.isBlock = false;
 		this.pos = {x: 0,y: 0};
@@ -14,11 +14,15 @@ app.models.TileModel = (function(){
 	}
 
 	TileModel.prototype.setImage = function(image){
-		this.image = image;
+		this.image = this.imageSrc + image;
 		return this;
 	}
 	TileModel.prototype.getImage = function(){
 		return this.image;
+	}
+	TileModel.prototype.setImageSrc = function(path){
+		this.imageSrc = path;
+		return this;
 	}
 	TileModel.prototype.getImageSrc = function(){
 		return this.imageSrc;
