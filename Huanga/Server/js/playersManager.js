@@ -17,7 +17,7 @@ Player.prototype.setTeam = function(teamId){
 	this.teamId = teamId;
 
 }
-Player.prototype.setRandTeam = function(teamData){
+/*Player.prototype.setRandTeam = function(teamData){
 
 	if (teamData.fire.count < teamData.water.count && teamData.water.count <= teamData.earth.count){
 		this.teamId = teamData.fire.id;
@@ -38,7 +38,7 @@ Player.prototype.setRandTeam = function(teamData){
 		}
 	}
 
-}
+}*/
 
 Player.prototype.randPos = function(map){
 	var pos = {

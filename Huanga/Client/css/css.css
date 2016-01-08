@@ -1,25 +1,28 @@
 body{
 	margin: 0;
 	padding: 0;
+	background-image: url('../image/gui/background.png');
+    background-size: cover;
 }
 #mapContainer{ 
-	height: 720px;
-	width: 720px;
+	display: inline-block;
+	/*height: 600px;*/
+	width: 75%;
     overflow:hidden;
     position:relative;
     margin: none;
 }
 #canvasBg{
-	height: 720px;
-	width: 720px;
+	/*height: 600px;*/
+	width: 75%;
 	position: absolute;
 	top: 0px;
 	left: 0px;
 	z-index: 1;
 }
 #gameMap{
-	height: 720px;
-	width: 720px;
+	/*height: 600px;*/
+	width: 75%;
 	position: relative;
 	top: 0px;
 	left: 0px;
@@ -27,18 +30,43 @@ body{
 	z-index: 2;
 }
 
+#controller {
+	width: 145%;
+	height: 145%;
+	position: absolute;
+	bottom: -27%;
+	left: -22.5%;
+}
+
+#gui{
+	position			:	fixed;
+	margin: 15px;
+	right				:	2%;
+	width				:	200px;
+	/*height				:	100%;*/
+	display: inline-block;
+	vertical-align: top;
+}
+
+#playerTeam{
+	position: relative;
+	width: 90%;
+	height: 90%;
+	margin-top: 0%;
+	margin-bottom: -60%;
+}
+
 .dPad
 {
-	position			:	fixed;
-	bottom				:	1%;
-	right				:	1%;
-	width				:	20%;
-	height				:	40%;
+	position: relative;
+	top: 200px;
+	width: 200px;
+	height: 200px;
 }
 
 .arrowImage
 {
-	input-event         : 	none;
+	/*input-event         : 	none;*/
 	width				:	34%;
 	height				:	34%;
 	position			: 	absolute;
@@ -46,24 +74,30 @@ body{
 
 .dPad #upButton
 {
-	top					: 	1%;
+	top					: 	-8%;
 	right				:	33%;
 }
 
 .dPad #downButton
 {
-	bottom				: 	1%;
+	bottom				:   -1%;
 	right				:	33%;
 }
 
 .dPad #leftButton
 {
-	left				: 	1%;
-	top					:	33%;
+	left				: 	-4.5%;
+	top					:	30%;
 }
 
 .dPad #rightButton
 {
-	right				: 	1%;
-	top					:	33%;
+	right				: 	-4.5%;
+	top					:	30%;
+}
+
+.pressed{
+	margin-bottom: -1%;
+	margin-top: 1%;
+	/*padding-bottom: 5px;*/
 }

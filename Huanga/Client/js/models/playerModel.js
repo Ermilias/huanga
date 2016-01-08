@@ -134,6 +134,7 @@ app.models.PlayerModel = (function(){
 		if(this.smokeEstateAnimation >= 12) {
 			this.smokeEstateAnimation = -1;
 			this.isEaten = false;
+			document.getElementById('playerTeam').setAttribute('src','./image/teams/Chara' + this.team.name.charAt(0).toUpperCase() + this.team.name.substring(1) + '.png');
 			return;
 		}
 		if (this.smokeEstateAnimation === -1) {

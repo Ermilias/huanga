@@ -436,17 +436,20 @@ app.views.GlobalView = (function() {
 		return background;
 	}
 	
-	app.views.GlobalView.prototype.change = function(val)
-	{
-		var button = document.getElementById(val.buttonId);
-		var path = '';
-		
-		if (val.state === 'released')
-			path = "./image/gui/" + val.buttonId + ".png";
-		else
-			path = "./image/gui/" + val.buttonId + "Pressed.png";
-		button.src = path;
-	}
+    app.views.GlobalView.prototype.change = function(val)
+    {
+        var button = document.getElementById(val.buttonId);
+        var path = '';
+        
+        if (val.state === 'released'){
+            button.classList.remove('pressed');
+            //path = "./image/gui/" + val.buttonId + ".png";
+        }else{
+            button.classList.add('pressed');
+            //path = "./image/gui/" + val.buttonId + "Pressed.png";
+        }
+        //button.src = path;
+    }
 
 	app.views.GlobalView.prototype.start =  function(){
 		var setIV = setInterval(function(){

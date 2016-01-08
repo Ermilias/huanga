@@ -10,16 +10,22 @@
 	<div id="mapContainer">
 		<img id='canvasBg'>
 	</div>
-
+	<div id="gui">
+		<div id="playerInfo">
+			<img id="playerTeam" src="" alt="">
+		</div>
+		<div class="dPad">
+			<img id="controller" src="./image/gui/controleurBackground.png" alt="">
+			<img id="upButton" class="arrowImage" src="./image/gui/controlerTop.png">
+			<img id="downButton" class="arrowImage" src="./image/gui/controlerBottom.png">
+			<img id="leftButton" class="arrowImage" src="./image/gui/controlerLeft.png">
+			<img id="rightButton" class="arrowImage" src="./image/gui/controlerRight.png">
+		</div>
+	</div>
+	
 	<div id="check-reso">
 	</div>
 
-	<div class="dPad" oncontextmenu="return false;">
-		<img id="upButton" class="arrowImage" src="./image/gui/upButton.png">
-		<img id="downButton" class="arrowImage" src="./image/gui/downButton.png">
-		<img id="leftButton" class="arrowImage" src="./image/gui/leftButton.png">
-		<img id="rightButton" class="arrowImage" src="./image/gui/rightButton.png">
-	</div>
 
 	<script src="js/resources/pics.js"></script>
 
@@ -74,6 +80,11 @@
 					main.models.model.players[playerId] = new app.models.PlayerModel();
 					main.models.model.players[playerId].setId(playerId).setTeam(data.playersList[playerId].teamId).setModel(main.models.model).setPos(data.playersList[playerId].pos);
 					if (playerId === data.player.id){
+						console.log(main.models.model.players[playerId])
+					document.getElementById('playerTeam').setAttribute('src','./image/teams/Chara' 
+						+ main.models.model.players[playerId].team.name.charAt(0).toUpperCase() 
+						+ main.models.model.players[playerId].team.name.substring(1) 
+						+ '.png');
 						main.models.model.setPlayer(main.models.model.players[playerId]);
 						main.models.model.player.drawCurrentArena(main.models.model.player);
 						console.log('Main player is : ' + playerId);
