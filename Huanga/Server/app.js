@@ -59,9 +59,11 @@ io.on('connection', function (socket) {
 
 	socket.on('updateTeam', function (data){
 		console.log(data);
-		teams[data.remove].remove();
-		teams[data.add].add();
-		players[data.player].setTeam(teams[data.add].id);
+			teamsG.remove(data.remove);
+			teamsG.add(data.add);
+		//teams[data.remove].remove();
+		//teams[data.add].add();
+		players[data.player].setTeam(data.add);
 	});
 	socket.on('disconnect', function () {
 		if (typeof socket.player !== 'undefined'){

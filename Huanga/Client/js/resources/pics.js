@@ -8,7 +8,8 @@ var Pics = {
 	},
 	teamsPics: ['fire_','water_','earth_'],
 	effects: {
-		smoke: 'smoke_'
+		smoke: 'smoke_',
+		circle: 'circle_',
 	}, 
 	grounds: {
 		sands: ['tileSand_'],

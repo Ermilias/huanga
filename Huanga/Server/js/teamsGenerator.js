@@ -10,6 +10,7 @@ TeamGenerator.prototype.add = function(id){
 	this.selectTeam(id).add();
 };
 TeamGenerator.prototype.remove = function(id){
+	console.log('team is: ',this.selectTeam(id))
 	this.selectTeam(id).remove();
 };
 TeamGenerator.prototype.selectTeam = function(id){

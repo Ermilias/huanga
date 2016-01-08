@@ -16,6 +16,7 @@ app.models.PlayerModel = (function(){
 		this.look =  Math.floor(Math.random() * 4);
 		this.ref = {height: 0, width: 0};
 		this.smokeRef = {height: 0, width: 0};
+		this.circleRef = {height: 0, width: 0};
 		this.estateAnimation = -1;
 		this.smokeEstateAnimation = -1;
 	}
@@ -111,6 +112,22 @@ app.models.PlayerModel = (function(){
 
 		var image = new Image();
 		image.src = this.team.image;
+		//console.log(this.model.player);
+		if (this.id === this.model.player.id){
+			var circle = new Image();
+			circle.src = Pics.paths.effects + Pics.effects.circle + this.model.resolution + '.png';
+
+			this.circleRef.height = circle.height;
+			this.circleRef.width = circle.width;
+			this.model.ctx.drawImage(
+				circle,
+				0, 0,
+				this.circleRef.width, this.circleRef.height,
+				(this.pos.x % 16 * this.circleRef.width) + moveX, 
+				(this.pos.y % 16 * this.circleRef.height) + moveY,
+				this.circleRef.width, this.circleRef.height
+			);
+		}
 		this.ref.height = image.height / 4;
 		this.ref.width = image.width / 6;
 		this.model.ctx.drawImage(
@@ -127,14 +144,16 @@ app.models.PlayerModel = (function(){
 	var frame = 0;
 	var smokeImage = new Image();
 		smokeImage.src = Pics.paths.effects + Pics.effects.smoke + this.model.resolution + '.png';
-		console.log(smokeImage.src);
-		console.log(smokeImage.height,smokeImage.width/12);
+		//console.log(smokeImage.src);
+		//console.log(smokeImage.height,smokeImage.width/12);
 		this.smokeRef.height = smokeImage.height;
 		this.smokeRef.width = smokeImage.width / 12;
 		if(this.smokeEstateAnimation >= 12) {
 			this.smokeEstateAnimation = -1;
 			this.isEaten = false;
-			document.getElementById('playerTeam').setAttribute('src','./image/teams/Chara' + this.team.name.charAt(0).toUpperCase() + this.team.name.substring(1) + '.png');
+			if (socket.id === this.id){
+				document.getElementById('playerTeam').setAttribute('src','./image/teams/Chara' + this.team.name.charAt(0).toUpperCase() + this.team.name.substring(1) + '.png');
+			}
 			return;
 		}
 		if (this.smokeEstateAnimation === -1) {

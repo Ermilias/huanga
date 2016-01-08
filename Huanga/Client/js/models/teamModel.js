@@ -68,36 +68,38 @@ Team.prototype.eat = function(player1,player2){
 		var playerChanged = '';
 
 		if (team1.name === 'earth' && team2.name === 'water'){
-			minus = team2.name;
-			plus = team1.name;
+			minus = team2.id;
+			plus = team1.id;
 			playerChanged = player2.id;
 			team2.removeMember(player2);
 			team1.addMember(player2);
 			player2.isEaten = true;
 		}else if (team1.name === 'water' && team2.name === 'fire'){
-			minus = team2.name;
-			plus = team1.name;
+			minus = team2.id;
+			plus = team1.id;
 			playerChanged = player2.id;
 			team2.removeMember(player2);
 			team1.addMember(player2);
 			player2.isEaten = true;
 		}else if (team1.name === 'fire' && team2.name === 'earth'){
-			minus = team2.name;
-			plus = team1.name;
+			minus = team2.id;
+			plus = team1.id;
 			playerChanged = player2.id;
 			team2.removeMember(player2);
 			team1.addMember(player2);
 			player2.isEaten = true;
 		}else{
-			minus = team1.name;
-			plus = team2.name;
+			minus = team1.id;
+			plus = team2.id;
 			playerChanged = player1.id;
 			team1.removeMember(player1);
 			team2.addMember(player1);
 			player1.isEaten = true;
 		}
 		console.log('miam');
-		socket.emit('updateTeam', {add: plus, remove: minus, player: playerChanged});
+		if (socket.id === player1.id){
+			socket.emit('updateTeam', {add: plus, remove: minus, player: playerChanged});
+		}
 	}
 };
 

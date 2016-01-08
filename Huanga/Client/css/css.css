@@ -52,8 +52,13 @@ body{
 	position: relative;
 	width: 90%;
 	height: 90%;
-	margin-top: 0%;
 	margin-bottom: -60%;
+}
+
+#check-reso{
+	position: relative;
+	top: 250px;
+
 }
 
 .dPad
