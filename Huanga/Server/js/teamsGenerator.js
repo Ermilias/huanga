@@ -6,11 +6,11 @@ function TeamGenerator(arrayOfTeamsNames,number){
 };
 TeamGenerator.prototype.constructor = TeamGenerator;
 
-TeamGenerator.prototype.add = function(){
-	this.count++;
+TeamGenerator.prototype.add = function(id){
+	this.selectTeam(id).add();
 };
-TeamGenerator.prototype.remove = function(){
-	this.count--;
+TeamGenerator.prototype.remove = function(id){
+	this.selectTeam(id).remove();
 };
 TeamGenerator.prototype.selectTeam = function(id){
 	for (team in this.teams){
@@ -58,14 +58,13 @@ TeamGenerator.prototype.setRandTeam = function(player){
 		for (var team in teams){
 			if (teams[team].id === tId){
 				player.teamId = tId;
-				teams[team].add();
+				this.add(tId);
 			}
 		}
 	}else{
 		player.teamId = teamId;
-		this.selectTeam(teamId).add();
+		this.add(teamId);
 	}
-
 }
 
 module.exports = TeamGenerator;

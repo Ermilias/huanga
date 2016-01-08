@@ -64,10 +64,9 @@ io.on('connection', function (socket) {
 		players[data.player].setTeam(teams[data.add].id);
 	});
 	socket.on('disconnect', function () {
-		//console.log(teams);
 		if (typeof socket.player !== 'undefined'){
 		var teamId = socket.player.teamId;
-			teamsG.selectTeam(teamId).remove();
+			teamsG.remove(teamId);
 		}
 		delete players[socket.id];
 		nb_player--;
