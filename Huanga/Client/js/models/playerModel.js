@@ -115,7 +115,7 @@ app.models.PlayerModel = (function(){
 		//console.log(this.model.player);
 		if (this.id === this.model.player.id){
 			var circle = new Image();
-			circle.src = Pics.paths.effects + Pics.effects.circle + this.model.resolution + '.png';
+			circle.src = Pics.paths.effects + Pics.effects.circle + this.team.name + '_' + this.model.resolution + '.png';
 
 			this.circleRef.height = circle.height;
 			this.circleRef.width = circle.width;
@@ -144,8 +144,6 @@ app.models.PlayerModel = (function(){
 	var frame = 0;
 	var smokeImage = new Image();
 		smokeImage.src = Pics.paths.effects + Pics.effects.smoke + this.model.resolution + '.png';
-		//console.log(smokeImage.src);
-		//console.log(smokeImage.height,smokeImage.width/12);
 		this.smokeRef.height = smokeImage.height;
 		this.smokeRef.width = smokeImage.width / 12;
 		if(this.smokeEstateAnimation >= 12) {
