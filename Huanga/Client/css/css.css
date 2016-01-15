@@ -48,10 +48,19 @@ body{
 	vertical-align: top;
 }
 
+#baseChara{
+	position: relative;
+	width: 150%;
+	height: 150%;
+	left: -30%;
+	margin-bottom: -150%;
+}
+
 #playerTeam{
 	position: relative;
 	width: 90%;
 	height: 90%;
+	left: 10%;
 	margin-bottom: -60%;
 }
 

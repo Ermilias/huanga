@@ -12,6 +12,7 @@
 	</div>
 	<div id="gui">
 		<div id="playerInfo">
+			<img id="baseChara" src="./image/gui/baseChara.png" alt="">
 			<img id="playerTeam" src="" alt="">
 		</div>
 		<div class="dPad">
@@ -46,8 +47,8 @@
 		document.getElementById('mapContainer').appendChild(canvas);
 		canvas.setAttribute('id', 'gameMap');
 
-		//var main = app.startGlobal('37.187.77.111','8080');
-		var main = app.startGlobal('192.168.0.6','8080');
+		var main = app.startGlobal('37.187.77.111','8080');
+		//var main = app.startGlobal('192.168.0.6','8080');
 		var globalModel = main.models.model;
 		var resolution = globalModel.resolution;
 		var socket = main.socket;
