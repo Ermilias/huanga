@@ -14,7 +14,7 @@ body{
 }
 #canvasBg{
 	/*height: 600px;*/
-	width: 75%;
+	width: 60%;
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -22,7 +22,7 @@ body{
 }
 #gameMap{
 	/*height: 600px;*/
-	width: 75%;
+	width: 60%;
 	position: relative;
 	top: 0px;
 	left: 0px;

@@ -1,3 +1,5 @@
+var numOfMap = parseInt(process.argv[2]) || 1;
+var port = parseInt(process.argv[3]) || 8080;
 var io = require('socket.io')(8080);
 var idGen = require('./js/keyGen.js');
 var Player = require('./js/playersManager.js');
@@ -12,19 +14,9 @@ var teamsNames = ['fire','water','earth'];
 var teamsG = new TeamGenerator(teamsNames,3);
 var teams = teamsG.teams;
 
-/*function GenerateTeams(arrayOfTeamsNames,numberOfTeams){
-	var teams = {};
-	for (var i = 0; i < numberOfTeams; i++) {
-		teams[arrayOfTeamsNames[i]] = new Team(i);
-	};
-	teams.numberOfTeams = numberOfTeams;
-	return teams;
-};*/
-
 io.set('origins','*:8080');
 Map.setMaps(maps.smallMaps);
-Map.generateMap(1);
-//Map.setActiveMap(Map.createMap(2));
+Map.generateMap(numOfMap);
 
 
 io.on('connection', function (socket) {
@@ -61,8 +53,6 @@ io.on('connection', function (socket) {
 		console.log(data);
 			teamsG.remove(data.remove);
 			teamsG.add(data.add);
-		//teams[data.remove].remove();
-		//teams[data.add].add();
 		players[data.player].setTeam(data.add);
 	});
 	socket.on('disconnect', function () {

@@ -1,5 +1,3 @@
-var DEPLACEMENT_DURATION = 6;
-var ANIMATION_DURATION = 1;
 app.views.GlobalView = (function() {
     var Observable = app.libs.Observable;
 
@@ -382,12 +380,7 @@ app.views.GlobalView = (function() {
             elem: buttons[i],
             type: 'document'
         }, 'touchend');
-			//this.addListeners(buttons[i], 'touchstart');
-			//this.addListeners(buttons[i], 'touchend');
 		}
-		/*this.addListeners(doc,'keydown');
-		//this.addListeners(elem,'click');
-		this.addListeners(doc, 'DOMContentLoaded');*/
 	};
 
 
@@ -408,11 +401,12 @@ app.views.GlobalView = (function() {
 		var next = false;
 		var background = [];
 		var done = false;
-
-		for (var n = 0; n < this.model['GlobalModel'].map.mapCol/arenaSize; n++){
+        var globalModel = this.model['GlobalModel'];
+        console.log(globalModel)
+		for (var n = 0; n < globalModel.map.mapCol/arenaSize; n++){
 			var niSize = (n * arenaSize);
 			background[n] = [];
-			for (var m = 0; m < this.model['GlobalModel'].map.mapCol/arenaSize; m++){
+			for (var m = 0; m < globalModel.map.mapCol/arenaSize; m++){
 				var mjSize = (m * arenaSize);
 				for (c = mjSize; c < (mjSize + arenaSize); c++ ){
 					if (typeof map[c] === 'object'){
@@ -421,11 +415,11 @@ app.views.GlobalView = (function() {
 								var image = map[c][r];
 								var tile = new Image();
 								tile.src = image.getImageSrc() + image.getImage();
-								this.model['GlobalModel'].ctx.drawImage(tile,(c%arenaSize * image.size.width),(r%arenaSize * image.size.height),image.size.width,image.size.height);
+								globalModel.ctx.drawImage(tile,(c%arenaSize * image.size.width),(r%arenaSize * image.size.height),image.size.width,image.size.height);
 								if (c%arenaSize === 15 && r%arenaSize === 15){
-									background[n][m] = (this.model['GlobalModel'].canvas.toDataURL("./image/background" + paint + ".png"));
+									background[n][m] = (globalModel.canvas.toDataURL("./image/background" + paint + ".png"));
 									paint++;
-									this.model['GlobalModel'].ctx.clearRect(0,0,this.model['GlobalModel'].canvas.width,this.model['GlobalModel'].canvas.height);
+									globalModel.ctx.clearRect(0,0,globalModel.canvas.width,globalModel.canvas.height);
 								}
 							}
 						}
@@ -452,17 +446,19 @@ app.views.GlobalView = (function() {
     }
 
 	app.views.GlobalView.prototype.start =  function(){
+        var globalModel = this.model['GlobalModel'];
+        globalModel.player.drawCurrentArena();
 		var setIV = setInterval(function(){
-		this.model['GlobalModel'].ctx.clearRect(0,0,this.model['GlobalModel'].canvas.width,this.model['GlobalModel'].canvas.height);
-		var mapPos = {x: (Math.floor(this.model['GlobalModel'].player.pos.y / 16)),
-				   y: (Math.floor(this.model['GlobalModel'].player.pos.x / 16))};
-		for (id in this.model['GlobalModel'].players){
-			if (this.model['GlobalModel'].player.isOnCurrentArena(this.model['GlobalModel'].players[id].pos)){
+		globalModel.ctx.clearRect(0,0,globalModel.canvas.width,globalModel.canvas.height);
+		var mapPos = {x: (Math.floor(globalModel.player.pos.y / 16)),
+				   y: (Math.floor(globalModel.player.pos.x / 16))};
+		for (id in globalModel.players){
+			if (globalModel.player.isOnCurrentArena(globalModel.players[id].pos)){
 				
-                if(this.model['GlobalModel'].players[id].isEaten){
-                    this.model['GlobalModel'].players[id].smokeScreen();
+                if(globalModel.players[id].isEaten){
+                    globalModel.players[id].smokeScreen();
                 }else{
-                    this.model['GlobalModel'].players[id].drawChar();
+                    globalModel.players[id].drawChar();
                 }
 			}
 		}
@@ -488,22 +484,23 @@ app.views.GlobalView = (function() {
 		};
 		if (event.cmd === 'dir'){
 			console.log(event.val);
+            var player = this.model['GlobalModel'].player;
 			switch (event.val){
 				case 'bottom':
-					this.model['GlobalModel'].player.setDirection(0);
+					player.setDirection(0);
 				break;
 				case 'top':
-					this.model['GlobalModel'].player.setDirection(1);
+					player.setDirection(1);
 				break;
 				case 'left':
-					this.model['GlobalModel'].player.setDirection(2);
+					player.setDirection(2);
 				break;
 				case 'right':
-					this.model['GlobalModel'].player.setDirection(3);
+					player.setDirection(3);
 				break;
 			}
-			console.log('it move: ',this.model['GlobalModel'].player);
-			this.model['GlobalModel'].player.deplacer(this.model['GlobalModel'].player.look);
+			console.log('it move: ',player);
+			player.deplacer(player.look);
 		};
         if (event.cmd === 'newForm') {
             this.createForm(event.val);

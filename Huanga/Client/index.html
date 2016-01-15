@@ -42,22 +42,23 @@
 	<script src="js/views/globalView.js"></script>
 	<script src="js/models/globalModel.js"></script>
 	<script>
-	//<script src="../node_modules/socket.io/node_modules/socket.io-client/socket.io.js">
 		var canvas = document.createElement('canvas');
 		document.getElementById('mapContainer').appendChild(canvas);
 		canvas.setAttribute('id', 'gameMap');
 
-		var main = app.startGlobal('78.229.248.133','8080');
-		var resolution = main.models.model.resolution;
+		//var main = app.startGlobal('37.187.77.111','8080');
+		var main = app.startGlobal('192.168.0.6','8080');
+		var globalModel = main.models.model;
+		var resolution = globalModel.resolution;
 		var socket = main.socket;
 
 		canvas.setAttribute('width', (resolution*16));
 		canvas.setAttribute('height', (resolution*16));
 
 		var teams = [
-			new Team(0).setImageSrc(Pics.paths.teams).setName('fire').setImage(Pics.teamsPics[0] + resolution + '.png').setModel(main.models.model),
-			new Team(1).setImageSrc(Pics.paths.teams).setName('water').setImage(Pics.teamsPics[1] + resolution + '.png').setModel(main.models.model),
-			new Team(2).setImageSrc(Pics.paths.teams).setName('earth').setImage(Pics.teamsPics[2] + resolution + '.png').setModel(main.models.model),
+			new Team(0).setImageSrc(Pics.paths.teams).setName('fire').setImage(Pics.teamsPics[0] + resolution + '.png').setModel(globalModel),
+			new Team(1).setImageSrc(Pics.paths.teams).setName('water').setImage(Pics.teamsPics[1] + resolution + '.png').setModel(globalModel),
+			new Team(2).setImageSrc(Pics.paths.teams).setName('earth').setImage(Pics.teamsPics[2] + resolution + '.png').setModel(globalModel),
 			];
 		var tiles = [
 			{
@@ -74,22 +75,21 @@
 
 		  main.socket.on('connect', function () {
 		    
-		    main.socket.on('posIs', function (data){
-				
-				main.models.map.setMap(data.map).generateMap().updateModelMap(main.models.model);
-				main.models.model.canvasBgArray = main.views.view.drawCanvas(main.models.model.activeMap);
+		    main.socket.on('posIs', function (data){	
+				main.models.map.setMap(data.map).generateMap().updateModelMap(globalModel);
+				globalModel.canvasBgArray = main.views.view.drawCanvas(globalModel.activeMap);
 				for (playerId in data.playersList){
-					main.models.model.players[playerId] = new app.models.PlayerModel();
-					main.models.model.players[playerId].setId(playerId).setTeam(data.playersList[playerId].teamId).setModel(main.models.model).setPos(data.playersList[playerId].pos);
+					globalModel.players[playerId] = new app.models.PlayerModel();
+					globalModel.players[playerId].setId(playerId).setTeam(data.playersList[playerId].teamId).setModel(globalModel).setPos(data.playersList[playerId].pos);
 					if (playerId === data.player.id){
-						console.log(main.models.model.players[playerId])
-					document.getElementById('playerTeam').setAttribute('src','./image/teams/Chara' 
-						+ main.models.model.players[playerId].team.name.charAt(0).toUpperCase() 
-						+ main.models.model.players[playerId].team.name.substring(1) 
-						+ '.png');
-						main.models.model.setPlayer(main.models.model.players[playerId]);
-						main.models.model.player.drawCurrentArena(main.models.model.player);
-						console.log('Main player is : ' + playerId);
+						console.log(globalModel.players[playerId])
+						document.getElementById('playerTeam').setAttribute('src','./image/teams/Chara' 
+							+ globalModel.players[playerId].team.name.charAt(0).toUpperCase() 
+							+ globalModel.players[playerId].team.name.substring(1) 
+							+ '.png');
+							globalModel.setPlayer(globalModel.players[playerId]);
+							setTimeout(function(){globalModel.player.drawCurrentArena()},1000);//globalModel.player.drawCurrentArena();
+							console.log('Main player is : ' + playerId);
 					}
 				}
 		    });
@@ -100,31 +100,30 @@
 
 		    main.socket.on('newPlayer', function (player){
 		    	console.log('a new Player joined came to reinforce the team: ' + player.teamId);
-					main.models.model.players[player.id] = new app.models.PlayerModel();
-					main.models.model.players[player.id].setId(player.id).setTeam(player.teamId).setModel(main.models.model).setPos(player.pos);
+					globalModel.players[player.id] = new app.models.PlayerModel();
+					globalModel.players[player.id].setId(player.id).setTeam(player.teamId).setModel(globalModel).setPos(player.pos);
 		    });
 
 		    main.socket.on('moved', function (data){
 	//	console.log(data.player.id + ' moved to ', data.player.pos);
-				if (main.models.model.players[data.player.id] !== main.models.model.player){
-					if (main.models.model.player.isOnCurrentArena(main.models.model.players[data.player.id].pos)){
-						main.models.model.players[data.player.id].isMoveCompleted(data.player.pos,data.dir);
+				if (data.player.id !== globalModel.player.id){
+					if (globalModel.player.isOnCurrentArena(globalModel.players[data.player.id].pos)){
+						globalModel.players[data.player.id].isMoveCompleted(data.player.pos,data.dir);
 					}else{
-			    		main.models.model.players[data.player.id].setPos(data.player.pos);
+			    		globalModel.players[data.player.id].setPos(data.player.pos);
 					}
 			    }	
 		    });
 
 		    main.socket.on('contact', function (data){
-	//	console.log('contact!!', data);
-		    	if (main.models.model.player.isOnCurrentArena(main.models.model.players[data.contact.player1.id].pos)){
-		    		main.models.model.players[data.contact.player1.id].team.eat(main.models.model.players[data.contact.player1.id],main.models.model.players[data.contact.player2.id]);
-		    		//main.models.model.players[data.contact.player2.id].team.eat(main.models.model.players[data.contact.player2.id],main.models.model.players[data.contact.player1.id]);
+	console.log('contact!!', data);
+		    	if (globalModel.player.isOnCurrentArena(globalModel.players[data.contact.player1.id].pos)){
+		    		globalModel.players[data.contact.player1.id].team.eat(globalModel.players[data.contact.player1.id],globalModel.players[data.contact.player2.id]);
 		    	}
 		    });
 
 		    main.socket.on('disconnected', function (player){
-		    	delete main.models.model.players[player.id];
+		    	delete globalModel.players[player.id];
 		    });
 		});
 

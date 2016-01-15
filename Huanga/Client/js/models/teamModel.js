@@ -97,7 +97,8 @@ Team.prototype.eat = function(player1,player2){
 			player1.isEaten = true;
 		}
 		console.log('miam');
-		if (socket.id === player1.id){
+		console.log(socket.id,player1.id)
+		if ('/#' + socket.id === player1.id){
 			socket.emit('updateTeam', {add: plus, remove: minus, player: playerChanged});
 		}
 	}

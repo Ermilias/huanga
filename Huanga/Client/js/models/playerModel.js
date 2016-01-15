@@ -1,6 +1,3 @@
-var DEPLACEMENT_DURATION = 6;
-var ANIMATION_DURATION = 1;
-
 app.models.PlayerModel = (function(){
 	var Observable = app.libs.Observable;
 	function PlayerModel(){
@@ -8,6 +5,10 @@ app.models.PlayerModel = (function(){
 		this.id;
         this.name = name;
 		//this.socket;
+		this.animations = {
+			move : {frame : 6, speed : 1},
+			smoke : {frame : 12, speed : 1},
+		}
 		this.team = {};
 		this.model = {};
 		this.pos = {x: 0,y: 0};
@@ -79,24 +80,28 @@ app.models.PlayerModel = (function(){
 		this.pos.x = prochaineCase.x;
 		this.pos.y = prochaineCase.y;
 		//console.log(socket);
+		if ('/#' + socket.id === this.id){
+			this.stillOnArena();
+		}
 		socket.emit('updatePos', {id: this.id ,newPos: prochaineCase, dir: direction});
 		return true;
 	}
 
 	PlayerModel.prototype.drawChar= function(){
 		var frame = 0;
+		var maxFrame = this.animations.move.frame;
 		var moveX = 0;
 		var	moveY = 0;
 
-		if(this.estateAnimation >= DEPLACEMENT_DURATION) {
+		if(this.estateAnimation >= maxFrame) {
 			this.estateAnimation = -1;
 		} else if(this.estateAnimation >= 0) {
-			frame = Math.floor(this.estateAnimation / ANIMATION_DURATION);
-			if(frame > 3) {
-				frame %= 6;
+			frame = Math.floor(this.estateAnimation / this.animations.move.speed);
+			if(frame > (maxFrame / 2)) {
+				frame %= maxFrame;
 			}
 
-			var pixelsToGo = this.model.resolution - (this.model.resolution * (this.estateAnimation / DEPLACEMENT_DURATION));
+			var pixelsToGo = this.model.resolution - (this.model.resolution * (this.estateAnimation / maxFrame));
 
 			if(this.look === this.direction.top) {
 				moveY = pixelsToGo;
@@ -142,14 +147,15 @@ app.models.PlayerModel = (function(){
 
 	PlayerModel.prototype.smokeScreen = function(){
 	var frame = 0;
+	var maxFrame = this.animations.smoke.frame;
 	var smokeImage = new Image();
 		smokeImage.src = Pics.paths.effects + Pics.effects.smoke + this.model.resolution + '.png';
 		this.smokeRef.height = smokeImage.height;
-		this.smokeRef.width = smokeImage.width / 12;
-		if(this.smokeEstateAnimation >= 12) {
+		this.smokeRef.width = smokeImage.width / maxFrame;
+		if(this.smokeEstateAnimation >= maxFrame) {
 			this.smokeEstateAnimation = -1;
 			this.isEaten = false;
-			if (socket.id === this.id){
+			if ('/#' + socket.id === this.id){
 				document.getElementById('playerTeam').setAttribute('src','./image/teams/Chara' + this.team.name.charAt(0).toUpperCase() + this.team.name.substring(1) + '.png');
 			}
 			return;
@@ -158,9 +164,9 @@ app.models.PlayerModel = (function(){
 			this.smokeEstateAnimation = 0;
 		};
 		if(this.smokeEstateAnimation >= 0) {
-			frame = Math.floor(this.smokeEstateAnimation / 1);
-			if(frame > 6) {
-				frame %= 12;
+			frame = Math.floor(this.smokeEstateAnimation / this.animations.smoke.speed);
+			if(frame > (maxFrame / 2)) {
+				frame %= maxFrame;
 			}
 			this.smokeEstateAnimation++;
 			console.log(this.smokeEstateAnimation);
@@ -176,10 +182,12 @@ app.models.PlayerModel = (function(){
 
 
 
-	PlayerModel.prototype.drawCurrentArena = function(player){
-		var img = {x: (Math.floor(player.pos.y / 16)),
-				   y: (Math.floor(player.pos.x / 16))};
-		player.model.canvasBg.src = player.model.canvasBgArray[img.x][img.y];
+	PlayerModel.prototype.drawCurrentArena = function(){
+		var img = {x: (Math.floor(this.pos.y / 16)),
+				   y: (Math.floor(this.pos.x / 16))};
+		var bg = this.model.canvasBgArray[img.x][img.y]
+		this.model.canvasBg.setAttribute('src',bg);
+		console.log('drawCurrentArena for :',this.pos);
 	}
 	
 
@@ -218,7 +226,6 @@ app.models.PlayerModel = (function(){
 				}
 				break;
 		}
-		this.stillOnArena();
 		return this.pos;
 	}
 	
@@ -236,7 +243,7 @@ app.models.PlayerModel = (function(){
 
 	PlayerModel.prototype.stillOnArena = function(){
 		if (this.isOnCurrentArena(this.prevPos) === false){
-			this.drawCurrentArena(this);
+			this.drawCurrentArena();
 		}
 	}
 

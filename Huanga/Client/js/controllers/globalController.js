@@ -277,5 +277,6 @@ app.controllers.GlobalController = (function() {
         map.setMapTilesList(tiles);
         map.generateMap();
         model.canvasBgArray = this.view['GlobalView'].drawCanvas(model.activeMap);
-        model.player.drawCurrentArena(model.player);
+        setTimeout(function(){model.player.drawCurrentArena()},500);
+        ;
     }
