@@ -380,6 +380,14 @@ app.views.GlobalView = (function() {
             elem: buttons[i],
             type: 'document'
         }, 'touchend');
+        this.addListeners({
+            elem: buttons[i],
+            type: 'document'
+        }, 'mousedown');
+        this.addListeners({
+            elem: buttons[i],
+            type: 'document'
+        }, 'mouseup');
 		}
 	};
 
@@ -402,25 +410,27 @@ app.views.GlobalView = (function() {
 		var background = [];
 		var done = false;
         var globalModel = this.model['GlobalModel'];
-        console.log(globalModel)
-		for (var n = 0; n < globalModel.map.mapCol/arenaSize; n++){
+        var colSize = globalModel.map.mapCol/arenaSize; // get number of horizontal maps
+        var rowSize = globalModel.map.mapRow/arenaSize; // get number of vertical maps
+		for (var n = 0; n < colSize; n++){
 			var niSize = (n * arenaSize);
 			background[n] = [];
-			for (var m = 0; m < globalModel.map.mapCol/arenaSize; m++){
+			for (var m = 0; m < rowSize; m++){
 				var mjSize = (m * arenaSize);
+        //console.log(globalModel)
 				for (c = mjSize; c < (mjSize + arenaSize); c++ ){
 					if (typeof map[c] === 'object'){
 						for (r = niSize; r < (niSize + arenaSize); r++){
-							if (typeof map[c][r] === 'object'){
+							if (typeof map[c][r] === 'object' && map[c][r].canDraw){
 								var image = map[c][r];
 								var tile = new Image();
-								tile.src = image.getImageSrc() + image.getImage();
-								globalModel.ctx.drawImage(tile,(c%arenaSize * image.size.width),(r%arenaSize * image.size.height),image.size.width,image.size.height);
-								if (c%arenaSize === 15 && r%arenaSize === 15){
-									background[n][m] = (globalModel.canvas.toDataURL("./image/background" + paint + ".png"));
-									paint++;
-									globalModel.ctx.clearRect(0,0,globalModel.canvas.width,globalModel.canvas.height);
-								}
+								tile.src = image.getImage();
+                                globalModel.ctx.drawImage(tile,(c%arenaSize * image.size.width / image.factor),(r%arenaSize * image.size.height / image.factor),image.size.width,image.size.height);
+                                if (c%arenaSize === 15 && r%arenaSize === 15){
+                                    background[n][m] = (globalModel.canvas.toDataURL("./image/background" + paint + ".png"));
+                                    paint++;
+                                    globalModel.ctx.clearRect(0,0,globalModel.canvas.width,globalModel.canvas.height);
+                                }
 							}
 						}
 					}

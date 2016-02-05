@@ -1,10 +1,13 @@
 app.models.TileModel = (function(){
 	function TileModel(){
 		this.imageSrc = '';
-		this.image = 'imageName.png';
-		this.isBlock = false;
+		this.val = '';
+		this.image = '';
+		this.isBlock = true;
 		this.pos = {x: 0,y: 0};
 		this.size = {width: 0,height: 0};
+		this.factor = 1;
+		this.canDraw = true;
 		this.direction = {top: false, bottom: true, left: false, right: false};
 	}
 
@@ -41,6 +44,13 @@ app.models.TileModel = (function(){
 	}
 	TileModel.prototype.getIsBlock = function(){
 		return this.isBlock;
+	}
+	TileModel.prototype.setFactor = function(factor){
+		this.factor = factor || 1;
+		return this;
+	}
+	TileModel.prototype.getFactor = function(){
+		return this.factor;
 	}
 
 

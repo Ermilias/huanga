@@ -179,10 +179,6 @@ app.controllers.GlobalController = (function() {
 		this.view['GlobalView'].activateListeners();
 		this.model['GlobalModel'].loaded();
 	}
-	app.controllers.GlobalController.prototype.gameMapClickAction = function(){
-		//DO SOMETHING...
-		//this.model['GlobalModel'].loaded();
-	}
 	
 	app.controllers.GlobalController.prototype.upButtonTouchstartAction = function(){
 		this.model['GlobalModel'].changeImage('upButton', 'pressed');
@@ -199,20 +195,17 @@ app.controllers.GlobalController = (function() {
 		this.model['GlobalModel'].changeImage('downButton', 'pressed');
         clearInterval(this.intervals['move']);
         this.intervals['move'] = setInterval(function(){this.keyKeydownAction({data: 40})}.bind(this),50);
-
 	}
 	
 	app.controllers.GlobalController.prototype.downButtonTouchendAction = function(){
 		this.model['GlobalModel'].changeImage('downButton', 'released');
         clearInterval(this.intervals['move']);
-
 	}
 	
 	app.controllers.GlobalController.prototype.leftButtonTouchstartAction = function(){
 		this.model['GlobalModel'].changeImage('leftButton', 'pressed');
         clearInterval(this.intervals['move']);
         this.intervals['move'] = setInterval(function(){this.keyKeydownAction({data: 37})}.bind(this),50);
-
 	}
 	
 	app.controllers.GlobalController.prototype.leftButtonTouchendAction = function(){
@@ -224,13 +217,57 @@ app.controllers.GlobalController = (function() {
 		this.model['GlobalModel'].changeImage('rightButton', 'pressed');
         clearInterval(this.intervals['move']);
         this.intervals['move'] = setInterval(function(){this.keyKeydownAction({data: 39})}.bind(this),50);
-
 	}
 	
 	app.controllers.GlobalController.prototype.rightButtonTouchendAction = function(){
 		this.model['GlobalModel'].changeImage('rightButton', 'released');
         clearInterval(this.intervals['move']);
 	}
+    
+    app.controllers.GlobalController.prototype.upButtonMousedownAction = function(){
+        this.model['GlobalModel'].changeImage('upButton', 'pressed');
+        clearInterval(this.intervals['move']);
+        this.intervals['move'] = setInterval(function(){this.keyKeydownAction({data: 38})}.bind(this),50);
+    }
+    
+    app.controllers.GlobalController.prototype.upButtonMouseupAction = function(){
+        this.model['GlobalModel'].changeImage('upButton', 'released');
+        clearInterval(this.intervals['move']);
+    }
+    
+    app.controllers.GlobalController.prototype.downButtonMousedownAction = function(){
+        this.model['GlobalModel'].changeImage('downButton', 'pressed');
+        clearInterval(this.intervals['move']);
+        this.intervals['move'] = setInterval(function(){this.keyKeydownAction({data: 40})}.bind(this),50);
+    }
+    
+    app.controllers.GlobalController.prototype.downButtonMouseupAction = function(){
+        this.model['GlobalModel'].changeImage('downButton', 'released');
+        clearInterval(this.intervals['move']);
+    }
+    
+    app.controllers.GlobalController.prototype.leftButtonMousedownAction = function(){
+        this.model['GlobalModel'].changeImage('leftButton', 'pressed');
+        clearInterval(this.intervals['move']);
+        this.intervals['move'] = setInterval(function(){this.keyKeydownAction({data: 37})}.bind(this),50);
+    }
+    
+    app.controllers.GlobalController.prototype.leftButtonMouseupAction = function(){
+        this.model['GlobalModel'].changeImage('leftButton', 'released');
+        clearInterval(this.intervals['move']);
+    }
+    
+    app.controllers.GlobalController.prototype.rightButtonMousedownAction = function(){
+        this.model['GlobalModel'].changeImage('rightButton', 'pressed');
+        clearInterval(this.intervals['move']);
+        this.intervals['move'] = setInterval(function(){this.keyKeydownAction({data: 39})}.bind(this),50);
+    }
+    
+    app.controllers.GlobalController.prototype.rightButtonMouseupAction = function(){
+        this.model['GlobalModel'].changeImage('rightButton', 'released');
+        clearInterval(this.intervals['move']);
+    }
+
 	app.controllers.GlobalController.prototype.keyKeydownAction = function(val) {
 		// On récupère le code de la touche
 		switch(val.data) {
@@ -267,11 +304,17 @@ app.controllers.GlobalController = (function() {
 
         for (var i = 0; i < tiles.length; i++) {
             for (key in tiles[i]){ 
-                var label = tiles[i][key].name.split('_')[0];
-                var type = tiles[i][key].name.split('_')[1].split('.')[1];
-                tiles[i][key].name = label + '_' + val.data + '.' + type;
-                tiles[i][key].size = {width: val.data, height: val.data};
-                console.log(tiles[i][key].name);
+                var tile = tiles[i][key];
+                var label = tile.name.split('_')[0];
+                var type = tile.name.split('_')[1].split('.')[1];
+                if (tile.type === 'block'){
+                    tile.name = label + '_' + tile.factor * val.data + '.' + type;
+                    tile.size = {width: tile.factor * val.data, height: tile.factor * val.data};
+                }else{
+                    tile.name = label + '_' + val.data + '.' + type;
+                    tile.size = {width: val.data, height: val.data};
+                }
+                console.log(tile.name);
             }
         };
         map.setMapTilesList(tiles);

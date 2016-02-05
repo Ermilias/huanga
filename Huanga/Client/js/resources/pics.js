@@ -3,6 +3,7 @@ var Pics = {
 		grounds: './image/tiles/grounds/',
 		teams: './image/teams/',
 		walls: './image/tiles/walls/',
+		blocks: './image/tiles/blocks/',
 		effects: './image/effects/',
 		gui: './image/gui/',
 	},
@@ -12,9 +13,12 @@ var Pics = {
 		circle: 'circle_',
 	}, 
 	grounds: {
-		sands: ['tileSand_'],
+		sands: ['tileSand_','tileSandB_'],
 	},
 	walls: {
-		stone: ['tileStone_','tileStoneB_'],
+		stone: ['tileStone_','tileStoneB_','tileStoneC_','tileStoneD_','tileStoneE_'],
+	},
+	blocks: {
+		stone: ['tileBlock_','tileBlockB_','tileBlockC_','tileBlockD_',],
 	},
 }
