@@ -47,9 +47,7 @@
 		document.getElementById('mapContainer').appendChild(canvas);
 		canvas.setAttribute('id', 'gameMap');
 
-		//var main = app.startGlobal('37.187.77.111','8080');
-		//var main = app.startGlobal('192.168.0.6','8080');
-		var main = app.startGlobal('localhost','8080');
+		var main = app.startGlobal('www.huanga.eleguen.ovh','8081');
 		var globalModel = main.models.model;
 		var resolution = globalModel.resolution;
 		var socket = main.socket;

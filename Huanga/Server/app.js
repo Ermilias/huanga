@@ -2,8 +2,8 @@ console.log(typeof(process.argv[3]));
 var numOfMap = parseInt(process.argv[2]) || 1;
 var mapType = process.argv[3] === 'l' ? 'largeMaps' : 'smallMaps';
 console.log(mapType);
-var port = parseInt(process.argv[4]) || 8080;
-var io = require('socket.io')(8080);
+var port = parseInt(process.argv[4]) || 8081;
+var io = require('socket.io')(8081);
 var idGen = require('./js/keyGen.js');
 var Player = require('./js/playersManager.js');
 var Map = require('./js/mapManager.js');
@@ -17,7 +17,7 @@ var teamsNames = ['fire','water','earth'];
 var teamsG = new TeamGenerator(teamsNames,3);
 var teams = teamsG.teams;
 
-io.set('origins','*:8080');
+io.set('origins','*:8081');
 Map.setMaps(maps[mapType]);
 Map.generateMap(numOfMap);
 

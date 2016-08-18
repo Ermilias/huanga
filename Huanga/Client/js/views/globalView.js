@@ -4,9 +4,10 @@ app.views.GlobalView = (function() {
     function GlobalView(name, model) {
         Observable.call(this);
         this.name = name;
-        this.listToNotPrevent = ['key']; // Here are defined the type of event that are not prevented by default
-        this.prevent = 'not-prevented';
-        this.required = 'please complete the mandatory field(s)!'; // ON HOLD
+        this.any = 'any',
+        this.acceptType = 'all',
+        this.prevent = 'not-prevented',
+        this.required = 'please complete the mandatory field(s)!',
             this.model = {
                 [model.name]: model
             };
@@ -39,9 +40,9 @@ app.views.GlobalView = (function() {
     };
     /*
      *
-     * init() will be call on the view creation
+     * init() will be call on application start
      * you can define here any listener that do not depend
-     * of dynamic DOM (in case your application is dynamicaly 
+     * of dynamic DOM (in case your application view is dynamicaly 
      * generated) The default listener on DOMContentLoaded will
      * allow the launch on other listener that do depend of dynamic DOM
      *
@@ -49,8 +50,7 @@ app.views.GlobalView = (function() {
     GlobalView.prototype.init = function() {
         var doc = document;
         this.addListeners({
-            elem: doc,
-            type: 'document'
+            'document': doc
         }, 'DOMContentLoaded');
     };
     /*
@@ -60,47 +60,61 @@ app.views.GlobalView = (function() {
      *
      */
     GlobalView.prototype.activateListeners = function() {
-        var doc = document;
-        this.addListeners({
-            elem: doc,
-            type: 'id'
-        }, 'click');
     };
     /*
      *
      * addListeners() is the setup for your event depending of elem.type
      *
      */
+
     GlobalView.prototype.addListeners = function(obj, onEvent) {
-        obj.type = obj.type || 'document';
-        if (obj.type === 'class' || obj.type === 'tag') {
-            var elemsL = obj.elem.length;
-            for (var i = 0; i < elemsL; i++) {
-                obj.elem[i].addEventListener(onEvent, function(event) {
-                    this.setEvent(event, obj, onEvent);
-                }.bind(this));
-            }
-        } else {
-            obj.elem.addEventListener(onEvent, function(event) {
-                this.setEvent(event, obj, onEvent);
-            }.bind(this));
+        obj.id = obj.id || null;
+        obj.class = obj.class || null;
+        obj.tag = obj.tag || null;
+        obj.document = obj.document || null;
+
+        if (obj.id !== null) {
+            this.setListeners(obj.id, 'id', onEvent);
+        }
+        if (obj.class !== null) {
+            this.setListeners(obj.class, 'class', onEvent);
+        }
+        if (obj.tag !== null) {
+            this.setListeners(obj.tag, 'tag', onEvent);
+        }
+        if (obj.document !== null) {
+            this.setListeners(obj.document, 'document', onEvent);
         }
     };
-    /*
-     *
-     * preventDefault() will check if event must be prevented or not
-     *
-     */
-    GlobalView.prototype.preventDefault = function(event, obj) {
-        obj.prevent = obj.prevent || false;
-        var tltnp = this.listToNotPrevent.indexOf(obj.type);
-        var toetc = typeof(event.target.className);
-        var etcioBool = toetc !== 'undefined' && event.target.className.indexOf(this.prevent) === -1;
-        if ((tltnp === -1 || (tltnp !== -1 && obj.prevent)) && (toetc === 'undefined' || etcioBool)) {
-            console.log('prevented',tltnp === -1, toetc === 'undefined' ,etcioBool, obj.prevent);
-            event.preventDefault();
+
+    GlobalView.prototype.setListeners = function (elems, type, onEvent) {
+        if (type === 'document') {
+            elems.addEventListener(onEvent, function(event) {
+                this.setEvent(event, type, onEvent);
+            }.bind(this));      
+        } else {
+            console.log(type);
+            var elemsL = elems.length;
+            for (var i = 0; i < elemsL; i++) {
+                var elem = elems[i];
+                if (typeof elem === 'undefined' || elem === null) {
+                    continue;
+                }
+                if (type === 'id'){
+                    elem.addEventListener(onEvent, function(event) {
+                        this.setEvent(event, type, onEvent);
+                    }.bind(this));
+                } else {
+                    var elemL = elem.length;
+                    for (var j = 0; j < elemL; j++) {
+                        elem[j].addEventListener(onEvent, function(event) {
+                            this.setEvent(event, type, onEvent);
+                        }.bind(this));
+                    }
+                }
+            }
         }
-    }
+    };
     /*
      *
      * setEvent() will handle all the informations you might need 
@@ -119,183 +133,139 @@ app.views.GlobalView = (function() {
      * keep their default behaviour
      *
      */
-    GlobalView.prototype.setEvent = function(event, obj, onEvent) {
-                this.preventDefault(event, obj);
+    GlobalView.prototype.setEvent = function(event, type, onEvent) {
+        console.log(type,onEvent);
+        if (typeof(event.target.className) === 'undefined' || event.target.className.indexOf(this.prevent) === -1) {
+            event.preventDefault();
+        }
         if (onEvent === 'DOMContentLoaded') {
             var value = {};
             this.sendNotify({
-                cmd: obj.type,
+                cmd: type,
                 on: onEvent,
                 val: value,
                 target: event.target
             });
             return false;
-
         } else {
+            if (this.checkAcceptEventType(event, onEvent) === true) {
+                this.sendEvent(event, type, onEvent);
+            }
+        }
+        return false;
+    };
+
+    GlobalView.prototype.checkEventType = function(event, typeSource, type) {
+        var bool = (typeSource === type && event.target.className !== this.prevent);
+        console.log(bool, typeSource, type);
+        return bool;
+    }
+
+    GlobalView.prototype.checkElemType = function(event, types) {
+        types = types || 'undefined';
+        // console.log(event.target.dataset.targetType);
+        var targetType = event.target.dataset.targetType || '';
+        if (targetType === '' || targetType.indexOf(this.any) !== -1 || targetType.indexOf(types) !== -1) {
+            return true;
+        }
+        return false;
+    }
+
+    GlobalView.prototype.checkType = function(event, typeSource, type) {
+        var bool = this.checkElemType(event, type) && this.checkEventType(event, typeSource, type);
+        return bool;
+    }
+    /*
+     *
+     * Will check if event type is allowed on target (default: is true);
+     *
+     */
+    GlobalView.prototype.checkAcceptEventType = function(event, onEvent) {
+         var acceptEvent = (typeof event.target.dataset.acceptEvent === 'undefined') ? this.acceptType : event.target.dataset.acceptEvent;
+         console.log(acceptEvent, onEvent,(acceptEvent !== this.acceptType && acceptEvent.indexOf(onEvent) === -1));
+         if (acceptEvent !== this.acceptType && acceptEvent.indexOf(onEvent) === -1) {
+            return false;
+         }
+         return true;
+    }
+    /*
+     *
+     * sendEvent() will call all events of same type (eg: 'click') attached to an element 
+     *
+     */
+    GlobalView.prototype.sendEvent = function(event, type, onEvent){
+        var value = {};
+        if (this.checkType(event, type, 'id')) {
             if (onEvent === 'keydown' || onEvent === 'keypress' || onEvent === 'keyup') {
                 this.sendNotify({
-                    cmd: 'key',
+                    cmd: event.target.id,
                     on: onEvent,
                     val: event.keyCode,
                     target: event.target
                 });
-                return false;
-            } else {
-                var notPrevented = (event.target.className && event.target.className !== this.prevent);
-                if (typeof(event.target.className) !== 'undefined' && event.target.className.indexOf('any') !== -1) {
-                    console.log('any');
-                    this.anyEvent(event, obj, onEvent, notPrevented);
-                } else {
-                    console.log('priority');
-                    this.priorityEvent(event, obj, onEvent, notPrevented);
-                }
-            }
-        }
-        return false;
-    };
-    /*
-     *
-     * anyEvent will call all event attached to an object regardless of 
-     * the event's type
-     *
-     */
-    GlobalView.prototype.anyEvent = function(event, obj, onEvent, notPreventedBool) {
-        var value = {};
-        var toetc = typeof(event.target.className);
-        if (obj.type === 'id') {
-            if (event.target.parentNode.nodeName === 'FORM') {
-                value = this.inputHandler(event, value);
-                if (value === false) {
-                    this.sendNotify({
-                        cmd: 'error',
-                        on: 'Required'
-                    });
+            } else if (event.target.parentNode.getElementsByTagName('input')) {
+                value = this.inputHandler(event,value);
+                if (value === false){
                     return false;
                 }
             }
-            this.senderHandler(obj, event, onEvent, value);
+            this.sendNotify({
+                cmd: event.target.id,
+                on: onEvent,
+                val: value,
+                target: event.target
+            });
         }
-        if (obj.type === 'class' && notPreventedBool) {
-            this.senderHandler(obj, event, onEvent, value);
+        if (this.checkType(event, type, 'class')) {
+            this.sendNotify({
+                cmd: event.target.className,
+                on: onEvent,
+                val: value,
+                target: event.target
+            });
         }
-        if (obj.type === 'tag' && (toetc === 'undefined' || notPreventedBool)) {
-            this.senderHandler(obj, event, onEvent, value);
+        if (this.checkType(event, type, 'tag')) {
+            this.sendNotify({
+                cmd: event.target.tagName,
+                on: onEvent,
+                val: value,
+                target: event.target
+            });
         }
-        if (obj.type === 'document' && (toetc === 'undefined' || notPreventedBool)) {
-            this.senderHandler(obj, event, onEvent, value);
-        }
-        return false;
-    };
-    /*
-     *
-     * priorityEvent will call one event attached to an object regardless of 
-     * the event's type
-     *
-     */
-    GlobalView.prototype.priorityEvent = function(event, obj, onEvent, notPreventedBool) {
-        var value = {};
-        if (event.target.id) {
-            if (obj.type !== 'id' && obj.type !== 'document') {
-                return false;
-            }
-            if (event.target.parentNode.nodeName === 'FORM') {
-                value = this.inputHandler(event, value);
-                if (value === false) {
-                    this.sendNotify({
-                        cmd: 'error',
-                        on: 'Required'
-                    });
-                    return false;
-                }
-            }
-            this.senderHandler(obj, event, onEvent, value);
-        } else if (notPreventedBool) {
-            if (obj.type !== 'class' && obj.type !== 'document') {
-                return false;
-            }
-            this.senderHandler(obj, event, onEvent, value);
-        } else if (event.target.tagName && notPreventedBool) {
-            if (obj.type !== 'tag' && obj.type !== 'document') {
-                return false;
-            }
-            this.senderHandler(obj, event, onEvent, value);
-        } else if (obj.type === 'document' && notPreventedBool) {
-            this.senderHandler(obj, event, onEvent, value);
-        }
-    };
-
-    GlobalView.prototype.senderHandler = function(obj, event, onEvent, value) {
-        switch (obj.type) {
-            case 'id':
+        if (this.checkType(event, type, 'document')) {
+            if (onEvent === 'keydown' || onEvent === 'keypress' || onEvent === 'keyup') {
                 this.sendNotify({
-                    cmd: event.target.id,
+                    cmd: 'document',
                     on: onEvent,
-                    val: value,
+                    val: event.keyCode,
                     target: event.target
                 });
-                break;
-            case 'class':
-                this.sendNotify({
-                    cmd: event.target.className,
-                    on: onEvent,
-                    val: value,
-                    target: event.target
-                });
-                break;
-            case 'tag':
-                this.sendNotify({
-                    cmd: event.target.tagName,
-                    on: onEvent,
-                    val: value,
-                    target: event.target
-                });
-                break;
-            case 'document':
-                this.sendNotify({
-                    cmd: event.target.id || event.target.className || event.target.tagName,
-                    on: onEvent,
-                    val: value,
-                    target: event.target
-                });
-            default:
-                break;
+            }
+            this.sendNotify({
+                cmd: 'document',
+                on: onEvent,
+                val: value,
+                target: event.target
+            });
         }
     }
-  
-    GlobalView.prototype.inputHandler = function(event, value) {
-        var inputValues = event.target.parentNode.getElementsByTagName('input') || [];
-        var selectValues = event.target.parentNode.getElementsByTagName('select') || [];
-        console.log(selectValues);
-        //var inputValues = inputValues.concat(selectValues);
-        var length = inputValues.length;
+
+    GlobalView.prototype.inputHandler = function(event,value){
+        var values = event.target.parentNode.getElementsByTagName('input');
+        var length = values.length;
         for (var i = 0; i < length; i++) {
-            var checkRadBool = (inputValues[i].type === 'checkbox' || inputValues[i].type === 'radio');
-            var requiredBool = (inputValues[i].required && ((!checkRadBool && inputValues[i].value !== '') || (checkRadBool && inputValues[i].checked)));
-            if (inputValues[i].required === false || requiredBool) {
-                var key = inputValues[i].id || inputValues[i].name;
-                if (checkRadBool && inputValues[i].checked) {
+            var checkRadBool = (values[i].type === 'checkbox' || values[i].type === 'radio');
+            var requiredBool = (values[i].required && ((!checkRadBool && values[i].value !== '') || (checkRadBool && values[i].checked)));
+            if (values[i].required === false || requiredBool){
+                var key = values[i].id || values[i].name;
+                if (checkRadBool && values[i].checked){
                     value[key] = value[key] ? value[key] : [];
-                    value[key].push(inputValues[i].value);
-                } else if (!checkRadBool) {
-                    value[key] = inputValues[i].value;
+                    value[key].push(values[i].value);
+                }else if (!checkRadBool) {
+                    value[key] = values[i].value;
                 }
-            } else {
-                return false;
-            }
-        }
-        var selectL = selectValues.length;
-        for (var j = 0; j < selectL; j++){
-            var checkRadBool = (selectValues[j].type === 'checkbox' || selectValues[j].type === 'radio');
-            var requiredBool = (selectValues[j].required && ((!checkRadBool && selectValues[j].value !== '') || (checkRadBool && selectValues[j].checked)));
-            if (selectValues[j].required === false || requiredBool) {
-                var key = selectValues[j].id || selectValues[j].name;
-                if (checkRadBool && selectValues[j].checked) {
-                    value[key] = value[key] ? value[key] : [];
-                    value[key].push(selectValues[j].value);
-                } else if (!checkRadBool) {
-                    value[key] = selectValues[j].value;
-                }
-            } else {
+            }else{
+                alert(this.required);
                 return false;
             }
         }
@@ -314,7 +284,7 @@ app.views.GlobalView = (function() {
      *   customAttr : obj.customAttr || undefined (or {},[],'',0,etc..), 
      * }
      * Doing so will prevent error if you do not pass the attribute
-     * as it will automaticaly set the attribute to a default value if nothing
+     * as it will automaticaly set the attribute to undefined if nothing
      * is provided
      * 
      */
@@ -326,6 +296,41 @@ app.views.GlobalView = (function() {
             target: obj.target || undefined,
         });
     };
+
+    /*
+     *
+     * The 3 followings functions are here to simplify the addListeners function as the
+     * last one require array for its object parammeter (except for 'document' which only need document as value)
+     *
+     */
+
+
+    GlobalView.prototype.getElementsByIds = function() {
+        var result = [];
+        var argsL = arguments.length;
+        for (var i = 0; i < argsL; i++) {
+            result.push(document.getElementById(arguments[i]));
+        }
+        return result;
+    };
+
+    GlobalView.prototype.getElementsByClassName = function() {
+        var result = [];
+        var argsL = arguments.length;
+        for (var i = 0; i < argsL; i++) {
+            result.push(document.getElementsByClassName(arguments[i]));
+        }
+        return result;
+    };
+
+    GlobalView.prototype.getElementsByTagName = function() {
+        var result = [];
+        var argsL = arguments.length;
+        for (var i = 0; i < argsL; i++) {
+            result.push(document.getElementsByTagName(arguments[i]));
+        }
+        return result;
+    };
     /*
      *
      * update will catch all notify() from any model(s) that have this view attached
@@ -334,7 +339,10 @@ app.views.GlobalView = (function() {
      */
     GlobalView.prototype.update = function(event) {
         console.log(this.name + ' : event received : ' + event.cmd);
+        // event.cmd will indicate the action the view need to apply
     };
+
+
     return GlobalView;
 }).call(this);
 
@@ -356,39 +364,25 @@ app.views.GlobalView = (function() {
 
 
 	app.views.GlobalView.prototype.activateListeners = function(){
-		var doc = document;
-		var body = doc.getElementById('body');
-		var buttons = doc.getElementsByClassName('arrowImage');
-        var doc = document;
-        var formRad = document.getElementById('resolution');
         this.addListeners({
-            elem: formRad,
-            type: 'id'
+            'id': this.getElementsByIds('resolution')
         }, 'click');
+        var buttons = this.getElementsByIds('upButton', 'downButton', 'leftButton', 'rightButton');
         this.addListeners({
-            elem: doc,
-            type: 'document'
-        }, 'keydown');
-
-		for (var i = 0; i < buttons.length; ++i)
-		{
-        this.addListeners({
-            elem: buttons[i],
-            type: 'document'
-        }, 'touchstart');
-        this.addListeners({
-            elem: buttons[i],
-            type: 'document'
-        }, 'touchend');
-        this.addListeners({
-            elem: buttons[i],
-            type: 'document'
+            'id': buttons
         }, 'mousedown');
         this.addListeners({
-            elem: buttons[i],
-            type: 'document'
+            'id': buttons
         }, 'mouseup');
-		}
+        this.addListeners({
+            'id': buttons
+        }, 'touchstart');
+        this.addListeners({
+            'id': buttons
+        }, 'touchend');
+        this.addListeners({
+            'document': document
+        }, 'keydown');
 	};
 
 

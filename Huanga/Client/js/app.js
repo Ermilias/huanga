@@ -10,10 +10,10 @@ var app = {
         socket: {},
     },
 
-    startGlobal: function(ip,port) {
-        if(typeof ip !== undefined){
+    startGlobal: function(host,port) {
+        if(typeof host !== undefined){
             port = port || 80;
-            this.global.socket = io(ip + ':' + port);
+            this.global.socket = io(host + ':' + port);
         }
         var model = this.global.models.model = new app.models.GlobalModel('GlobalModel');
         var formModel = this.global.models.formModel = new app.models.FormModel('FormModel');
