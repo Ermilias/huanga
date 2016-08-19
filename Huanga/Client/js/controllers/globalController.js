@@ -272,27 +272,22 @@ app.controllers.GlobalController = (function() {
 
 	app.controllers.GlobalController.prototype.documentKeydownAction = function(val) {
 		// On récupère le code de la touche
-        console.log(val);
-		switch(val.data) {
-			case 38 : case 122 : case 119 : case 90 : case 87 : // Flèche haut, z, w, Z, W
-				console.log('ok');
-                this.model['GlobalModel'].deplacer('top');
-				break;
-			case 40 : case 115 : case 83 : // Flèche bas, s, S
-				this.model['GlobalModel'].deplacer('bottom');
-				break;
-			case 37 : case 113 : case 97 : case 81 : case 65 : // Flèche gauche, q, a, Q, A
-				this.model['GlobalModel'].deplacer('left');
-				break;
-			case 39 : case 100 : case 68 : // Flèche droite, d, D
-				this.model['GlobalModel'].deplacer('right');
-				break;
-			default : 
-				// Si la touche ne nous sert pas, nous n'avons aucune raison de bloquer son comportement normal.
-				return true;
-		}
-		
-		return false;
+		if (CONTROLS.up.indexOf(val.data) !== -1) { // Flèche haut, z, w, Z, W
+            this.model['GlobalModel'].deplacer('top');
+            return false;
+        } else if (CONTROLS.down.indexOf(val.data) !== -1) { // Flèche bas, s, S
+			this.model['GlobalModel'].deplacer('bottom');
+            return false;
+        } else if (CONTROLS.left.indexOf(val.data) !== -1) { // Flèche gauche, q, a, Q, A
+			this.model['GlobalModel'].deplacer('left');
+            return false;
+        } else if (CONTROLS.right.indexOf(val.data) !== -1) { // Flèche droite, d, D
+			this.model['GlobalModel'].deplacer('right');
+            return false;
+        }
+        
+		// Si la touche ne nous sert pas, nous n'avons aucune raison de bloquer son comportement normal.
+		return true;
 	}
     app.controllers.GlobalController.prototype.applyResoClickAction = function(val){
         this.model['GlobalModel'].setResolution(val.data.reso[0]);

@@ -12,29 +12,25 @@ app.models.MapModel = (function(){
 		this.map = [];
 		this.mapCol = 0;
 		this.mapRow = 0;
+		this.tempTile = {};
 	}
 MapModel.prototype = Object.create(Observable.prototype);
 MapModel.prototype.constructor = MapModel;
 
 MapModel.prototype.setMapTilesList = function(array){
 	console.log(array);
-	for (var i = array.length - 1; i >= 0; i--) {
+	for (var i = 0; i < array.length; i++) {
 		this.mapTilesList[i] = [];
-		for (key in array[i]){
+		for (var j =0; j < array[i].length; j++){
 			var tile = new app.models.TileModel();
-			tile.setImageSrc(array[i][key].path);
-			tile.setImage(array[i][key].name);
-			tile.setSize(array[i][key].size);
-			tile.setIsBlock(array[i][key].isBlock);
-			tile.setFactor(array[i][key].factor);
+			tile.setImageSrc(array[i][j].path);
+			tile.setImage(array[i][j].name);
+			tile.setSize(array[i][j].size);
+			tile.setIsBlock(array[i][j].isBlock);
+			tile.setFactor(array[i][j].factor);
 			this.mapTilesList[i].push(tile);
 		}
 	};
-	return this;
-}
-MapModel.prototype.setTilesWeight = function(array){
-	console.log(array);
-	this.tilesWeight = array;
 	return this;
 }
 
@@ -43,13 +39,13 @@ MapModel.prototype.rand = function(min, max) {
 };
  
 MapModel.prototype.getRandomItem = function(list, weight) {
+    console.log(list, weight);
     var total_weight = weight.reduce(function (prev, cur, i, arr) {
         return prev + cur;
     });
      
     var random_num = this.rand(0, total_weight);
     var weight_sum = 0;
-    //console.log(random_num)
      
     for (var i = 0; i < list.length; i++) {
         weight_sum += weight[i];
@@ -92,39 +88,39 @@ MapModel.prototype.generateMap = function(){
 	for (var row = 0; row < this.map.length; row++){
 		this.mapTiles[row] = {};
 		for (var key = 0; key < this.map[row].length; key++){
-			if (this.map[row][key] === 3){
+			var idx = this.map[row][key];
+			console.log(idx, this.mapTiles[row], key);
+			if (idx >= TILES.length){
 				this.mapTiles[row][key] = this.tempTile;
 				this.mapTiles[row][key].canDraw = false;
-				continue;
-			}
-			
-			var tileList = this.mapTilesList[this.map[row][key]];
-			console.log(this.map[row][key]);
-			var mapTile = this.getRandomItem(tileList,this.tilesWeight[this.map[row][key]]);
-			
-			var tile = new app.models.TileModel();
-			tile.setImage(mapTile.getImage());
-			tile.setSize(mapTile.getSize());
-			tile.setIsBlock(mapTile.getIsBlock());
-			tile.setFactor(mapTile.getFactor());
-			tile.setPosition({x: (row * tile.size.width), y: (key * tile.size.height)});
+			} else {
+				var tileList = this.mapTilesList[idx];
+				var mapTile = this.getRandomItem(tileList, TILESWEIGHT[idx]);
+				
+				var tile = new app.models.TileModel();
+				tile.setImage(mapTile.getImage());
+				tile.setSize(mapTile.getSize());
+				tile.setIsBlock(mapTile.getIsBlock());
+				tile.setFactor(mapTile.getFactor());
+				tile.setPosition({x: (row * tile.size.width), y: (key * tile.size.height)});
 
-			this.mapTiles[row][key] = tile;
+				this.mapTiles[row][key] = tile;
 
-			if (this.map[row][key] === 2) {
-				var tempTile = new app.models.TileModel();
-				tempTile.setImage(mapTile.getImage());
-				tempTile.setSize(mapTile.getSize());
-				tempTile.setIsBlock(mapTile.getIsBlock());
-				tempTile.setFactor(mapTile.getFactor());
-				tempTile.setPosition({x: (row * tempTile.size.width), y: (key * tempTile.size.height)});
-				this.tempTile = tempTile;
-				console.log(tempTile);
-				count = 1;
-				while (this.map[row][key + count] === 3){
-					count += 1;
+				if (idx === 2) {
+					var tempTile = new app.models.TileModel();
+					tempTile.setImage(mapTile.getImage());
+					tempTile.setSize(mapTile.getSize());
+					tempTile.setIsBlock(mapTile.getIsBlock());
+					tempTile.setFactor(mapTile.getFactor());
+					tempTile.setPosition({x: (row * tempTile.size.width), y: (key * tempTile.size.height)});
+					this.tempTile = tempTile;
+					console.log(tempTile);
+					count = 1;
+					while (this.map[row][key + count] === 3){
+						count += 1;
+					}
+					console.log(count);
 				}
-				console.log(count);
 			}
 		}
 	}
@@ -132,25 +128,6 @@ MapModel.prototype.generateMap = function(){
 	this.mapRow = row;
 	return this;
 }
-
-/*MapModel.prototype.generateMap_BK = function(){
-	for (var row = 0; row < this.map.length; row++){
-		this.mapTiles[row] = {};
-		for (var key = 0; key < this.map[row].length; key++){
-			var tileList = this.mapTilesList[this.map[row][key]];
-			var mapTile = this.getRandTile(tileList);
-			var tile = new app.models.TileModel();
-			tile.setImage(mapTile.getImage());
-			tile.setSize(mapTile.getSize());
-			tile.setIsBlock(mapTile.getIsBlock());
-			tile.setPosition({x: (row * tile.size.width), y: (key * tile.size.height)});
-			this.mapTiles[row][key] = tile;
-		}
-	}
-	this.mapCol = key;
-	this.mapRow = row;
-	return this;
-}*/
 
 MapModel.prototype.checkCol = function(pos){
 	if (this.mapTiles[pos.x][pos.y].isBlock){

@@ -1,4 +1,4 @@
-function Team(id) {
+function TeamModel(id) {
 	this.id = id;
 	this.name;
 	this.imageSrc = '';
@@ -8,57 +8,56 @@ function Team(id) {
 	this.estateAnimation = -1;
 	return this;
 }
-Team.prototype.setModel = function(model){
+TeamModel.prototype.setModel = function(model){
 	this.model = model;	
 	return this;
 };
 
-Team.prototype.setName = function(name) {
+TeamModel.prototype.setName = function(name) {
 	this.name = name;
 	return this;
 };
 
-Team.prototype.getName = function() {
+TeamModel.prototype.getName = function() {
 	return this.name;
 };
-Team.prototype.setImageSrc = function(path) {
+TeamModel.prototype.setImageSrc = function(path) {
 	this.imageSrc = path;
 	console.log(path);
 	return this;
 };
 
-Team.prototype.getImageSrc = function() {
+TeamModel.prototype.getImageSrc = function() {
 	return this.imageSrc;
 };
-Team.prototype.setImage = function(image) {
+TeamModel.prototype.setImage = function(image) {
 	this.image = this.getImageSrc() + image;
 	console.log(this.image);
 	return this;
 };
 
-Team.prototype.getImage = function() {
+TeamModel.prototype.getImage = function() {
 	return this.image;
 };
 
-Team.prototype.addMember = function(player) {
+TeamModel.prototype.addMember = function(player) {
 	this.members[player.id] = player;
 	player.team = this;
 	return this;
 };
 
-Team.prototype.getMember = function(player) {
+TeamModel.prototype.getMember = function(player) {
 	return this.members[player.id];
 };
 
-Team.prototype.removeMember = function(player) {
+TeamModel.prototype.removeMember = function(player) {
 	delete this.members[player.id];
 	return this;
 };
 
-Team.prototype.eat = function(player1,player2){
+TeamModel.prototype.eat = function(player1,player2){
 	//this.smokeScreen(player1);
 	if (player1.team.id === player2.team.id){
-		console.log('ups');
 		return false;
 	}else{
 		var team1 = player1.team;
