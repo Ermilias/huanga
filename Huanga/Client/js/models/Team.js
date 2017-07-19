@@ -1,11 +1,9 @@
-function Team(id) {
-	this.id = id;
-	this.name;
-	this.imageSrc = '';
-	this.image;
+function Team(id, name, sprite, members) {
+    this.setId(id)
+        .setName(name)
+        .setTeamSprite(sprite)
+        .initMembers(members);
 	this.model;
-	this.members = {};
-	this.estateAnimation = -1;
 	return this;
 }
 Team.prototype.setModel = function(model){
@@ -13,7 +11,22 @@ Team.prototype.setModel = function(model){
 	return this;
 };
 
+Team.prototype.setId = function(id) {
+	this.id = id;
+	return this;
+};
+
 Team.prototype.setName = function(name) {
+	this.name = name;
+	return this;
+};
+
+Team.prototype.setTeamSprite = function(sprite) {
+	this.sprite = sprite;
+	return this;
+};
+
+Team.prototype.initMembers = function(...members) {
 	this.name = name;
 	return this;
 };
