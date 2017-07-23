@@ -1,63 +1,73 @@
-function TeamModel(id) {
-	this.id = id;
-	this.name;
-	this.imageSrc = '';
-	this.image;
+function Team(id, name, sprite, members) {
+    this.setId(id)
+        .setName(name)
+        .setTeamSprite(sprite)
+        .initMembers(members);
 	this.model;
-	this.members = {};
-	this.estateAnimation = -1;
 	return this;
 }
-TeamModel.prototype.setModel = function(model){
+Team.prototype.setModel = function(model){
 	this.model = model;	
 	return this;
 };
 
-TeamModel.prototype.setName = function(name) {
+Team.prototype.setId = function(id) {
+	this.id = id;
+	return this;
+};
+
+Team.prototype.setName = function(name) {
 	this.name = name;
 	return this;
 };
 
-TeamModel.prototype.getName = function() {
+Team.prototype.setTeamSprite = function(sprite) {
+	this.sprite = sprite;
+	return this;
+};
+
+Team.prototype.initMembers = function(...members) {
+	this.name = name;
+	return this;
+};
+
+Team.prototype.getName = function() {
 	return this.name;
 };
-TeamModel.prototype.setImageSrc = function(path) {
+Team.prototype.setImageSrc = function(path) {
 	this.imageSrc = path;
 	console.log(path);
 	return this;
 };
 
-TeamModel.prototype.getImageSrc = function() {
+Team.prototype.getImageSrc = function() {
 	return this.imageSrc;
 };
-TeamModel.prototype.setImage = function(image) {
+Team.prototype.setImage = function(image) {
 	this.image = this.getImageSrc() + image;
 	console.log(this.image);
 	return this;
 };
 
-TeamModel.prototype.getImage = function() {
+Team.prototype.getImage = function() {
 	return this.image;
 };
 
-TeamModel.prototype.addMember = function(player) {
+Team.prototype.addMember = function(player) {
 	this.members[player.id] = player;
 	player.team = this;
 	return this;
 };
 
-TeamModel.prototype.getMember = function(player) {
+Team.prototype.getMember = function(player) {
 	return this.members[player.id];
 };
 
-TeamModel.prototype.removeMember = function(player) {
+Team.prototype.removeMember = function(player) {
 	delete this.members[player.id];
 	return this;
 };
 
-<<<<<<< HEAD
-TeamModel.prototype.eat = function(player1,player2){
-=======
 Team.prototype.updateMember = function(team1, team2, player) {
 	team1.addMember(player);
 	team2.removeMember(player);
@@ -66,9 +76,9 @@ Team.prototype.updateMember = function(team1, team2, player) {
 }
 
 Team.prototype.eat = function(player1,player2){
->>>>>>> 3b1b3428d94d6884c9b470a835b57cad6efa5966
 	//this.smokeScreen(player1);
 	if (player1.team.id === player2.team.id){
+		console.log('ups');
 		return false;
 	}else{
 		var team1 = player1.team;

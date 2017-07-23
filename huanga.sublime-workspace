@@ -1,0 +1,2401 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"an",
+				"animations"
+			],
+			[
+				"sp",
+				"speed"
+			],
+			[
+				"spr",
+				"sprites〔argument〕"
+			],
+			[
+				"set",
+				"setPos〔function〕"
+			],
+			[
+				"tea",
+				"team〔variable〕"
+			],
+			[
+				"pla",
+				"player"
+			],
+			[
+				"te",
+				"team2"
+			],
+			[
+				"templ",
+				"templates"
+			],
+			[
+				"foncitonn",
+				"fonctionnalitées"
+			],
+			[
+				"plus",
+				"plusieurs"
+			],
+			[
+				"exter",
+				"externalData"
+			],
+			[
+				"suiva",
+				"suivantes"
+			],
+			[
+				"compo",
+				"composants"
+			],
+			[
+				"donné",
+				"données"
+			],
+			[
+				"fonctionnali",
+				"fonctionnalitées"
+			],
+			[
+				"exte",
+				"extension"
+			],
+			[
+				"templa",
+				"templates"
+			],
+			[
+				"suivna",
+				"suivants"
+			],
+			[
+				"fil",
+				"$HTTP_POST_FILES〔variable〕"
+			],
+			[
+				"test_",
+				"test_files"
+			],
+			[
+				"ut",
+				"utilisé"
+			],
+			[
+				"PDF",
+				"PDFToolkit"
+			],
+			[
+				"Pdf",
+				"PdfToolkit"
+			],
+			[
+				"RE",
+				"Readme"
+			],
+			[
+				"Pd",
+				"PdfToolkitTest"
+			],
+			[
+				"prote",
+				"protected-edit.pdf"
+			],
+			[
+				"li",
+				"light"
+			],
+			[
+				"he",
+				"heavy"
+			],
+			[
+				"néc",
+				"nécessaires"
+			],
+			[
+				"Secure",
+				"SecureBlackboxPdf"
+			],
+			[
+				"perme",
+				"permettant"
+			],
+			[
+				"va",
+				"values"
+			],
+			[
+				"co",
+				"copy〔function〕"
+			],
+			[
+				"for",
+				"foreach\tforeach …"
+			],
+			[
+				"lin",
+				"links"
+			],
+			[
+				"with",
+				"without"
+			],
+			[
+				"t",
+				"$this〔variable〕"
+			],
+			[
+				"param",
+				"params"
+			],
+			[
+				"para",
+				"params"
+			],
+			[
+				"parame",
+				"parameters"
+			],
+			[
+				"tes",
+				"tests"
+			],
+			[
+				"ne",
+				"new"
+			],
+			[
+				"stat",
+				"$status〔variable〕"
+			],
+			[
+				"lo",
+				"lock-edit"
+			],
+			[
+				"fina",
+				"finally〔keyword〕"
+			],
+			[
+				"pri",
+				"print〔keyword〕"
+			],
+			[
+				"fun",
+				"func〔function〕"
+			],
+			[
+				"S",
+				"Signer〔namespace〕"
+			],
+			[
+				"Si",
+				"Signer.php"
+			],
+			[
+				"prin",
+				"print_r〔function〕"
+			],
+			[
+				"n",
+				"new"
+			],
+			[
+				"is_n",
+				"is_null〔function〕"
+			],
+			[
+				"res",
+				"result"
+			],
+			[
+				"im",
+				"img"
+			],
+			[
+				"con",
+				"confImg"
+			],
+			[
+				"info",
+				"infoSign"
+			],
+			[
+				"sign",
+				"signPdf"
+			],
+			[
+				"func",
+				"func_get_arg"
+			],
+			[
+				"borde",
+				"border-radius"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"fin",
+				"finally"
+			],
+			[
+				"jso",
+				"json_encode"
+			],
+			[
+				"call",
+				"call_user_func_array"
+			],
+			[
+				"me",
+				"merge"
+			],
+			[
+				"si",
+				"size"
+			],
+			[
+				"st",
+				"stdout"
+			],
+			[
+				"wi",
+				"get_WidgetProps"
+			],
+			[
+				"ini",
+				"initResult"
+			],
+			[
+				"ca",
+				"callback"
+			],
+			[
+				"up",
+				"updateAvg"
+			],
+			[
+				"init",
+				"initAvg"
+			],
+			[
+				"du",
+				"duration"
+			],
+			[
+				"prt",
+				"protocol"
+			],
+			[
+				"rep",
+				"repeat"
+			],
+			[
+				"json",
+				"jsonData"
+			],
+			[
+				"do",
+				"done"
+			],
+			[
+				"dur",
+				"durations"
+			],
+			[
+				"ma",
+				"maxBuffer"
+			],
+			[
+				"e",
+				"error"
+			],
+			[
+				"cal",
+				"callback_done"
+			],
+			[
+				"cons",
+				"console"
+			],
+			[
+				"pro",
+				"protocol"
+			],
+			[
+				"data",
+				"dataset"
+			],
+			[
+				"cos",
+				"const"
+			],
+			[
+				"mkdir",
+				"mkdirRec"
+			],
+			[
+				"fu",
+				"fullpath"
+			],
+			[
+				"dir",
+				"__dirname"
+			],
+			[
+				"path",
+				"pathArray"
+			],
+			[
+				"file",
+				"fileOutput"
+			],
+			[
+				"pd",
+				"pdfFilesList"
+			],
+			[
+				"stude",
+				"student"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"exp",
+				"explode"
+			],
+			[
+				"fo",
+				"for\tfor …"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"pat",
+				"pathcert"
+			],
+			[
+				"repor",
+				"reportFilename"
+			],
+			[
+				"be",
+				"bfore"
+			],
+			[
+				"write",
+				"writeFileSync"
+			],
+			[
+				"tmp",
+				"tmpFile"
+			],
+			[
+				"re",
+				"result"
+			],
+			[
+				"course",
+				"courState"
+			],
+			[
+				"sg",
+				"sgcourRef4"
+			],
+			[
+				"tr",
+				"trainingCenter"
+			],
+			[
+				"grou",
+				"groups"
+			],
+			[
+				"at",
+				"attributes"
+			],
+			[
+				"funct",
+				"functionArray"
+			],
+			[
+				"cour",
+				"course"
+			],
+			[
+				"se",
+				"setSummary"
+			],
+			[
+				"typ",
+				"typeSelected"
+			],
+			[
+				"ty",
+				"typeSelected"
+			],
+			[
+				"cla",
+				"classList"
+			],
+			[
+				"out",
+				"outputList"
+			],
+			[
+				"type",
+				"typeSelected"
+			],
+			[
+				"proto",
+				"prototype"
+			],
+			[
+				"de",
+				"defaultValue"
+			],
+			[
+				"tim",
+				"timeToFuse"
+			],
+			[
+				"time",
+				"timeInit"
+			],
+			[
+				"stu",
+				"student"
+			],
+			[
+				"ur",
+				"urlencode"
+			],
+			[
+				"Repor",
+				"ReportTemplates"
+			],
+			[
+				"sel",
+				"self"
+			],
+			[
+				"js",
+				"json_encode"
+			],
+			[
+				"nam",
+				"name"
+			],
+			[
+				"com",
+				"companyName"
+			],
+			[
+				"strto",
+				"strtolower"
+			],
+			[
+				"tem",
+				"templateList"
+			],
+			[
+				"load",
+				"loadTemplates"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Huanga/Client/js/views/globalView.js",
+			"settings":
+			{
+				"buffer_size": 18943,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Huanga/Client/js/models/teamModel.js",
+			"settings":
+			{
+				"buffer_size": 2062,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Huanga/Client/js/models/playerModel.js",
+			"settings":
+			{
+				"buffer_size": 7128,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Huanga/Client/js/models/Player.js",
+			"settings":
+			{
+				"buffer_size": 8753,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Huanga/Server/package.json",
+			"settings":
+			{
+				"buffer_size": 210,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Huanga/Client/js/models/Animator.js",
+			"settings":
+			{
+				"buffer_size": 867,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Huanga/Client/js/models/Sprite.js",
+			"settings":
+			{
+				"buffer_size": 970,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "md",
+		"selected_items":
+		[
+			[
+				"md",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"json",
+				"JSON Reindent: reindent file or selection"
+			],
+			[
+				"mar",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"babel",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"bable",
+				"SublimeLinter: Enable Linter"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"sublime lin",
+				"Preferences: SublimeLinter Settings – User"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"CodeC",
+				"CodeComplice: Dump Import Directories"
+			],
+			[
+				"find",
+				"FindKeyConflicts: All Conflicts"
+			],
+			[
+				"code",
+				"SublimeCodeIntel: Reset"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"angula",
+				"AngularJS: Toggle - Disable All Completions"
+			],
+			[
+				"intel",
+				"SublimeCodeIntel: Enable Live Autocompletion for Current Language"
+			],
+			[
+				"rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"phpin",
+				"PHPIntel: Scan Project"
+			],
+			[
+				"Ph",
+				"PHPIntel: Scan Project"
+			],
+			[
+				"php",
+				"PHPIntel: Scan Project"
+			],
+			[
+				"html",
+				"HTMLPrettify"
+			],
+			[
+				"rein",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"JSON",
+				"JSON Reindent: reindent file or selection"
+			],
+			[
+				"prett",
+				"HTMLPrettify"
+			],
+			[
+				"inden",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"J",
+				"JSON Reindent: reindent file or selection"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"hex",
+				"HexViewer: Toggle Hex View"
+			],
+			[
+				"mark",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"txt",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"inde",
+				"Indent JSON"
+			],
+			[
+				"xml",
+				"Indent XML"
+			],
+			[
+				"M",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"ma",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"insta\t",
+				"Package Control: Install Package"
+			],
+			[
+				"indent",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"insat",
+				"Package Control: Install Package"
+			],
+			[
+				"xde",
+				"Xdebug: Stop Debugging"
+			],
+			[
+				"jsoin",
+				"JSON Reindent: reindent file or selection"
+			],
+			[
+				"js",
+				"JSON Reindent: reindent file or selection"
+			],
+			[
+				"ind",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"to",
+				"TodoReview: Open Files"
+			],
+			[
+				"docPHP:",
+				"DocPHP: Checkout Language"
+			],
+			[
+				"doc",
+				"DocPHP: Search Manual"
+			],
+			[
+				"mer",
+				"Sublimerge"
+			],
+			[
+				"sniff ",
+				"PHP Code Sniffer: Sniff this file"
+			],
+			[
+				"code sni",
+				"PHP Code Sniffer: Sniff this file"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"merge",
+				"Sublimerge"
+			],
+			[
+				"h",
+				"HTMLPrettify"
+			],
+			[
+				"sub",
+				"Sublimerge"
+			],
+			[
+				"su",
+				"Sublimerge"
+			],
+			[
+				"prety",
+				"HTMLPrettify: Set Keyboard Shortcuts"
+			],
+			[
+				"pretty",
+				"HTMLPrettify: Set Prettify Preferences"
+			],
+			[
+				"up",
+				"Package Control: Upgrade Package"
+			]
+		],
+		"width": 496.0
+	},
+	"console":
+	{
+		"height": 323.0,
+		"history":
+		[
+			"clear_console();",
+			"clear_console",
+			"reset",
+			"clean",
+			"clear",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/Perso/GameJam092015-Huanga/Huanga",
+		"/D/Perso/GameJam092015-Huanga/Huanga/Client/js",
+		"/D/Perso/GameJam092015-Huanga/Huanga/Client/js/controllers",
+		"/D/Perso/GameJam092015-Huanga/Huanga/Client/js/libs",
+		"/D/Perso/GameJam092015-Huanga/Huanga/Client/js/models",
+		"/D/Perso/GameJam092015-Huanga/Huanga/Client/js/views",
+		"/D/Perso/GameJam092015-Huanga/Huanga/Server"
+	],
+	"file_history":
+	[
+		"/D/Perso/GameJam092015-Huanga/Huanga/Server/package.json",
+		"/D/Work/Project/www/.projects/PdfToolkit.sublime-project",
+		"/D/Work/Project/www/.projects/root_www.sublime-project",
+		"/D/Work/Project/www/jsreport-server/test.php",
+		"/D/Work/Project/www/.projects/root_www_bk.sublime-project",
+		"/D/Work/Project/www/.projects/jsec.sublime-project",
+		"/D/Work/Project/www/.projects/jsreport.sublime-project",
+		"/D/Work/Project/www/jsreport-server/signPdf()",
+		"/D/Work/Project/www/jsreport-server/dev.config.json",
+		"/D/Work/Project/www/jsreport.sublime-workspace",
+		"/D/Work/Project/www/jsreport.sublime-project",
+		"/C/Users/eleguen/AppData/Local/Temp/Temp1_secbboxphp_win(1).zip/Readme.txt",
+		"/C/Users/eleguen/AppData/Local/Temp/Temp1_secbboxphp_win.zip/changes.txt",
+		"/C/Users/eleguen/AppData/Local/Temp/Temp1_secbboxphp_win(1).zip/changes.txt",
+		"/C/Users/eleguen/AppData/Local/Temp/Temp1_secbboxphp_win.zip/Readme.txt",
+		"/C/Users/eleguen/AppData/Roaming/Sublime Text 3/Packages/User/CodeComplice.sublime-settings",
+		"/D/Work/Project/www/PdfToolkit/est.ejs",
+		"/D/Work/Project/www/PdfToolkit/.eslintrc.json",
+		"/D/Work/Project/www/PdfToolkit/test.ejs",
+		"/D/Work/Project/www/PdfToolkit/test.js",
+		"/D/Work/Project/www/PdfToolkit/test_1.pdf",
+		"/C/Users/eleguen/Downloads/swagger20.yaml",
+		"/C/Users/eleguen/Downloads/swagger20(1).json",
+		"/C/Users/eleguen/Downloads/swagger20.json",
+		"/D/Work/Project/www/PdfToolkit/test_7.pdf",
+		"/C/Users/eleguen/AppData/Roaming/Sublime Text 3/Packages/CodeComplice/CodeComplice.sublime-settings",
+		"/C/Users/eleguen/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/C/Users/eleguen/.codeintel/db/php/36bc49f4a00c84ee1699b161e1a0bf97/path",
+		"/C/Users/eleguen/.codeintel/db/php/0aa7518a62a9d5bd3ca27d5de55d025f/path",
+		"/C/Users/eleguen/AppData/Roaming/Sublime Text 3/Packages/User/SublimeCodeIntel.sublime-settings",
+		"/C/Users/eleguen/AppData/Roaming/Sublime Text 3/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
+		"/C/Users/eleguen/Desktop/phplint-3.0_20160307/php.bat",
+		"/C/Users/eleguen/.codeintel/config",
+		"/C/Users/eleguen/AppData/Roaming/Sublime Text 3/Packages/PHP Completions Kit/README.md",
+		"/D/Work/Project/www/jsreport-server/node_modules/jsreport/lib/extendConfig.js",
+		"/D/Work/Project/www/jsreport-server/node_modules/jsreport-wkhtmltopdf/lib/wkhtmltopdf.js",
+		"/D/Work/Project/www/jsreport-server/node_modules/jsreport-reports/lib/reports.js",
+		"/D/Work/Project/www/JSEC/Files/Application/Public/js/api/api-json.js",
+		"/D/Work/Project/www/jsreport-wkhtmltopdf/lib/wkhtmltopdf.js",
+		"/C/Users/eleguen/AppData/Local/Temp/Temp1_export.zip/templates/default_student.report-tdlUCL5DO5OPKeFk.json",
+		"//PC-KHALID/JsecWebsite/SVN_V1/Files/Application/Public/js/websignature/main.js",
+		"/C/Users/eleguen/AppData/Local/Temp/Temp1_poppler_0.12.0-1_win32.zip/manifest/poppler_0.12.0-1_win32.mft",
+		"/D/Work/Project/www/PdfToolkit/tools/Signer/Signer.php",
+		"/D/Work/Project/www/jsreport-server/extension/pdf-merger/jsreport.config.js",
+		"/D/Work/Project/www/jsreport-server/extension/sign-file/img/default.jpg",
+		"/D/Work/Project/www/secureBlackBox/Samples/PDFBlackbox/Signer/PDF_signer.php",
+		"/D/SteamLAN/root/config/MasterServers.vdf",
+		"/D/SteamLAN/root/dod/GameServerConfig.vdf",
+		"/X/Vincent/Nouveau document texte.txt",
+		"/D/Work/Project/www/jsreport-server/node_modules/script-manager/test/test.js",
+		"/D/Work/Project/www/JSEC/Files/Application/Core/Routes_Eric.php",
+		"/D/Work/Project/www/jsreport-server/node_modules/script-manager/lib/in-process.js",
+		"/D/Work/Project/www/jsreport-server/node_modules/jsreport-express/lib/reporter.express.js",
+		"/D/Work/Project/www/jsreport-server/node_modules/script-manager/lib/manager-servers.js",
+		"/D/Work/Project/www/jsreport-server/logs/reporter.log",
+		"/D/Work/Project/www/jsreport-server/logs/error.log",
+		"/D/Work/Project/www/jsreport-server/logs/reporter4.log",
+		"/D/Work/Project/www/jsreport-server/logs/reporter3.log",
+		"/C/Apache24/conf/extra/httpd-vhosts.conf",
+		"/D/Work/Project/www/TESTS/markdown/node_sign_file.mmd",
+		"/D/Work/Project/www/jsreport-server/extension/sign-file/index.js",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/C/Apache24/conf/httpd.conf",
+		"/E/httpd.conf",
+		"/D/Work/Project/www/JSEC/Files/Application/Views/api/api.php",
+		"/D/Work/Project/www/JSEC-PROD/Files/Application/Controllers/LoginExternal.php",
+		"/D/Work/Project/www/jsreport-server/extension/pdf-merger/index.js",
+		"/D/Work/Project/www/jsreport-server/extension/logger/index.js",
+		"/D/Work/Project/www/JSEC/Files/Application/Controllers/Administration/Attendance/ReportBuilder.php",
+		"/D/Work/Project/www/t_log/log_20170606123644926640.log",
+		"/D/Work/Project/www/t_log/log_20170606123257459064.log",
+		"/D/Work/Project/www/t_log/log_20170606123408277144.log",
+		"/C/PHP712/php.ini",
+		"/D/Work/Project/www/JSEC/Files/Application/Controllers/Administration/Attendance/DataFormator.php",
+		"/D/Work/Project/www/log_20170606121640568994.log",
+		"/D/Work/Project/www/log_20170606122851084429.log",
+		"/D/Work/Project/www/log_20170606121627296996.log",
+		"/D/Work/Project/www/log_20170606121605253336.log",
+		"/D/Work/Project/www/log_.log",
+		"/D/Work/Project/www/jsreport-server/extension/pdf-merger/package.json",
+		"/D/Work/Project/www/JSEC/Logs/error.log",
+		"/D/Work/Project/www/JSEC/Files/Framework/Core/Logger.php",
+		"/D/Work/Project/www/jsreport-server/extension/pdf-merger/temp/1180736258209.pdf",
+		"/D/Work/Project/www/jsreport-server/extension/jsreport-jsec-api/index.js",
+		"/D/Work/Project/www/JSEC/Files/Application/Controllers/Administration/Attendance/pages/MyFpdi.php",
+		"/C/Users/eleguen/AppData/Roaming/npm-cache/_logs/2017-06-01T10_08_04_289Z-debug.log",
+		"/D/Work/Project/www/JSEC/Files/Application/Controllers/Api/Api.php",
+		"/D/Work/Project/www/JSEC-PROD/Files/Application/Public/js/api/api.js",
+		"/D/Work/Project/www/JSEC-PROD/Files/Application/Models/Api/SignatureApi.php",
+		"/D/Work/Project/www/JSEC-PROD/Files/Application/Models/Api/StudentApi.php",
+		"/D/Work/Project/www/JSEC-PROD/Files/Application/Public/js/api/api-json.js",
+		"/D/Work/Project/www/JSEC-PROD/Files/Application/Controllers/Api/Api.php",
+		"/D/Work/Project/www/JSEC-PROD/Files/Application/Controllers/Api/StudentApi.php",
+		"/D/Work/Project/www/JSEC-PROD/Files/Framework/Core/Router.php",
+		"/D/Work/Project/www/JSEC-PROD/bootstrap.php",
+		"/D/Work/Project/www/JSEC-PROD/Files/Application/Controllers/Api/SignatureApi.php",
+		"/D/Work/Project/www/JSEC/Files/Application/Models/Api/SignatureApi.php",
+		"/D/Work/Project/www/JSEC/Files/Application/Controllers/Api/SignatureApi.php",
+		"/D/Work/Project/www/JSEC/Files/Application/Controllers/Api/StudentApi.php",
+		"/D/Work/Project/www/JSEC/Files/Application/Models/Api/StudentApi.php",
+		"/D/Work/Project/www/JSEC/Files/Application/Public/js/api/api.js",
+		"/C/Users/eleguen/AppData/Roaming/npm-cache/jsreport/1.7.0/package/package.json",
+		"/D/Work/Project/www/jsreport-server/tmp_binary_file",
+		"/D/Work/Project/www/JSEC/Files/Application/Storage/5/6/Attendance/data_test.json",
+		"/D/Work/Project/www/JSEC-PROD/Files/Application/Controllers/Administration/Attendance/AttendanceGeneratorAttestationStudentItii.php",
+		"/D/Work/Project/www/JSEC-PROD/Files/Application/Controllers/Administration/Attendance/pages/StudentForCompanyAttendancePage.php",
+		"/D/Work/Project/www/JSEC-PROD/Files/Application/Controllers/Administration/Attendance/pages/MyTcpdf.php",
+		"/D/Work/Project/www/JSEC-PROD/Files/Application/Controllers/Administration/Attendance/pages/StudentAttestationPageItii.php",
+		"/D/Work/Project/www/JSEC-PROD/Files/Application/Controllers/Administration/Attendance/pages/StudentAttendancePage.php",
+		"/D/Work/Project/www/JSEC-PROD/Files/Application/Controllers/Api/StatistiqueApi.php",
+		"/D/Work/Project/www/JSEC-PROD/Files/Application/Models/Administration/Administration.php",
+		"/D/Work/Project/www/JSEC-PROD/Files/Application/Controllers/Administration/Attendance/AttendanceGeneratorTrainer.php",
+		"/D/Work/Project/www/JSEC-PROD/Files/Application/Controllers/Administration/Attendance/AttendanceGenerator.php",
+		"/D/Work/Project/www/jsreport-server/logs/reporter2.log",
+		"/D/Work/Project/www/JSEC/Files/Application/Plugins/Front/TCPDF/tcpdf.php",
+		"/C/Users/eleguen/AppData/Local/Temp/Temp1_secbboxphp_win.zip/LicenseKey.txt",
+		"/D/Work/Project/www/jsreport-server/extension/sign-file/sign.php",
+		"/D/Work/Project/www/jsreport-server/certs/Documalis2.pem",
+		"/D/Work/Project/www/jsreport-server/certs/infos_JSEC.txt",
+		"/D/Work/Project/www/jsreport-server/certs/conf_JSEC.txt",
+		"/D/Work/Project/www/jsreport-server/certs/JDS-CONSEIL.pem",
+		"/D/Work/Project/www/JSEC/Files/demoDirectte/jsonDataDirectte.js",
+		"/D/Work/Project/www/jsreport-server/extension/sign-file/PDF_signer_BK.php",
+		"/D/Work/Project/www/secureBlackBox/Samples/PDFBlackbox/PAdES/PAdES.php",
+		"/D/Work/Project/www/JSEC/Files/Application/Plugins/Front/TCPDF/include/tcpdf_static.php",
+		"/D/Work/Project/www/JSEC-PROD/Files/Application/Core/Routes_Eric.php",
+		"/D/Work/Project/www/JSEC-PROD/Files/Application/Core/ApiConfig.php",
+		"/D/Work/Project/www/JSEC-PROD/Files/Application/Models/Api/StatistiqueApi.php"
+	],
+	"find":
+	{
+		"height": 22.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"D:\\Work\\Project\\www\\jsreport-studio",
+			"D:\\Work\\Project\\www\\jsreport-server",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application\\Controllers",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\",
+			"<current file>",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Framework",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application\\",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application\\Controllers",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application",
+			"<current file>",
+			"",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application\\Controllers\\Administration",
+			"D:\\Work\\Project\\www\\atomic",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application\\Public",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application",
+			"\\\\PC-KHALID\\JsecWebsite\\Langaj\\Files\\Application",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application\\",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application\\Public\\js\\",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Public\\js\\",
+			"D:\\Work\\Project\\www\\JSEC\\Files",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application\\Controllers\\",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application\\",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application\\PDF",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application\\,-D:\\Work\\Project\\www\\JSEC\\Files\\Application\\Plugins\\Front\\PHPExcel",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application\\",
+			"D:\\Work\\Project\\www\\framework2",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application",
+			"D:\\Work\\Project\\www\\JSEC\\Application",
+			"D:\\Work\\Project\\www\\JSEC\\",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Framework\\",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application\\",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application\\Public\\css",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application\\Controllers\\Service",
+			"D:\\Work\\Project\\www\\JSEC\\Files",
+			"D:\\Work\\Project\\www\\",
+			"D:\\Work\\Project\\www\\JSEC\\Files",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application",
+			"D:\\Work\\Project\\www\\JSEC\\Application",
+			"D:\\Work\\Project\\www\\JSEC\\Application\\",
+			"D:\\Work\\Project\\www\\JSEC",
+			"D:\\Work\\Project\\www\\1.0.0\\Files\\Application",
+			"D:\\Work\\Project\\www\\JSEC",
+			"D:\\Work\\Project\\BK_APPLICATION_20160927",
+			"D:\\Work\\Project\\www\\JSEC",
+			"D:\\Work\\Project\\www\\1.0.0",
+			"D:\\Work\\Project\\www\\JSEC",
+			"D:\\Work\\Project\\www\\JSEC\\Files",
+			"D:\\Work\\Project\\www",
+			"D:\\Work\\Project\\www\\1.0.0\\Files\\Application\\Controllers\\Api",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application",
+			"D:\\Work\\Project\\www\\framework\\Files\\Framework,-D:\\Work\\Project\\www\\framework\\Files\\Framework\\node_module",
+			"D:\\Work\\Project\\www\\framework\\Files\\Framework",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application",
+			"<current file>,D:\\Work\\Project\\www\\JSEC\\Files\\Application",
+			"<current file>",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\",
+			"D:\\Work\\Project\\www\\1.0.0\\Files\\Application",
+			"D:\\Work\\Project\\www\\1.0.0\\Files\\Application\\Controllers",
+			"D:\\Work\\Project\\www\\1.0.0 - Copie",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application\\",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application\\Controllers",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application\\Public\\css",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Framework\\",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Framework\\vendor\\wenzhixin\\",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Framework\\vendor\\",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application\\",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application\\Public\\js\\",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application\\Public\\js\\updatesManagement",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application\\",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application\\Public\\js\\parkManagement",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application",
+			"",
+			"D:\\Work\\Project\\www\\Framework\\Files\\Framework",
+			"D:\\Work\\Project\\www\\JSEC\\Files\\Application",
+			"D:\\Work\\Project\\www\\JSEC",
+			"D:\\Work\\Project\\www\\framework\\Files\\Application",
+			"D:\\Work\\Project\\www\\framework\\Files\\Framework",
+			"D:\\Work\\Project\\www\\framework\\Files\\Framework\\Public",
+			"D:\\Work\\Project\\www\\framework\\Files\\Framework\\Plugins",
+			"D:\\Work\\Project\\www\\Files\\Application\\",
+			"D:\\Work\\Project\\www\\Files\\Application\\Views",
+			"D:\\Work\\Project\\www\\Files\\Application\\",
+			"D:\\Work\\Project\\www\\Files\\Application\\Views",
+			"D:\\Work\\Project\\www\\Files\\Application\\Helpers",
+			"D:\\Work\\Project\\www\\Files\\Application\\Views\\",
+			"D:\\Work\\Project\\www\\Files\\Application\\Views\\ParkManagement",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			", ",
+			"Animator",
+			"Player",
+			"player",
+			"Player",
+			"player",
+			"Player",
+			"look",
+			"direction",
+			"Direction",
+			"direction",
+			"player",
+			"Player",
+			"player",
+			"Player",
+			"player",
+			"Player",
+			"player",
+			"setPlayer",
+			"model",
+			"Model",
+			"model",
+			"PlayerModel",
+			"\n\t\t\tteam2.removeMember(player2);\n\t\t\tteam1.addMember(player2);\n\t\t\tplayer2.isEaten = true;",
+			"player2",
+			"Jsreport",
+			" ### ",
+			"class",
+			", ",
+			"green",
+			"red",
+			"-css)",
+			"*  [",
+			"+ [",
+			"](#",
+			"- [",
+			"template",
+			"pane1",
+			"reactid",
+			"data-reactid",
+			"data",
+			"$data",
+			".0.2.0.1.0.",
+			"$pane1",
+			".0.2.0.1.0.$pane1.0.$pane1.0.0.0.1.$data",
+			"\"path\": \"",
+			"path\": \"JSEC",
+			"filesToBe",
+			"$this->files",
+			"copy",
+			"__DIR__.\"/test/",
+			"__DIR__.\"/../",
+			"test",
+			"corrupted-signed",
+			"test",
+			"protected-",
+			"protected-opening",
+			"-",
+			"de 5.5 Mo",
+			"+",
+			"windows",
+			"Windows",
+			"light",
+			"merge",
+			"emp/sign",
+			"temp",
+			"test",
+			"temp",
+			"jsreport",
+			"/reports",
+			"\"params\" => [",
+			"files[\"light\",",
+			"files[\"light\"",
+			"\"light\"], $this",
+			"\n                        ",
+			",\n                        ",
+			"],$",
+			", $this",
+			", \"\", \"\"",
+			"Poppler::",
+			", \"\", \"\"",
+			"TElPDFSignatureWidgetProps",
+			"TSBPDFPublicKeySignatureType",
+			"TElMemoryCertStorage",
+			"TSBPDFSignatureType",
+			"TSBPDFImageType",
+			"TSBPDFWidgetBackgroundStyle",
+			"TElPDFPublicKeySecurityHandler",
+			"TElPDFDocument",
+			"TFileMode",
+			"SBException",
+			"TFileStream",
+			"TElX509Certificate",
+			"SBUtils",
+			"getMessage",
+			"getErrorMessage",
+			"\\n CRITICAL FAIL \\n",
+			"getErrorMessage",
+			"print \"Error happened: <br/><br/>\" . $e->getErrorMessage()",
+			"__DIR__.\"/test",
+			"tools/Poppler/test-input",
+			"merge",
+			"$e->getErrorMessage() . ",
+			"Exception",
+			"print \"test merge",
+			"expected",
+			"(Exception",
+			"new Exception",
+			"Exception",
+			"(Exception",
+			"Exception",
+			" = \"\"",
+			"null",
+			"$file",
+			"r4",
+			"light",
+			"r1",
+			"public",
+			"Success",
+			"Code",
+			"result",
+			"'",
+			"\\",
+			"codeintel_scan_files",
+			"return",
+			"true",
+			"[0]",
+			"\""
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"\"",
+			"============================================================",
+			"=============================================================",
+			"table-student-body",
+			"cleanTableBody",
+			"Emargement",
+			"\n        ->setCreator(\"JeSuisEnCours.com\");\n        ",
+			"\n        \t$objPHPExcel = $objReader->load($inputFileName);\n\n        \t// Récupération des données de la table\n\n    $objPHPExcel->getProperties()\n        ->setCreator(\"JeSuisEnCours.com\")\n        ->setLastModified(\"JeSuisEnCours.com\");\n        ",
+			"jsec_ypareo",
+			"trainer",
+			"'Status' => $this->getStatusMessage()",
+			"hwtab_company_id",
+			"jesuisenoopts",
+			"Helpers.plugins.BootstrapTableModel",
+			"fmk",
+			"js/Helpers/PageContentManagement.js'",
+			"\njs/Helpers/PageContentManagement.js'",
+			"\njs/Helpers/PageContentManagement.",
+			" ces ",
+			"r ses informationsr ces informations",
+			"small-user-list",
+			" click: ",
+			"PCM.tableToSet = [];",
+			"PCM.tableToSet",
+			"initData",
+			"eleguen",
+			"modal-update-tablet-to-assign",
+			"#modal-update-tablet-to-assign",
+			"tablet-to-assign-list",
+			"#tablet-to-assign-list",
+			"tablet-to-assign-list",
+			"<?",
+			"Lara CROFT",
+			"Lara Croft",
+			"Signature2",
+			"Signature4",
+			"Signature",
+			"Signature2",
+			"Signature4",
+			"Signature3",
+			"Signature2",
+			"Signature",
+			"Signature2",
+			"Signature3"
+		],
+		"reverse": false,
+		"show_context": false,
+		"use_buffer2": false,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"default_dir": "D:\\Work\\Project\\www\\jsreport",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Huanga/Client/js/views/globalView.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18943,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 7076.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Huanga/Client/js/models/teamModel.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2062,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1971,
+								1935
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										2055,
+										2056
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										1422,
+										1423
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 371.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Huanga/Client/js/models/playerModel.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 7128,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3132,
+								3132
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										3135,
+										3136
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										2565,
+										2566
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "Huanga/Client/js/models/Player.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8753,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								158,
+								252
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										650,
+										651
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										116,
+										117
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "Huanga/Server/package.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 210,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								107,
+								107
+							]
+						],
+						"settings":
+						{
+							"auto_complete": true,
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										110,
+										111
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/double_quote.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										98,
+										99
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "Huanga/Client/js/models/Animator.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 867,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								750,
+								750
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										755,
+										756
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										688,
+										689
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"open_with_edit": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "Huanga/Client/js/models/Sprite.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 970,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								497,
+								497
+							],
+							[
+								523,
+								523
+							],
+							[
+								545,
+								545
+							],
+							[
+								571,
+								571
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										580,
+										581
+									],
+									"2":
+									[
+										580,
+										581
+									],
+									"3":
+									[
+										580,
+										581
+									],
+									"4":
+									[
+										580,
+										581
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									],
+									"2":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									],
+									"3":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									],
+									"4":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										469,
+										470
+									],
+									"2":
+									[
+										469,
+										470
+									],
+									"3":
+									[
+										469,
+										470
+									],
+									"4":
+									[
+										469,
+										470
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"open_with_edit": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 22.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.525443786982,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.doc":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 114.0
+	},
+	"output.hex_viewer_inspector":
+	{
+		"height": 88.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 88.0
+	},
+	"output.xdebug":
+	{
+		"height": 371.0
+	},
+	"pinned_build_system": "",
+	"project": "huanga.sublime-project",
+	"replace":
+	{
+		"height": 40.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"D:\\Softwares\\xampp\\htdocs\\TCPDF\\tcpdf2\\templates\\baseTemplate.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 1,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 230.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
